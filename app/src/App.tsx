@@ -1,0 +1,508 @@
+import { useState } from 'react'
+import { Intro } from './screens/Intro'
+import { CharacterCreation } from './screens/CharacterCreation'
+import { SeasonEvent } from './screens/SeasonEvent'
+import { EventResult } from './screens/EventResult'
+import { SeasonRecap } from './screens/SeasonRecap'
+import { SigningDay } from './screens/SigningDay'
+import { Act1End } from './screens/Act1End'
+import { RedshirtDecision } from './screens/RedshirtDecision'
+import { Act2End } from './screens/Act2End'
+import { CombineDecision } from './screens/CombineDecision'
+import { DraftResult } from './screens/DraftResult'
+import { ProSeasonRecap } from './screens/ProSeasonRecap'
+import { PlayoffMatchup } from './screens/PlayoffMatchup'
+import { PlayoffResult } from './screens/PlayoffResult'
+import { ContractDecision, type ContractChoice } from './screens/ContractDecision'
+import { FreeAgencyOffers } from './screens/FreeAgencyOffers'
+import { TransferPortal } from './screens/TransferPortal'
+import { DestinBrisee } from './screens/DestinBrisee'
+import { CareerCard } from './screens/CareerCard'
+import { createPlayer, type CharacterChoices } from './engine/characterFactory'
+import { pickSeasonEvents, applyChoice } from './engine/eventEngine'
+import { generateOffers } from './engine/signingDay'
+import { enterCollege, applyRedshirt, refreshDepthChart } from './engine/collegeFactory'
+import { generateTransferOffers, transferToCollege, type TransferOffer } from './engine/transferPortal'
+import { resolveAmateurSeason } from './engine/amateurSeasonEngine'
+import { applyCombineStepChoice, runDraft, COMBINE_STEPS, type CombineChoiceId, type CombineStep } from './engine/draftEngine'
+import { resolveProSeason, type ProSeasonResult } from './engine/proSeasonEngine'
+import {
+  buildPlayoffBracket,
+  resolvePlayoffRound,
+  applySuperBowlWin,
+  applyConferenceChampionshipWin,
+  type PlayoffRoundDef,
+} from './engine/playoffEngine'
+import {
+  applyExtension,
+  applyFranchiseTag,
+  hasNoFreeAgencyOffers,
+  generateFreeAgencyOffers,
+  signFreeAgencyOffer,
+  forcedRetirement,
+  type FreeAgencyOffer,
+} from './engine/contractEngine'
+import { AGE_CURVES } from './engine/ageCurves'
+import { HIGHSCHOOL_EVENTS } from './data/events/highschool'
+import { COLLEGE_EVENTS } from './data/events/college'
+import { PRO_EVENTS } from './data/events/pro'
+import { SCENARIO_EVENTS } from './data/events/scenarios'
+import type { Attributes, Player, RecruitingOffer } from './types/player'
+import type { EventChoice, EventEffect, GameEvent } from './types/events'
+
+const EVENTS_PER_SEASON = 3
+const TOTAL_HS_SEASONS = 2
+const MAX_COLLEGE_SEASON = 4
+
+// Un même événement peut être éligible sur plusieurs actes (GameEvent.acts[]) : le filtrage
+// par acte se fait entièrement dans isEligible(), donc un seul pool combiné suffit ici.
+const ALL_EVENTS: GameEvent[] = [...HIGHSCHOOL_EVENTS, ...COLLEGE_EVENTS, ...PRO_EVENTS, ...SCENARIO_EVENTS]
+
+type Screen =
+  | 'intro'
+  | 'creation'
+  | 'event'
+  | 'result'
+  | 'recap'
+  | 'signing'
+  | 'end'
+  | 'redshirt'
+  | 'transfer'
+  | 'end2'
+  | 'combine'
+  | 'draftresult'
+  | 'playoffgame'
+  | 'playoffresult'
+  | 'prorecap'
+  | 'contract'
+  | 'freeagency'
+  | 'destinbrisee'
+  | 'careercard'
+
+function recapNextLabel(p: Player): string {
+  if (p.act === 'HS') {
+    return p.season >= TOTAL_HS_SEASONS ? 'Aller au Signing Day' : 'Saison suivante'
+  }
+  if (p.season >= MAX_COLLEGE_SEASON) return 'Se déclarer pour la draft'
+  return 'Saison suivante'
+}
+
+function proRecapNextLabel(p: Player): string {
+  return (p.contractYearsRemaining ?? 0) <= 0 ? 'Voir la situation contractuelle' : 'Saison suivante'
+}
+
+function App() {
+  const [screen, setScreen] = useState<Screen>('intro')
+  const [player, setPlayer] = useState<Player | null>(null)
+  const [seenIds, setSeenIds] = useState<Set<string>>(new Set())
+  const [queue, setQueue] = useState<GameEvent[]>([])
+  const [activeChoice, setActiveChoice] = useState<{
+    event: GameEvent
+    choice: EventChoice
+    resolvedEffects: EventEffect[]
+    player: Player
+  } | null>(null)
+  const [attributesBefore, setAttributesBefore] = useState<Attributes | null>(null)
+  const [starRatingBefore, setStarRatingBefore] = useState(0)
+  const [logsThisSeason, setLogsThisSeason] = useState<string[]>([])
+  const [seasonStatsForRecap, setSeasonStatsForRecap] = useState<Record<string, number>>({})
+  const [seasonAwardsForRecap, setSeasonAwardsForRecap] = useState<string[]>([])
+  const [offers, setOffers] = useState<RecruitingOffer[]>([])
+  const [signedWith, setSignedWith] = useState<RecruitingOffer | null>(null)
+  const [proResult, setProResult] = useState<ProSeasonResult | null>(null)
+  const [faOffers, setFaOffers] = useState<FreeAgencyOffer[]>([])
+  const [transferOffers, setTransferOffers] = useState<TransferOffer[]>([])
+  const [combineStep, setCombineStep] = useState<CombineStep>(1)
+  const [playoffBracket, setPlayoffBracket] = useState<PlayoffRoundDef[]>([])
+  const [playoffRoundIndex, setPlayoffRoundIndex] = useState(0)
+  const [playoffOutcome, setPlayoffOutcome] = useState<'won' | 'lost'>('lost')
+  const [playoffMVP, setPlayoffMVP] = useState(false)
+
+  function startSeason(p: Player, seen: Set<string>) {
+    const events = pickSeasonEvents(p, ALL_EVENTS, seen, EVENTS_PER_SEASON)
+    setAttributesBefore({ ...p.attributes })
+    setStarRatingBefore(p.starRating)
+    setLogsThisSeason([])
+    if (events.length === 0) {
+      finishSeason(p)
+      return
+    }
+    setQueue(events)
+    setPlayer(p)
+    setScreen('event')
+  }
+
+  function withValueSnapshot(p: Player): Player {
+    return { ...p, valueHistory: [...p.valueHistory, { age: p.age, value: p.exposureScore }] }
+  }
+
+  function goToRecap(p: Player) {
+    const result = resolveAmateurSeason(p)
+    setSeasonStatsForRecap(result.statsThisSeason)
+    setSeasonAwardsForRecap(result.awardsWon)
+    setPlayer(withValueSnapshot(result.player))
+    setQueue([])
+    setScreen('recap')
+  }
+
+  function finishSeason(p: Player) {
+    if (p.act !== 'PRO') {
+      goToRecap(p)
+      return
+    }
+    const result = resolveProSeason(p)
+    setQueue([])
+    setProResult(result)
+
+    if (result.destinBrisee) {
+      setPlayer(withValueSnapshot({ ...result.player, retired: true, retirementType: 'destin-brisee' }))
+      setScreen('destinbrisee')
+      return
+    }
+
+    const decremented: Player = withValueSnapshot({
+      ...result.player,
+      contractYearsRemaining: Math.max(0, (result.player.contractYearsRemaining ?? 1) - 1),
+    })
+    setPlayer(decremented)
+
+    if (result.madePlayoffs && decremented.nflTeam) {
+      // Le résultat de la saison régulière est déjà acquis (stats, awards, qualification) —
+      // seul le parcours en playoffs (et donc wonSuperBowl/superBowlMVP) reste à jouer,
+      // écran par écran, avant d'afficher le bilan de saison.
+      setPlayoffBracket(buildPlayoffBracket(decremented, decremented.nflTeam))
+      setPlayoffRoundIndex(0)
+      setScreen('playoffgame')
+      return
+    }
+
+    setScreen('prorecap')
+  }
+
+  function handlePlayoffPlay() {
+    if (!player) return
+    const game = playoffBracket[playoffRoundIndex]
+    const won = resolvePlayoffRound(game.winProbability)
+
+    if (won && game.round === 'superbowl') {
+      const { player: updated, wonMVP } = applySuperBowlWin(player)
+      setPlayer(updated)
+      setPlayoffMVP(wonMVP)
+      setProResult((prev) =>
+        prev ? { ...prev, wonSuperBowl: true, awardsWon: wonMVP ? [...prev.awardsWon, 'MVP du Super Bowl'] : prev.awardsWon } : prev,
+      )
+    } else if (won && game.round === 'conference') {
+      const { player: updated, wonMVP } = applyConferenceChampionshipWin(player)
+      setPlayer(updated)
+      setPlayoffMVP(wonMVP)
+    } else {
+      setPlayoffMVP(false)
+    }
+
+    setPlayoffOutcome(won ? 'won' : 'lost')
+    setScreen('playoffresult')
+  }
+
+  function handlePlayoffResultContinue() {
+    const isLastRound = playoffRoundIndex >= playoffBracket.length - 1
+    if (playoffOutcome === 'lost' || isLastRound) {
+      setScreen('prorecap')
+      return
+    }
+    setPlayoffRoundIndex((i) => i + 1)
+    setScreen('playoffgame')
+  }
+
+  function handleCreationComplete(choices: CharacterChoices) {
+    const p = createPlayer(choices)
+    const seen = new Set<string>()
+    startSeason(p, seen)
+  }
+
+  function handleChoose(choice: EventChoice) {
+    if (!player || queue.length === 0) return
+    const current = queue[0]
+    const { player: resolved, resolvedEffects } = applyChoice(player, choice)
+    const updated = resolved.act === 'COLLEGE' ? refreshDepthChart(resolved) : resolved
+    setActiveChoice({ event: current, choice, resolvedEffects, player: updated })
+    setScreen('result')
+  }
+
+  function handleResultContinue() {
+    if (!activeChoice || !player) return
+    const { event: current, player: updated } = activeChoice
+    const newLogs = updated.log.slice(player.log.length)
+    setLogsThisSeason((prev) => [...prev, ...newLogs])
+    setSeenIds((prev) => new Set(prev).add(current.id))
+
+    const remaining = queue.slice(1)
+    setPlayer(updated)
+    setActiveChoice(null)
+    if (remaining.length === 0) {
+      finishSeason(updated)
+    } else {
+      setQueue(remaining)
+      setScreen('event')
+    }
+  }
+
+  function proceedToNextCollegeSeason(p: Player) {
+    const nextPlayer: Player = { ...p, season: p.season + 1, age: p.age + 1 }
+    startSeason(nextPlayer, seenIds)
+  }
+
+  function handleRecapContinue() {
+    if (!player) return
+
+    if (player.act === 'HS') {
+      if (player.season < TOTAL_HS_SEASONS) {
+        const nextPlayer: Player = { ...player, season: player.season + 1, age: player.age + 1 }
+        startSeason(nextPlayer, seenIds)
+      } else {
+        const generated = generateOffers(player)
+        setOffers(generated)
+        setScreen('signing')
+      }
+      return
+    }
+
+    if (player.season >= MAX_COLLEGE_SEASON) {
+      setScreen('end2')
+      return
+    }
+    // Le portail des transferts s'ouvre à chaque intersaison NCAA : rester ou rejoindre un
+    // autre programme selon la performance/le temps de jeu de la saison écoulée.
+    setTransferOffers(generateTransferOffers(player))
+    setScreen('transfer')
+  }
+
+  function handleSign(offer: RecruitingOffer | null) {
+    setSignedWith(offer)
+    setScreen('end')
+  }
+
+  function handleEnterCollege() {
+    if (!player) return
+    const collegePlayer = enterCollege(player, signedWith)
+    setSeenIds(new Set())
+    setPlayer(collegePlayer)
+    setScreen('redshirt')
+  }
+
+  function handleRedshirtDecision(redshirt: boolean) {
+    if (!player) return
+    const p = redshirt ? applyRedshirt(player) : player
+    startSeason(p, seenIds)
+  }
+
+  function handleTransferStay() {
+    if (!player) return
+    proceedToNextCollegeSeason(player)
+  }
+
+  function handleTransferSign(offer: TransferOffer) {
+    if (!player) return
+    const transferred = transferToCollege(player, offer)
+    proceedToNextCollegeSeason(transferred)
+  }
+
+  function handleGoToCombine() {
+    setCombineStep(1)
+    setScreen('combine')
+  }
+
+  function handleCombineDecision(choice: CombineChoiceId) {
+    if (!player) return
+    const updated = applyCombineStepChoice(player, combineStep, choice)
+    if (combineStep < COMBINE_STEPS.length) {
+      setPlayer(updated)
+      setCombineStep((s) => (s + 1) as CombineStep)
+      return
+    }
+    const drafted = runDraft(updated)
+    setSeenIds(new Set())
+    setPlayer(drafted)
+    setScreen('draftresult')
+  }
+
+  function handleDraftResultContinue() {
+    if (!player) return
+    startSeason(player, seenIds)
+  }
+
+  function handleProRecapContinue() {
+    if (!player) return
+
+    if ((player.contractYearsRemaining ?? 0) <= 0) {
+      setScreen('contract')
+      return
+    }
+
+    const curve = AGE_CURVES[player.position]
+    if (player.age >= curve.typicalRetirementAge + 8) {
+      setPlayer({ ...player, retired: true, retirementType: 'voluntaire' })
+      setScreen('careercard')
+      return
+    }
+
+    const nextPlayer: Player = { ...player, season: player.season + 1, age: player.age + 1 }
+    startSeason(nextPlayer, seenIds)
+  }
+
+  function handleContractDecision(choice: ContractChoice) {
+    if (!player) return
+
+    if (choice === 'retire') {
+      setPlayer({ ...player, retired: true, retirementType: 'voluntaire' })
+      setScreen('careercard')
+      return
+    }
+
+    if (choice === 'free-agency') {
+      if (hasNoFreeAgencyOffers(player)) {
+        const updated = forcedRetirement(player)
+        setPlayer(updated)
+        setScreen('careercard')
+        return
+      }
+      setFaOffers(generateFreeAgencyOffers(player))
+      setScreen('freeagency')
+      return
+    }
+
+    const updated = choice === 'extension' ? applyExtension(player) : applyFranchiseTag(player)
+    const nextPlayer: Player = { ...updated, season: updated.season + 1, age: updated.age + 1 }
+    startSeason(nextPlayer, seenIds)
+  }
+
+  function handleFreeAgencySign(offer: FreeAgencyOffer) {
+    if (!player) return
+    const updated = signFreeAgencyOffer(player, offer)
+    const nextPlayer: Player = { ...updated, season: updated.season + 1, age: updated.age + 1 }
+    startSeason(nextPlayer, seenIds)
+  }
+
+  function handleDestinBriseeContinue() {
+    setScreen('careercard')
+  }
+
+  function handleRestart() {
+    setPlayer(null)
+    setSeenIds(new Set())
+    setQueue([])
+    setActiveChoice(null)
+    setOffers([])
+    setSignedWith(null)
+    setProResult(null)
+    setFaOffers([])
+    setTransferOffers([])
+    setCombineStep(1)
+    setPlayoffBracket([])
+    setPlayoffRoundIndex(0)
+    setPlayoffOutcome('lost')
+    setPlayoffMVP(false)
+    setScreen('intro')
+  }
+
+  return (
+    <div className="flex min-h-svh flex-1 flex-col">
+      {screen === 'intro' && <Intro onStart={() => setScreen('creation')} />}
+
+      {screen === 'creation' && <CharacterCreation onComplete={handleCreationComplete} />}
+
+      {screen === 'event' && player && queue.length > 0 && (
+        <SeasonEvent event={queue[0]} player={player} onChoose={handleChoose} />
+      )}
+
+      {screen === 'result' && activeChoice && (
+        <EventResult
+          event={activeChoice.event}
+          resolvedEffects={activeChoice.resolvedEffects}
+          player={activeChoice.player}
+          onContinue={handleResultContinue}
+        />
+      )}
+
+      {screen === 'recap' && player && attributesBefore && (
+        <SeasonRecap
+          player={player}
+          attributesBefore={attributesBefore}
+          starRatingBefore={starRatingBefore}
+          logsThisSeason={logsThisSeason}
+          statsThisSeason={seasonStatsForRecap}
+          awardsWon={seasonAwardsForRecap}
+          nextLabel={recapNextLabel(player)}
+          onContinue={handleRecapContinue}
+        />
+      )}
+
+      {screen === 'signing' && player && (
+        <SigningDay player={player} offers={offers} onSign={handleSign} />
+      )}
+
+      {screen === 'end' && player && (
+        <Act1End player={player} signedWith={signedWith} onContinue={handleEnterCollege} onRestart={handleRestart} />
+      )}
+
+      {screen === 'redshirt' && player && (
+        <RedshirtDecision player={player} onDecide={handleRedshirtDecision} />
+      )}
+
+      {screen === 'transfer' && player && (
+        <TransferPortal player={player} offers={transferOffers} onStay={handleTransferStay} onTransfer={handleTransferSign} />
+      )}
+
+      {screen === 'end2' && player && (
+        <Act2End player={player} onContinue={handleGoToCombine} onRestart={handleRestart} />
+      )}
+
+      {screen === 'combine' && player && (
+        <CombineDecision player={player} step={combineStep} onDecide={handleCombineDecision} />
+      )}
+
+      {screen === 'draftresult' && player && (
+        <DraftResult player={player} onContinue={handleDraftResultContinue} />
+      )}
+
+      {screen === 'playoffgame' && player && playoffBracket[playoffRoundIndex] && (
+        <PlayoffMatchup player={player} game={playoffBracket[playoffRoundIndex]} onPlay={handlePlayoffPlay} />
+      )}
+
+      {screen === 'playoffresult' && player && playoffBracket[playoffRoundIndex] && (
+        <PlayoffResult
+          player={player}
+          game={playoffBracket[playoffRoundIndex]}
+          outcome={playoffOutcome}
+          nextRoundLabel={playoffBracket[playoffRoundIndex + 1]?.roundLabel}
+          wonMVP={playoffMVP}
+          onContinue={handlePlayoffResultContinue}
+        />
+      )}
+
+      {screen === 'prorecap' && player && proResult && (
+        <ProSeasonRecap
+          player={player}
+          result={proResult}
+          nextLabel={proRecapNextLabel(player)}
+          onContinue={handleProRecapContinue}
+        />
+      )}
+
+      {screen === 'contract' && player && (
+        <ContractDecision player={player} onDecide={handleContractDecision} />
+      )}
+
+      {screen === 'freeagency' && player && (
+        <FreeAgencyOffers player={player} offers={faOffers} onSign={handleFreeAgencySign} />
+      )}
+
+      {screen === 'destinbrisee' && player && (
+        <DestinBrisee player={player} onContinue={handleDestinBriseeContinue} />
+      )}
+
+      {screen === 'careercard' && player && <CareerCard player={player} onRestart={handleRestart} />}
+    </div>
+  )
+}
+
+export default App

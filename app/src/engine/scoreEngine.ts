@@ -14,7 +14,7 @@ function strongFirst(count: number, extraCap = 2): number {
   return Math.min(1, 0.7 + 0.3 * Math.min(1, (count - 1) / extraCap))
 }
 
-export type CareerTier = 'Normale' | 'Solide' | 'Exceptionnelle' | 'Légende Absolue'
+export type CareerTier = 'Argent' | 'Or' | 'Diamant' | 'Saphir' | 'Arc-en-ciel'
 
 export interface ScoreBreakdown {
   finalScore: number
@@ -68,7 +68,15 @@ export function computeFinalScore(player: Player): ScoreBreakdown {
   const finalScore = Math.min(99, Math.ceil(70 + individualBlock + collectiveBlock))
 
   const tier: CareerTier =
-    finalScore >= 96 ? 'Légende Absolue' : finalScore >= 90 ? 'Exceptionnelle' : finalScore >= 80 ? 'Solide' : 'Normale'
+    finalScore >= 95
+      ? 'Arc-en-ciel'
+      : finalScore >= 90
+        ? 'Saphir'
+        : finalScore >= 86
+          ? 'Diamant'
+          : finalScore >= 75
+            ? 'Or'
+            : 'Argent'
 
   return { finalScore, individualBlock, collectiveBlock, tier }
 }

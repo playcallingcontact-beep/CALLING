@@ -335,12 +335,13 @@ function runSimulations(n: number) {
 
   const destinBriseeCount = records.filter((r) => r.retirementType === 'destin-brisee').length
   const scored = records.filter((r) => r.retirementType !== 'destin-brisee')
-  console.log('\n=== Distribution du score final (cible utilisateur : 50/30/10/5/5) ===')
-  console.log(`  DESTIN BRISÉE           : ${pct(destinBriseeCount, n)}  (cible 5%)`)
-  console.log(`  70-79 (Normale)         : ${pct(scored.filter((r) => r.finalScore >= 70 && r.finalScore < 80).length, n)}  (cible 50%)`)
-  console.log(`  80-90 (Solide)          : ${pct(scored.filter((r) => r.finalScore >= 80 && r.finalScore < 91).length, n)}  (cible 30%)`)
-  console.log(`  91-95 (Exceptionnelle)  : ${pct(scored.filter((r) => r.finalScore >= 91 && r.finalScore <= 95).length, n)}  (cible 10%)`)
-  console.log(`  96-99 (Légende Absolue) : ${pct(scored.filter((r) => r.finalScore >= 96).length, n)}  (cible 5%)`)
+  console.log('\n=== Distribution du score final (paliers de carte : Argent/Or/Diamant/Saphir/Arc-en-ciel) ===')
+  console.log(`  DESTIN BRISÉE             : ${pct(destinBriseeCount, n)}`)
+  console.log(`  70-74 (Argent)            : ${pct(scored.filter((r) => r.finalScore <= 74).length, n)}`)
+  console.log(`  75-85 (Or)                : ${pct(scored.filter((r) => r.finalScore >= 75 && r.finalScore <= 85).length, n)}`)
+  console.log(`  86-89 (Diamant)           : ${pct(scored.filter((r) => r.finalScore >= 86 && r.finalScore <= 89).length, n)}`)
+  console.log(`  90-94 (Saphir)            : ${pct(scored.filter((r) => r.finalScore >= 90 && r.finalScore <= 94).length, n)}`)
+  console.log(`  95-99 (Arc-en-ciel)       : ${pct(scored.filter((r) => r.finalScore >= 95).length, n)}`)
   console.log(`  Score final — médiane : ${median(scored.map((r) => r.finalScore))}\n`)
 
   console.log('=== Fréquence des awards (% de carrières en ayant gagné au moins 1) ===')

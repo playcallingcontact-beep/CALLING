@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { getPosition } from '../data/positions'
 import { StarRating } from './StatChip'
 import { GradientBar } from './GradientBar'
@@ -105,6 +106,9 @@ function ValueSparkline({ points }: { points: ValuePoint[] }) {
 }
 
 export function PlayerProfileCard({ player }: { player: Player }) {
+  // Repliée par défaut sur mobile (gain de place au-dessus du contenu de jeu) — toujours
+  // dépliée sur desktop (lg+) où la colonne latérale a la place, via les classes lg:contents/lg:hidden.
+  const [expanded, setExpanded] = useState(false)
   const position = getPosition(player.position)
   const overall = overallOf(player)
   const isPro = player.act === 'PRO'
@@ -170,81 +174,94 @@ export function PlayerProfileCard({ player }: { player: Player }) {
         </p>
       )}
 
-      {actStats && (
-        <div className="border-t border-black/10 pt-3">
-          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Statistiques</div>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-[var(--text-dim)]">Matchs joués</span>
-              <span className="font-bold text-[var(--text)]">{actStats.gamesPlayed}</span>
+      <div className={`${expanded ? 'flex flex-col gap-3' : 'hidden'} lg:contents`}>
+        {actStats && (
+          <div className="border-t border-black/10 pt-3">
+            <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Statistiques</div>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--text-dim)]">Matchs joués</span>
+                <span className="font-bold text-[var(--text)]">{actStats.gamesPlayed}</span>
+              </div>
+              {positionStats.map((def) => (
+                <div key={def.key} className="flex items-center justify-between">
+                  <span className="text-[var(--text-dim)]">{def.label}</span>
+                  <span className="font-bold text-[var(--text)]">{actStats.stats[def.key] ?? 0}</span>
+                </div>
+              ))}
             </div>
-            {positionStats.map((def) => (
-              <div key={def.key} className="flex items-center justify-between">
-                <span className="text-[var(--text-dim)]">{def.label}</span>
-                <span className="font-bold text-[var(--text)]">{actStats.stats[def.key] ?? 0}</span>
+          </div>
+        )}
+
+        <div className="border-t border-black/10 pt-3">
+          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Profil</div>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
+            {CORE_ATTRIBUTE_KEYS.map((key) => (
+              <div key={key} className="flex items-center justify-between">
+                <span className="text-[var(--text-dim)]">{ATTRIBUTE_LABELS[key]}</span>
+                <span className="font-black" style={{ color: attributeColor(player.attributes[key]) }}>
+                  {Math.round(player.attributes[key])}
+                </span>
               </div>
             ))}
           </div>
         </div>
-      )}
 
-      <div className="border-t border-black/10 pt-3">
-        <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Profil</div>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
-          {CORE_ATTRIBUTE_KEYS.map((key) => (
-            <div key={key} className="flex items-center justify-between">
-              <span className="text-[var(--text-dim)]">{ATTRIBUTE_LABELS[key]}</span>
-              <span className="font-black" style={{ color: attributeColor(player.attributes[key]) }}>
-                {Math.round(player.attributes[key])}
-              </span>
+        <div className="grid grid-cols-2 gap-3 border-t border-black/10 pt-3">
+          <GradientBar label="Forme" value={player.attributes.physique} kind="warm" />
+          <GradientBar label="Mental" value={player.attributes.mental} kind="cool" />
+        </div>
+
+        <div className="border-t border-black/10 pt-3">
+          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Palmarès</div>
+          {trophies.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5">
+              {trophies.map((t, i) => (
+                <AwardBadge key={i} {...t} />
+              ))}
             </div>
-          ))}
+          ) : (
+            <p className="text-xs italic text-[var(--text-dim)]">Aucun titre pour l’instant. Ils viennent avec les grandes saisons.</p>
+          )}
         </div>
-      </div>
 
-      <div className="grid grid-cols-2 gap-3 border-t border-black/10 pt-3">
-        <GradientBar label="Forme" value={player.attributes.physique} kind="warm" />
-        <GradientBar label="Mental" value={player.attributes.mental} kind="cool" />
-      </div>
-
-      <div className="border-t border-black/10 pt-3">
-        <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Palmarès</div>
-        {trophies.length > 0 ? (
-          <div className="flex flex-wrap gap-1.5">
-            {trophies.map((t, i) => (
-              <AwardBadge key={i} {...t} />
-            ))}
+        <div>
+          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
+            Distinctions individuelles
           </div>
-        ) : (
-          <p className="text-xs italic text-[var(--text-dim)]">Aucun titre pour l’instant. Ils viennent avec les grandes saisons.</p>
-        )}
-      </div>
-
-      <div>
-        <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
-          Distinctions individuelles
+          {individualAwards.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5">
+              {individualAwards.map((t, i) => (
+                <AwardBadge key={i} {...t} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-xs italic text-[var(--text-dim)]">Aucune récompense individuelle. Elles viennent avec les grandes saisons.</p>
+          )}
         </div>
-        {individualAwards.length > 0 ? (
-          <div className="flex flex-wrap gap-1.5">
-            {individualAwards.map((t, i) => (
-              <AwardBadge key={i} {...t} />
-            ))}
+
+        <div className="border-t border-black/10 pt-3">
+          <div className="mb-1 flex items-center justify-between text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
+            <span>Cote</span>
+            <span>
+              Sommet : {peakPoint.value} ({peakPoint.age} ans)
+            </span>
           </div>
-        ) : (
-          <p className="text-xs italic text-[var(--text-dim)]">Aucune récompense individuelle. Elles viennent avec les grandes saisons.</p>
-        )}
+          <div className="text-2xl font-black text-[var(--de-green)]">{currentValue}</div>
+          <ValueSparkline points={chartPoints} />
+        </div>
       </div>
 
-      <div className="border-t border-black/10 pt-3">
-        <div className="mb-1 flex items-center justify-between text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
-          <span>Cote</span>
-          <span>
-            Sommet : {peakPoint.value} ({peakPoint.age} ans)
-          </span>
-        </div>
-        <div className="text-2xl font-black text-[var(--de-green)]">{currentValue}</div>
-        <ValueSparkline points={chartPoints} />
-      </div>
+      <button
+        type="button"
+        onClick={() => setExpanded((e) => !e)}
+        className="-mx-5 -mb-5 mt-1 flex items-center justify-between rounded-b-3xl bg-[var(--de-gold)] px-5 py-2.5 text-xs font-extrabold text-[#3a2a05] lg:hidden"
+      >
+        <span>
+          Saison {player.season} · {overall} OVR
+        </span>
+        <span className="text-sm">{expanded ? '▴' : '▾'}</span>
+      </button>
     </div>
   )
 }

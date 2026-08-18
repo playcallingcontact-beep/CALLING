@@ -501,6 +501,24 @@ function App() {
       )}
 
       {screen === 'careercard' && player && <CareerCard player={player} onRestart={handleRestart} />}
+
+      <AdBannerPlaceholder />
+    </div>
+  )
+}
+
+// Emplacement réservé pour une bannière publicitaire (mobile + desktop) — fixe en bas de
+// l'écran sur tous les écrans du jeu. La hauteur réelle vient de --ad-banner-height
+// (index.css), et body.padding-bottom lui laisse toujours la place pour ne rien recouvrir.
+function AdBannerPlaceholder() {
+  return (
+    <div
+      className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-center border-t border-black/10 bg-white/95 backdrop-blur-sm"
+      style={{ height: 'var(--ad-banner-height)' }}
+    >
+      <span className="text-[10px] font-bold uppercase tracking-wide text-[var(--text-dim)]">
+        Espace publicitaire (bannière)
+      </span>
     </div>
   )
 }

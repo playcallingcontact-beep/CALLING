@@ -22,7 +22,7 @@ export function PlayoffMatchup({
     <GameShell player={player}>
       <Card variant="gold" className="flex flex-col items-center gap-4 text-center">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          🏆 Playoffs NFL · {game.roundLabel}
+          🏆 Playoffs BFL · {game.roundLabel}
         </span>
 
         <div className="flex w-full items-center justify-center gap-6">

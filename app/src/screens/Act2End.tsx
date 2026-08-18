@@ -14,12 +14,12 @@ interface CollegeStint {
 // pas passé toutes ses saisons NCAA dans son école finale (player.collegeName).
 function computeCollegeStints(player: Player): CollegeStint[] {
   const entries = player.careerPath.filter(
-    (step) => step.label.endsWith('(NCAA)') || step.label.endsWith('(transfert NCAA)'),
+    (step) => step.label.endsWith('(NC2A)') || step.label.endsWith('(transfert NC2A)'),
   )
   if (entries.length === 0) return [{ school: player.collegeName ?? '', years: player.season }]
 
   return entries.map((entry, i) => {
-    const school = entry.label.replace(/ \((NCAA|transfert NCAA)\)$/, '')
+    const school = entry.label.replace(/ \((NC2A|transfert NC2A)\)$/, '')
     const nextAge = i + 1 < entries.length ? entries[i + 1].age : player.age + 1
     return { school, years: Math.max(1, nextAge - entry.age) }
   })
@@ -50,7 +50,7 @@ export function Act2End({
             {position.emoji} {player.name}
           </h2>
           <p className="text-sm font-semibold text-[var(--text-dim)]">
-            {position.name} · {totalYears} an{totalYears > 1 ? 's' : ''} en NCAA
+            {position.name} · {totalYears} an{totalYears > 1 ? 's' : ''} en NC2A
             {player.redshirted ? ' (dont 1 saison de redshirt)' : ''}
           </p>
           <p className="text-sm text-[var(--text-dim)]">
@@ -73,7 +73,7 @@ export function Act2End({
         </div>
 
         <p className="text-[var(--text)]">
-          {player.name} se déclare officiellement pour la <span className="font-extrabold text-[var(--de-green)]">NFL Draft</span>.
+          {player.name} se déclare officiellement pour la <span className="font-extrabold text-[var(--de-green)]">BFL Draft</span>.
         </p>
       </Card>
 

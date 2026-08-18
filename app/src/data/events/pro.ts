@@ -8,7 +8,7 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '🏋️',
-    title: 'Training Camp NFL',
+    title: 'Training Camp BFL',
     context: 'Le rythme professionnel n’a rien à voir avec le college. Chaque snap est chronométré, chaque détail compte.',
     choices: [
       {
@@ -33,7 +33,7 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '📋',
-    title: 'Playbook NFL',
+    title: 'Playbook BFL',
     context: 'Le playbook professionnel est bien plus dense que celui du college. La maîtriser fait toute la différence le dimanche.',
     choices: [
       {
@@ -104,7 +104,7 @@ export const PRO_EVENTS: GameEvent[] = [
     requiresFlag: { key: 'entourage', value: 'mentor-prive' },
     emoji: '💼',
     title: 'Contrat de sponsoring',
-    context: 'L’agent négocie un gros contrat publicitaire national, en plus du salaire NFL.',
+    context: 'L’agent négocie un gros contrat publicitaire national, en plus du salaire BFL.',
     choices: [
       {
         id: 'sign',
@@ -130,7 +130,7 @@ export const PRO_EVENTS: GameEvent[] = [
     requiresFlag: { key: 'lifestyle', value: 'popularite' },
     emoji: '🎤',
     title: 'Enfant du pays',
-    context: 'Les médias locaux veulent absolument raconter l’histoire de l’enfant du pays devenu joueur NFL.',
+    context: 'Les médias locaux veulent absolument raconter l’histoire de l’enfant du pays devenu joueur BFL.',
     choices: [
       {
         id: 'embrace',
@@ -229,16 +229,16 @@ export const PRO_EVENTS: GameEvent[] = [
     requiresFlag: { key: 'arc-rival-intro', value: true },
     forbidsFlag: 'arc-rival-nfl-done',
     emoji: '🚩',
-    title: 'Le Rival, en NFL',
+    title: 'Le Rival, en BFL',
     context:
-      'Le rival de toujours a lui aussi percé en NFL. Le calendrier les met face à face pour la première fois au plus haut niveau.',
+      'Le rival de toujours a lui aussi percé en BFL. Le calendrier les met face à face pour la première fois au plus haut niveau.',
     choices: [
       {
         id: 'dominate',
         label: 'Marquer les esprits dans ce duel',
         effects: [
           { flag: 'arc-rival-nfl-done', flagValue: true },
-          { exposureDelta: 5, log: 'Le duel de toujours franchit un nouveau cap sous les projecteurs NFL.' },
+          { exposureDelta: 5, log: 'Le duel de toujours franchit un nouveau cap sous les projecteurs BFL.' },
           { attribute: 'leadership', delta: 2 },
         ],
       },

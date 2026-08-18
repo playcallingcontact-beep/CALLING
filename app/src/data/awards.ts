@@ -34,7 +34,6 @@ export const AWARDS_LIST: AwardDef[] = [
   { id: 'ncaa-kaheisman', name: 'Kaheisman Trophy', emoji: '🏆', act: 'COLLEGE', category: 'individual' },
   { id: 'ncaa-isswell', name: 'Isswell Award', emoji: '🥇', act: 'COLLEGE', category: 'individual', eligible: OFFENSE },
   { id: 'ncaa-liyamrik', name: 'Liyamrik Award', emoji: '🥇', act: 'COLLEGE', category: 'individual', eligible: DEFENSE },
-  { id: 'ncaa-walter-camp', name: 'Walter Camp Player of the Year', emoji: '🏅', act: 'COLLEGE', category: 'individual' },
   { id: 'ncaa-all-us-first', name: 'First-Team All-US', emoji: '🇺🇸', act: 'COLLEGE', category: 'individual' },
   { id: 'ncaa-all-us-second', name: 'Second-Team All-US', emoji: '🇺🇸', act: 'COLLEGE', category: 'individual' },
 
@@ -58,7 +57,7 @@ export const AWARDS_LIST: AwardDef[] = [
   { id: 'nfl-dpoy', name: 'Defensive Player of the Year', emoji: '🥇', act: 'PRO', category: 'individual', eligible: DEFENSE },
   { id: 'nfl-comeback-poy', name: 'Comeback Player of the Year', emoji: '💪', act: 'PRO', category: 'individual' },
   { id: 'nfl-mvp', name: 'MVP', emoji: '🏅', act: 'PRO', category: 'individual' },
-  { id: 'nfl-pro-bowl', name: 'Pro Bowl', emoji: '⭐', act: 'PRO', category: 'individual' },
+  { id: 'nfl-pro-bowl', name: 'Stars Bowl', emoji: '⭐', act: 'PRO', category: 'individual' },
   { id: 'nfl-all-pro-second', name: 'Second-Team All-Pro', emoji: '🥈', act: 'PRO', category: 'individual' },
   { id: 'nfl-all-pro-first', name: 'First-Team All-Pro', emoji: '🥇', act: 'PRO', category: 'individual' },
 
@@ -77,9 +76,9 @@ export const AWARDS_LIST: AwardDef[] = [
 
   { id: 'nfl-division-champion', name: 'Division Champion', emoji: '🏆', act: 'PRO', category: 'collective' },
   { id: 'nfl-conference-champion', name: 'Conference Champion', emoji: '🏆', act: 'PRO', category: 'collective' },
-  { id: 'nfl-super-bowl-champion', name: 'Super Bowl Champion', emoji: '🏆', act: 'PRO', category: 'collective' },
+  { id: 'nfl-super-bowl-champion', name: 'Ring Bowl Champion', emoji: '🏆', act: 'PRO', category: 'collective' },
   { id: 'nfl-conference-championship-mvp', name: 'Conference Championship MVP', emoji: '🎖️', act: 'PRO', category: 'collective' },
-  { id: 'nfl-super-bowl-mvp', name: 'Super Bowl MVP', emoji: '🎖️', act: 'PRO', category: 'collective' },
+  { id: 'nfl-super-bowl-mvp', name: 'Ring Bowl MVP', emoji: '🎖️', act: 'PRO', category: 'collective' },
   { id: 'nfl-perfect-season', name: 'Perfect Season', emoji: '💯', act: 'PRO', category: 'collective' },
 ]
 
@@ -113,8 +112,8 @@ export function buildAwardEntries(awardsCareer: Record<string, number>): AwardEn
 
 const ACT_META: { act: Act; label: string; emoji: string }[] = [
   { act: 'HS', label: 'High School', emoji: '🏫' },
-  { act: 'COLLEGE', label: 'NCAA', emoji: '🎓' },
-  { act: 'PRO', label: 'NFL', emoji: '🏈' },
+  { act: 'COLLEGE', label: 'NC2A', emoji: '🎓' },
+  { act: 'PRO', label: 'BFL', emoji: '🏈' },
 ]
 
 export function buildAwardEntriesByAct(

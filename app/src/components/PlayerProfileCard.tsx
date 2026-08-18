@@ -36,14 +36,11 @@ function attributeColor(value: number): string {
   return '#c94f3d'
 }
 
-// Le nombre de participations aux playoffs n'est pas un "award" nommé dans data/awards.ts
-// (c'est un compteur structurel déjà consommé par scoreEngine.ts) — on le garde visible en
-// tête du palmarès collectif pour ne pas perdre cette information déjà affichée auparavant.
+// Les participations aux playoffs ne sont plus comptées comme une "distinction" ici — ce
+// compteur n'apparaît plus que dans le récapitulatif Career Legacy de la carte de fin de
+// carrière (CareerCard.tsx), pas mélangé aux vrais titres/awards.
 function buildTrophies(player: Player): AwardEntry[] {
-  const list = buildAwardEntries(player.awardsCareer).filter((e) => AWARDS[e.id]?.category === 'collective')
-  const playoffApps = player.careerStats?.playoffAppearances ?? 0
-  if (playoffApps > 0) list.unshift({ id: 'playoff-appearances', icon: '🏟️', label: 'Playoffs', count: playoffApps })
-  return list
+  return buildAwardEntries(player.awardsCareer).filter((e) => AWARDS[e.id]?.category === 'collective')
 }
 
 function buildIndividualAwards(player: Player): AwardEntry[] {
@@ -114,7 +111,7 @@ export function PlayerProfileCard({ player }: { player: Player }) {
   const isPro = player.act === 'PRO'
   const isCollege = player.act === 'COLLEGE'
   const teamName = isPro ? player.nflTeam : isCollege ? player.collegeName : player.highSchoolName
-  const badge = isPro ? 'NFL' : isCollege ? 'NCAA' : 'HS'
+  const badge = isPro ? 'BFL' : isCollege ? 'NC2A' : 'HS'
   const teamColors = isPro
     ? getTeamColors(player.nflTeam ?? '')
     : isCollege

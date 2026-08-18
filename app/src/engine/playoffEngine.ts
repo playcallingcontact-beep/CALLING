@@ -17,7 +17,7 @@ export const PLAYOFF_ROUND_LABELS: Record<PlayoffRoundId, string> = {
   wildcard: 'Wild Card',
   divisional: 'Divisional Round',
   conference: 'Finale de conférence',
-  superbowl: 'Super Bowl',
+  superbowl: 'Ring Bowl',
 }
 
 // La tête de série n°1 de la conférence bénéficie d'un bye direct en Divisional Round, comme

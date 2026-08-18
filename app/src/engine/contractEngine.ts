@@ -72,7 +72,7 @@ export function signFreeAgencyOffer(player: Player, offer: FreeAgencyOffer): Pla
     contractYearsRemaining: offer.years,
     contractValueM: offer.valueM,
     depthChartStatus: offer.role,
-    careerPath: [...player.careerPath, { age: player.age, label: `${offer.team} (NFL, free agency)` }],
+    careerPath: [...player.careerPath, { age: player.age, label: `${offer.team} (BFL, free agency)` }],
     log: [
       ...player.log,
       `Signe en free agency avec les ${offer.team} (${offer.years} ans, ${offer.valueM} M$, ${

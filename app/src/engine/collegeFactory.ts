@@ -29,7 +29,7 @@ export function enterCollege(player: Player, signedWith: RecruitingOffer | null)
     collegeTier: offer.programTier,
     redshirted: false,
     depthChartStatus: computeDepthChart(player, offer.programTier),
-    careerPath: [...player.careerPath, { age: 18, label: `${offer.schoolName} (NCAA)` }],
+    careerPath: [...player.careerPath, { age: 18, label: `${offer.schoolName} (NC2A)` }],
     flags: { ...player.flags },
     log: [...player.log, `${player.name} rejoint ${offer.schoolName}.`],
   }

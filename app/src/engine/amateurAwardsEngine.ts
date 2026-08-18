@@ -87,7 +87,6 @@ export function applyNcaaAwards(player: Player): AmateurAwardsResult {
     if (overall >= 83 && Math.random() < 0.08) {
       grant('ncaa-kaheisman')
       grant(sideAward(next.position, 'ncaa-isswell', 'ncaa-liyamrik'))
-      grant('ncaa-walter-camp')
       grant('ncaa-all-us-first')
     } else if (overall >= 76 && Math.random() < 0.14) {
       grant(sideAward(next.position, 'ncaa-isswell', 'ncaa-liyamrik'))

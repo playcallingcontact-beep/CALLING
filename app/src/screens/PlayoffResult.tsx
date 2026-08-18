@@ -34,7 +34,7 @@ export function PlayoffResult({
     <GameShell player={player}>
       <Card variant="gold" className="flex flex-col items-center gap-3 text-center">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          🏆 Playoffs NFL · {game.roundLabel}
+          🏆 Playoffs BFL · {game.roundLabel}
         </span>
 
         {outcome === 'lost' && (
@@ -46,7 +46,7 @@ export function PlayoffResult({
 
         {outcome === 'won' && isSuperBowlWin && (
           <>
-            <p className="text-2xl font-black text-[var(--de-gold-dark)]">🏆 Champion du Super Bowl !</p>
+            <p className="text-2xl font-black text-[var(--de-gold-dark)]">🏆 Champion du Ring Bowl !</p>
             <p className="text-sm italic text-[var(--text-dim)]">
               {player.name} soulève le Trophée Final avec les {player.nflTeam}.
             </p>
@@ -61,7 +61,7 @@ export function PlayoffResult({
         )}
 
         {wonMVP && (
-          <EffectPill label={isSuperBowlWin ? '🎖️ MVP du Super Bowl' : '🎖️ MVP de la finale de conférence'} />
+          <EffectPill label={isSuperBowlWin ? '🎖️ MVP du Ring Bowl' : '🎖️ MVP de la finale de conférence'} />
         )}
 
         <PillButton variant="dark" onClick={onContinue} className="mt-1 self-stretch">

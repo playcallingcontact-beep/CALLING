@@ -189,7 +189,7 @@ function App() {
       setPlayer(updated)
       setPlayoffMVP(wonMVP)
       setProResult((prev) =>
-        prev ? { ...prev, wonSuperBowl: true, awardsWon: wonMVP ? [...prev.awardsWon, 'MVP du Super Bowl'] : prev.awardsWon } : prev,
+        prev ? { ...prev, wonSuperBowl: true, awardsWon: wonMVP ? [...prev.awardsWon, 'MVP du Ring Bowl'] : prev.awardsWon } : prev,
       )
     } else if (won && game.round === 'conference') {
       const { player: updated, wonMVP } = applyConferenceChampionshipWin(player)

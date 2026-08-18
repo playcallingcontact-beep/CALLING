@@ -9,7 +9,7 @@ export const COLLEGE_EVENTS: GameEvent[] = [
     seasonMax: 4,
     emoji: '🏋️',
     title: 'Fall Camp',
-    context: 'Le camp d’avant-saison NCAA est autrement plus dur que le lycée. Les coordinateurs testent les limites de chacun.',
+    context: 'Le camp d’avant-saison NC2A est autrement plus dur que le lycée. Les coordinateurs testent les limites de chacun.',
     choices: [
       {
         id: 'grind',
@@ -56,13 +56,13 @@ export const COLLEGE_EVENTS: GameEvent[] = [
     seasonMax: 4,
     emoji: '📢',
     title: 'Spring Game',
-    context: 'Le match public de fin de printemps attire déjà quelques recruteurs NFL en repérage.',
+    context: 'Le match public de fin de printemps attire déjà quelques recruteurs BFL en repérage.',
     choices: [
       {
         id: 'go-big',
         label: 'Frapper fort devant les recruteurs',
         effects: [
-          { exposureDelta: 6, log: 'Une prestation qui fait remonter des noms dans les bureaux NFL.' },
+          { exposureDelta: 6, log: 'Une prestation qui fait remonter des noms dans les bureaux BFL.' },
           { attribute: 'physique', delta: -1 },
         ],
       },

@@ -47,7 +47,7 @@ export const COMBINE_STEPS: CombineStepDef[] = [
     emoji: '🎤',
     title: 'Combine — Entretiens avec les franchises',
     context:
-      'Les états-majors NFL enchaînent les entretiens en coulisses. Ce qui s’y dit compte parfois autant que le chrono au 40 yards — une mauvaise impression peut coûter cher, une bonne peut faire grimper une cote entière.',
+      'Les états-majors BFL enchaînent les entretiens en coulisses. Ce qui s’y dit compte parfois autant que le chrono au 40 yards — une mauvaise impression peut coûter cher, une bonne peut faire grimper une cote entière.',
     choices: [
       {
         id: 'confident',
@@ -215,7 +215,7 @@ export function runDraft(player: Player): Player {
     depthChartStatus: round <= 3 ? 'starter' : 'backup',
     careerPath: [
       ...player.careerPath,
-      { age: player.age + 1, label: round === 0 ? `${team} (NFL, non drafté)` : `${team} (NFL, round ${round})` },
+      { age: player.age + 1, label: round === 0 ? `${team} (BFL, non drafté)` : `${team} (BFL, round ${round})` },
     ],
     log: [...player.log, log],
   }

@@ -2,11 +2,11 @@ import type { Position } from '../types/player'
 import type { CareerTier } from '../engine/scoreEngine'
 
 export const TIER_TITLE: Record<CareerTier, string> = {
-  Argent: 'Joueur de rôle NFL',
+  Argent: 'Joueur de rôle BFL',
   Or: 'Titulaire reconnu',
   Diamant: 'Star de la ligue',
   Saphir: 'Icône de la ligue',
-  'Arc-en-ciel': 'Légende de la NFL',
+  'Arc-en-ciel': 'Légende de la BFL',
 }
 
 export const TIER_BADGE: Record<CareerTier, string> = {

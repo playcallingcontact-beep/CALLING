@@ -10,7 +10,7 @@ export function DraftResult({ player, onContinue }: { player: Player; onContinue
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-4 px-4 py-8">
       <span className="self-center rounded-full bg-[var(--de-gold)] px-5 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#3a2a05]">
-        NFL Draft
+        BFL Draft
       </span>
 
       <Card variant="gold" className="flex flex-col gap-4 text-center">

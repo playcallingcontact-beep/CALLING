@@ -12391,7 +12391,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
     theme: 'VIE_SOCIALE',
     acts: ['PRO'],
     emoji: '🏁',
-    title: 'La vie après la NFL',
+    title: 'La vie après la BFL',
     context: 'Après des années de football professionnel, tu dois décider quelle personne tu veux devenir en dehors du terrain.',
     choices: [
       {

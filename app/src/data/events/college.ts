@@ -22,7 +22,10 @@ export const COLLEGE_EVENTS: GameEvent[] = [
       {
         id: 'technical',
         label: 'Peaufiner les détails techniques',
-        effects: [{ attribute: 'technique', delta: 3, log: 'Les petits ajustements techniques commencent à payer.' }],
+        effects: [
+          { attribute: 'technique', delta: 3, log: 'Les petits ajustements techniques commencent à payer.' },
+          { attribute: 'physique', delta: -1 },
+        ],
       },
     ],
   },
@@ -39,12 +42,18 @@ export const COLLEGE_EVENTS: GameEvent[] = [
       {
         id: 'opponents',
         label: 'Décortiquer les schémas adverses',
-        effects: [{ attribute: 'technique', delta: 3, log: 'Une lecture du jeu affûtée, snap après snap.' }],
+        effects: [
+          { attribute: 'technique', delta: 3, log: 'Une lecture du jeu affûtée, snap après snap.' },
+          { attribute: 'mental', delta: -1 },
+        ],
       },
       {
         id: 'self',
         label: 'Corriger ses propres défauts',
-        effects: [{ attribute: 'mental', delta: 3, log: 'Un travail sur soi qui paie sur la durée.' }],
+        effects: [
+          { attribute: 'mental', delta: 3, log: 'Un travail sur soi qui paie sur la durée.' },
+          { attribute: 'technique', delta: -1 },
+        ],
       },
     ],
   },
@@ -73,6 +82,19 @@ export const COLLEGE_EVENTS: GameEvent[] = [
           { attribute: 'technique', delta: 2, log: 'Une prestation propre qui rassure le staff.' },
           { exposureDelta: 2 },
         ],
+        variants: [
+          {
+            weight: 1,
+            effects: [
+              { attribute: 'technique', delta: 2, log: 'Une prestation propre qui rassure le staff.' },
+              { exposureDelta: 2 },
+            ],
+          },
+          {
+            weight: 1,
+            effects: [{ exposureDelta: -3, log: 'Une prestation trop sage : les recruteurs cherchaient un éclat, pas une copie propre.' }],
+          },
+        ],
       },
     ],
   },
@@ -98,6 +120,13 @@ export const COLLEGE_EVENTS: GameEvent[] = [
         id: 'stay-pro',
         label: 'Rester professionnel et encaisser',
         effects: [{ attribute: 'mental', delta: 3, log: 'Une maturité qui impressionne le staff.' }],
+        variants: [
+          { weight: 1, effects: [{ attribute: 'mental', delta: 3, log: 'Une maturité qui impressionne le staff.' }] },
+          {
+            weight: 1,
+            effects: [{ attribute: 'leadership', delta: -2, log: 'À trop encaisser sans réagir, le vestiaire doute de sa détermination.' }],
+          },
+        ],
       },
     ],
   },
@@ -123,6 +152,10 @@ export const COLLEGE_EVENTS: GameEvent[] = [
         id: 'team-effort',
         label: 'Porter l’équipe collectivement',
         effects: [{ attribute: 'technique', delta: 3, log: 'Une victoire d’équipe, sans éclat individuel.' }],
+        variants: [
+          { weight: 1, effects: [{ attribute: 'technique', delta: 3, log: 'Une victoire d’équipe, sans éclat individuel.' }] },
+          { weight: 1, effects: [{ exposureDelta: -3, log: 'Une prestation trop discrète le soir où tout le pays regardait.' }] },
+        ],
       },
     ],
   },
@@ -176,7 +209,10 @@ export const COLLEGE_EVENTS: GameEvent[] = [
       {
         id: 'decline',
         label: 'Rester discret, privilégier le jeu',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Aucune distraction, seulement le terrain.' }],
+        effects: [
+          { attribute: 'mental', delta: 2, log: 'Aucune distraction, seulement le terrain.' },
+          { exposureDelta: -2, log: 'Une visibilité qui reste en retrait, faute de deal.' },
+        ],
       },
     ],
   },
@@ -202,7 +238,10 @@ export const COLLEGE_EVENTS: GameEvent[] = [
       {
         id: 'focus',
         label: 'Rester concentré sur la saison',
-        effects: [{ attribute: 'mental', delta: 2, log: 'La distraction est réelle, mais évitée avec discipline.' }],
+        effects: [
+          { attribute: 'mental', delta: 2, log: 'La distraction est réelle, mais évitée avec discipline.' },
+          { exposureDelta: -1, log: 'Une notoriété de campus qui reste sous-exploitée.' },
+        ],
       },
     ],
   },
@@ -255,6 +294,23 @@ export const COLLEGE_EVENTS: GameEvent[] = [
           { flag: 'arc-rival-college-done', flagValue: true },
           { exposureDelta: 6, log: 'Le duel tant attendu tourne largement en sa faveur.' },
           { attribute: 'leadership', delta: 2 },
+        ],
+        variants: [
+          {
+            weight: 1,
+            effects: [
+              { flag: 'arc-rival-college-done', flagValue: true },
+              { exposureDelta: 6, log: 'Le duel tant attendu tourne largement en sa faveur.' },
+              { attribute: 'leadership', delta: 2 },
+            ],
+          },
+          {
+            weight: 1,
+            effects: [
+              { flag: 'arc-rival-college-done', flagValue: true },
+              { attribute: 'mental', delta: -2, log: 'Le rival prend le dessus dans le duel tant attendu — une humiliation publique.' },
+            ],
+          },
         ],
       },
       {

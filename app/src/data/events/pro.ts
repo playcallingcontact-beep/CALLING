@@ -22,7 +22,10 @@ export const PRO_EVENTS: GameEvent[] = [
       {
         id: 'smart',
         label: 'Travailler intelligemment, gérer la fatigue',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Une préparation plus posée, pensée pour durer.' }],
+        effects: [
+          { attribute: 'mental', delta: 2, log: 'Une préparation plus posée, pensée pour durer.' },
+          { attribute: 'physique', delta: -1 },
+        ],
       },
     ],
   },
@@ -39,12 +42,18 @@ export const PRO_EVENTS: GameEvent[] = [
       {
         id: 'master',
         label: 'Ingurgiter tout le playbook',
-        effects: [{ attribute: 'technique', delta: 3, log: 'Une lecture du jeu de plus en plus fine.' }],
+        effects: [
+          { attribute: 'technique', delta: 3, log: 'Une lecture du jeu de plus en plus fine.' },
+          { attribute: 'mental', delta: -1 },
+        ],
       },
       {
         id: 'basics',
         label: 'Se concentrer sur les bases, sans faute',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Une exécution simple, mais solide.' }],
+        effects: [
+          { attribute: 'mental', delta: 2, log: 'Une exécution simple, mais solide.' },
+          { attribute: 'technique', delta: -1 },
+        ],
       },
     ],
   },
@@ -62,6 +71,13 @@ export const PRO_EVENTS: GameEvent[] = [
         id: 'lead',
         label: 'Prendre la parole, s’imposer',
         effects: [{ attribute: 'leadership', delta: 3, log: 'Une prise de parole qui marque durablement le vestiaire.' }],
+        variants: [
+          { weight: 1, effects: [{ attribute: 'leadership', delta: 3, log: 'Une prise de parole qui marque durablement le vestiaire.' }] },
+          {
+            weight: 1,
+            effects: [{ attribute: 'leadership', delta: -2, log: 'La prise de parole tombe à plat — le vestiaire n’était pas prêt à l’entendre de sa part.' }],
+          },
+        ],
       },
       {
         id: 'earn',
@@ -86,6 +102,7 @@ export const PRO_EVENTS: GameEvent[] = [
         effects: [
           { attribute: 'leadership', delta: 2, log: 'Un engagement sincère qui dépasse largement le terrain.' },
           { exposureDelta: 3 },
+          { attribute: 'physique', delta: -1 },
         ],
       },
       {
@@ -117,7 +134,10 @@ export const PRO_EVENTS: GameEvent[] = [
       {
         id: 'decline',
         label: 'Rester concentré sur le jeu',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Aucune distraction, seulement le prochain adversaire.' }],
+        effects: [
+          { attribute: 'mental', delta: 2, log: 'Aucune distraction, seulement le prochain adversaire.' },
+          { exposureDelta: -2, log: 'Un beau contrat qui passe à quelqu’un d’autre.' },
+        ],
       },
     ],
   },
@@ -143,7 +163,10 @@ export const PRO_EVENTS: GameEvent[] = [
       {
         id: 'humble',
         label: 'Rester discret sur le sujet',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Une discrétion qui protège la concentration.' }],
+        effects: [
+          { attribute: 'mental', delta: 2, log: 'Une discrétion qui protège la concentration.' },
+          { exposureDelta: -1, log: 'Une belle histoire qui ne sortira jamais vraiment du quartier.' },
+        ],
       },
     ],
   },
@@ -169,6 +192,13 @@ export const PRO_EVENTS: GameEvent[] = [
         id: 'rest',
         label: 'Se préserver pour la suite de la saison',
         effects: [{ attribute: 'mental', delta: 2, log: 'Une décision raisonnable pour préserver l’avenir.' }],
+        variants: [
+          { weight: 1, effects: [{ attribute: 'mental', delta: 2, log: 'Une décision raisonnable pour préserver l’avenir.' }] },
+          {
+            weight: 1,
+            effects: [{ exposureDelta: -3, log: 'Le remplaçant profite de l’occasion et ne relâche plus le poste aussi facilement.' }],
+          },
+        ],
       },
     ],
   },
@@ -186,6 +216,13 @@ export const PRO_EVENTS: GameEvent[] = [
         id: 'adapt',
         label: 'S’adapter sans faire de vagues',
         effects: [{ attribute: 'mental', delta: 2, log: 'Une flexibilité qui rassure le staff.' }],
+        variants: [
+          { weight: 1, effects: [{ attribute: 'mental', delta: 2, log: 'Une flexibilité qui rassure le staff.' }] },
+          {
+            weight: 1,
+            effects: [{ attribute: 'leadership', delta: -2, log: 'S’adapter sans broncher passe pour un manque de caractère aux yeux du vestiaire.' }],
+          },
+        ],
       },
       {
         id: 'push-back',
@@ -210,12 +247,18 @@ export const PRO_EVENTS: GameEvent[] = [
       {
         id: 'train',
         label: 'Rester s’entraîner tout l’été',
-        effects: [{ attribute: 'physique', delta: 3, log: 'Un été de travail qui se voit dès le premier training camp.' }],
+        effects: [
+          { attribute: 'physique', delta: 3, log: 'Un été de travail qui se voit dès le premier training camp.' },
+          { attribute: 'mental', delta: -1 },
+        ],
       },
       {
         id: 'recover',
         label: 'Prendre un vrai temps de repos',
-        effects: [{ attribute: 'mental', delta: 3, log: 'Un esprit reposé, prêt pour une nouvelle saison.' }],
+        effects: [
+          { attribute: 'mental', delta: 3, log: 'Un esprit reposé, prêt pour une nouvelle saison.' },
+          { attribute: 'physique', delta: -1 },
+        ],
       },
     ],
   },
@@ -240,6 +283,23 @@ export const PRO_EVENTS: GameEvent[] = [
           { flag: 'arc-rival-nfl-done', flagValue: true },
           { exposureDelta: 5, log: 'Le duel de toujours franchit un nouveau cap sous les projecteurs BFL.' },
           { attribute: 'leadership', delta: 2 },
+        ],
+        variants: [
+          {
+            weight: 1,
+            effects: [
+              { flag: 'arc-rival-nfl-done', flagValue: true },
+              { exposureDelta: 5, log: 'Le duel de toujours franchit un nouveau cap sous les projecteurs BFL.' },
+              { attribute: 'leadership', delta: 2 },
+            ],
+          },
+          {
+            weight: 1,
+            effects: [
+              { flag: 'arc-rival-nfl-done', flagValue: true },
+              { attribute: 'mental', delta: -2, log: 'Le rival prend le dessus au sommet — la rivalité de toujours tourne à son désavantage.' },
+            ],
+          },
         ],
       },
       {

@@ -43,12 +43,18 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
       {
         id: 'accept',
         label: 'Rester étudier les schémas',
-        effects: [{ attribute: 'technique', delta: 3, log: 'Les heures de vidéo commencent à payer sur le terrain.' }],
+        effects: [
+          { attribute: 'technique', delta: 3, log: 'Les heures de vidéo commencent à payer sur le terrain.' },
+          { attribute: 'physique', delta: -1 },
+        ],
       },
       {
         id: 'skip',
         label: 'Rentrer se reposer',
-        effects: [{ attribute: 'physique', delta: 1, log: 'Une soirée de récupération bienvenue.' }],
+        effects: [
+          { attribute: 'physique', delta: 2, log: 'Une soirée de récupération bienvenue.' },
+          { attribute: 'technique', delta: -1 },
+        ],
       },
     ],
   },
@@ -77,6 +83,22 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
           { attribute: 'technique', delta: 2, log: 'Une prestation propre, sans éclat mais sans faute.' },
           { exposureDelta: 2 },
         ],
+        variants: [
+          {
+            weight: 1,
+            effects: [
+              { attribute: 'technique', delta: 2, log: 'Une prestation propre, sans éclat mais sans faute.' },
+              { exposureDelta: 2 },
+            ],
+          },
+          {
+            weight: 1,
+            effects: [
+              { attribute: 'technique', delta: 1 },
+              { exposureDelta: -2, log: 'Une prestation trop discrète : les recruteurs retiennent d’autres noms ce jour-là.' },
+            ],
+          },
+        ],
       },
     ],
   },
@@ -96,6 +118,22 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
         effects: [
           { attribute: 'mental', delta: 2, log: 'La confrontation directe forge le mental.' },
           { attribute: 'leadership', delta: 2 },
+        ],
+        variants: [
+          {
+            weight: 1,
+            effects: [
+              { attribute: 'mental', delta: 2, log: 'La confrontation directe forge le mental.' },
+              { attribute: 'leadership', delta: 2 },
+            ],
+          },
+          {
+            weight: 1,
+            effects: [
+              { attribute: 'leadership', delta: -1, log: 'La confrontation tourne à la tension ouverte, le vestiaire s’en ressent.' },
+              { attribute: 'mental', delta: -1 },
+            ],
+          },
         ],
       },
       {
@@ -155,12 +193,18 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
       {
         id: 'continue',
         label: 'Continuer, quitte à faire des sacrifices',
-        effects: [{ exposureDelta: 5, log: 'Le réseau du mentor ouvre des portes.' }],
+        effects: [
+          { exposureDelta: 5, log: 'Le réseau du mentor ouvre des portes.' },
+          { attribute: 'mental', delta: -1, log: 'Le poids financier pèse sur toute la famille.' },
+        ],
       },
       {
         id: 'stop',
         label: 'Arrêter les séances privées',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Un poids financier en moins, l’esprit plus libre.' }],
+        effects: [
+          { attribute: 'mental', delta: 2, log: 'Un poids financier en moins, l’esprit plus libre.' },
+          { exposureDelta: -2, log: 'Le réseau du mentor s’estompe peu à peu.' },
+        ],
       },
     ],
   },
@@ -212,6 +256,13 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
         id: 'team-play',
         label: 'Jouer collectif, laisser l’équipe porter le jeu',
         effects: [{ attribute: 'technique', delta: 2, log: 'Une victoire collective, discrète mais solide.' }],
+        variants: [
+          { weight: 1, effects: [{ attribute: 'technique', delta: 2, log: 'Une victoire collective, discrète mais solide.' }] },
+          {
+            weight: 1,
+            effects: [{ attribute: 'mental', delta: -1, log: 'Sans prise d’initiative, l’équipe s’effondre dans le money time.' }],
+          },
+        ],
       },
     ],
   },

@@ -171,7 +171,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le linebacker lit rapidement le changement.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le linebacker lit rapidement le changement.' }],
           },
         ],
       },
@@ -280,7 +280,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu tardes trop.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu tardes trop.' }],
           },
         ],
       },
@@ -295,7 +295,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La défense ne mord pas.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'La défense ne mord pas.' }],
           },
         ],
       },
@@ -385,7 +385,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu te trompes de matchup.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu te trompes de matchup.' }],
           },
         ],
       },
@@ -464,7 +464,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La pression arrive.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'La pression arrive.' }],
           },
         ],
       },
@@ -505,7 +505,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ exposureDelta: 1, log: 'La défense ferme immédiatement la fenêtre.' }],
+            effects: [{ exposureDelta: -2, log: 'La défense ferme immédiatement la fenêtre.' }],
           },
         ],
       },
@@ -737,7 +737,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le pass rush gagne encore.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le pass rush gagne encore.' }],
           },
         ],
       },
@@ -951,7 +951,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La défense ne mord pas.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'La défense ne mord pas.' }],
           },
         ],
       },
@@ -1101,7 +1101,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ log: 'Mauvaise communication.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvaise communication.' }],
           },
         ],
       },
@@ -1116,7 +1116,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Passe incomplète.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Passe incomplète.' }],
           },
         ],
       },
@@ -1131,7 +1131,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu hésites.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu hésites.' }],
           },
         ],
       },
@@ -1157,7 +1157,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu réagis trop tard.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu réagis trop tard.' }],
           },
         ],
       },
@@ -1232,7 +1232,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 1, log: 'La défense profite du temps supplémentaire pour ajuster sa couverture.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'La défense profite du temps supplémentaire pour ajuster sa couverture.' }],
           },
         ],
       },
@@ -1307,7 +1307,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Tu perds du temps.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu perds du temps.' }],
           },
         ],
       },
@@ -1333,7 +1333,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le défenseur ne mord pas.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le défenseur ne mord pas.' }],
           },
         ],
       },
@@ -1427,7 +1427,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'La défense continue à dominer.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'La défense continue à dominer.' }],
           },
         ],
       },
@@ -1453,7 +1453,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 2 }, { exposureDelta: 1, log: 'Il reste patient.' }],
+            effects: [{ exposureDelta: -1, log: 'Il reste patient.' }],
           },
         ],
       },
@@ -1483,7 +1483,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 1, log: 'La défense ferme également cette option.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'La défense ferme également cette option.' }],
           },
         ],
       },
@@ -1528,7 +1528,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Fumble ou passe mal contrôlée.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Fumble ou passe mal contrôlée.' }],
           },
         ],
       },
@@ -1543,7 +1543,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'La défense s\'adapte.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'La défense s\'adapte.' }],
           },
         ],
       },
@@ -1569,7 +1569,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Il reste discipliné.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Il reste discipliné.' }],
           },
         ],
       },
@@ -1817,7 +1817,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le CB réussit à te contenir.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le CB réussit à te contenir.' }],
           },
         ],
       },
@@ -1877,7 +1877,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le CB ferme rapidement l\'espace.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le CB ferme rapidement l\'espace.' }],
           },
         ],
       },
@@ -1937,7 +1937,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ exposureDelta: 2, log: 'Tu ne reçois aucun ballon.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ exposureDelta: -2, log: 'Tu ne reçois aucun ballon.' }],
           },
           {
             weight: 20,
@@ -1956,7 +1956,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'leadership', delta: 2, log: 'La défense ne réagit pas.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'La défense ne réagit pas.' }],
           },
         ],
       },
@@ -1971,7 +1971,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La défense communique parfaitement.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'La défense communique parfaitement.' }],
           },
         ],
       },
@@ -2016,7 +2016,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ log: 'Le ballon arrive derrière toi.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le ballon arrive derrière toi.' }],
           },
         ],
       },
@@ -2031,7 +2031,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Passe incomplète.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Passe incomplète.' }],
           },
         ],
       },
@@ -2076,7 +2076,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le défenseur joue parfaitement le ballon.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le défenseur joue parfaitement le ballon.' }],
           },
         ],
       },
@@ -2121,7 +2121,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'mental', delta: 1, log: 'La pression augmente.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'La pression augmente.' }],
           },
         ],
       },
@@ -2136,7 +2136,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Tu hésites encore sur ta prochaine réception.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu hésites encore sur ta prochaine réception.' }],
           },
         ],
       },
@@ -2196,7 +2196,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le défenseur t\'échappe.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le défenseur t\'échappe.' }],
           },
         ],
       },
@@ -2211,7 +2211,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le RB est stoppé rapidement.' }, { exposureDelta: 1 }],
+            effects: [{ exposureDelta: -1, log: 'Le RB est stoppé rapidement.' }],
           },
         ],
       },
@@ -2237,7 +2237,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Mauvaise coordination.' }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Mauvaise coordination.' }],
           },
         ],
       },
@@ -2267,7 +2267,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le défenseur anticipe.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le défenseur anticipe.' }],
           },
         ],
       },
@@ -2293,7 +2293,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le linebacker ferme la fenêtre.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le linebacker ferme la fenêtre.' }],
           },
         ],
       },
@@ -2323,7 +2323,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 65,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le safety ferme la route.' }, { exposureDelta: 1 }],
+            effects: [{ exposureDelta: -1, log: 'Le safety ferme la route.' }],
           },
         ],
       },
@@ -2349,7 +2349,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le safety vient aider.' }, { exposureDelta: 2 }],
+            effects: [{ exposureDelta: -1, log: 'Le safety vient aider.' }],
           },
         ],
       },
@@ -2364,7 +2364,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvais timing avec le QB.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvais timing avec le QB.' }],
           },
         ],
       },
@@ -2379,7 +2379,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Aucune séparation.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Aucune séparation.' }],
           },
         ],
       },
@@ -2405,7 +2405,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu sors du terrain.' }, { exposureDelta: 1 }],
+            effects: [{ exposureDelta: -1, log: 'Tu sors du terrain.' }],
           },
         ],
       },
@@ -2420,7 +2420,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Réception ratée.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Réception ratée.' }],
           },
         ],
       },
@@ -2435,7 +2435,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu perds quelques yards.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu perds quelques yards.' }],
           },
         ],
       },
@@ -2465,7 +2465,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ exposureDelta: 1, log: 'Gros contact.' }],
+            effects: [{ exposureDelta: -1, log: 'Gros contact.' }],
           },
         ],
       },
@@ -2480,7 +2480,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu es poussé vers la touche.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu es poussé vers la touche.' }],
           },
         ],
       },
@@ -2525,7 +2525,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le CB dévie le ballon.' }, { attribute: 'physique', delta: 1 }, { exposureDelta: 2 }],
+            effects: [{ exposureDelta: -1, log: 'Le CB dévie le ballon.' }],
           },
         ],
       },
@@ -2540,7 +2540,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Contact trop important.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Contact trop important.' }],
           },
         ],
       },
@@ -2555,7 +2555,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La défense ferme l\'espace.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'La défense ferme l\'espace.' }],
           },
         ],
       },
@@ -2581,7 +2581,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: 1, log: 'Le CB gagne le duel.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le CB gagne le duel.' }],
           },
         ],
       },
@@ -2596,7 +2596,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La route ne se développe pas.' }, { exposureDelta: 1 }],
+            effects: [{ exposureDelta: -1, log: 'La route ne se développe pas.' }],
           },
         ],
       },
@@ -2611,7 +2611,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Tu ne gagnes pas assez de séparation.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu ne gagnes pas assez de séparation.' }],
           },
         ],
       },
@@ -2656,7 +2656,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le safety lit le changement.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le safety lit le changement.' }],
           },
         ],
       },
@@ -2671,7 +2671,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Mauvais timing.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Mauvais timing.' }],
           },
         ],
       },
@@ -2716,7 +2716,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvais angle.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvais angle.' }],
           },
         ],
       },
@@ -2731,7 +2731,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ exposureDelta: 1, log: 'La défense lit la screen.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ exposureDelta: -1, log: 'La défense lit la screen.' }],
           },
         ],
       },
@@ -2757,7 +2757,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Aucune cible.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Aucune cible.' }],
           },
         ],
       },
@@ -2787,7 +2787,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Le geste perturbe la synchronisation.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Le geste perturbe la synchronisation.' }],
           },
         ],
       },
@@ -2817,7 +2817,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le CB revient dans le jeu.' }, { exposureDelta: 2 }],
+            effects: [{ exposureDelta: -1, log: 'Le CB revient dans le jeu.' }],
           },
         ],
       },
@@ -2832,7 +2832,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu ralentis trop et perds ta séparation.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu ralentis trop et perds ta séparation.' }],
           },
         ],
       },
@@ -2847,7 +2847,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Tu ne localises pas le ballon à temps.' }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Tu ne localises pas le ballon à temps.' }],
           },
         ],
       },
@@ -2888,7 +2888,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le CB te repousse vers la touche.' }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le CB te repousse vers la touche.' }],
           },
         ],
       },
@@ -2929,7 +2929,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le ballon est trop profond.' }, { exposureDelta: 2 }],
+            effects: [{ exposureDelta: -1, log: 'Le ballon est trop profond.' }],
           },
         ],
       },
@@ -2944,7 +2944,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Mauvais timing.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Mauvais timing.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -2959,7 +2959,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu ralentis et laisses revenir le CB.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu ralentis et laisses revenir le CB.' }],
           },
         ],
       },
@@ -2989,7 +2989,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 15,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Gros contact.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Gros contact.' }],
           },
         ],
       },
@@ -3004,7 +3004,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 70,
-            effects: [{ exposureDelta: 2, log: 'Incomplet.' }],
+            effects: [{ exposureDelta: -2, log: 'Incomplet.' }],
           },
         ],
       },
@@ -3045,7 +3045,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Mauvaise lecture.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Mauvaise lecture.' }],
           },
         ],
       },
@@ -3060,7 +3060,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le QB ne peut pas lancer.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le QB ne peut pas lancer.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -3075,7 +3075,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvaise synchronisation.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvaise synchronisation.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -3101,7 +3101,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le CB ferme la fenêtre.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le CB ferme la fenêtre.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -3161,7 +3161,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu ne crées pas suffisamment de séparation.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu ne crées pas suffisamment de séparation.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -3195,7 +3195,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'leadership', delta: 2, log: 'Tu disparais complètement de l\'action.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Tu disparais complètement de l\'action.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -3221,7 +3221,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'mental', delta: 1, log: 'La provocation continue à peser.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'La provocation continue à peser.' }],
           },
         ],
       },
@@ -3300,7 +3300,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le défenseur dévie le ballon.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le défenseur dévie le ballon.' }, { attribute: 'physique', delta: -1 }],
           },
         ],
       },
@@ -3315,7 +3315,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 55,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le défenseur intervient au dernier moment.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le défenseur intervient au dernier moment.' }],
           },
         ],
       },
@@ -3356,7 +3356,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu perds de l\'agressivité.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu perds de l\'agressivité.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -3401,7 +3401,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvaise interprétation.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvaise interprétation.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -3416,7 +3416,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 1, log: 'La défense change sa couverture.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'La défense change sa couverture.' }],
           },
         ],
       },
@@ -3510,7 +3510,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'leadership', delta: 3, log: 'Le block ou la route échoue.' }],
+            effects: [{ attribute: 'leadership', delta: -3, log: 'Le block ou la route échoue.' }],
           },
         ],
       },
@@ -3555,7 +3555,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 65,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Le ballon tombe au sol.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Le ballon tombe au sol.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -3589,7 +3589,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Aucun rebond exploitable.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Aucun rebond exploitable.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -3615,7 +3615,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Tu es stoppé.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Tu es stoppé.' }],
           },
           {
             weight: 15,
@@ -3634,7 +3634,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Le linebacker ferme également l\'extérieur.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Le linebacker ferme également l\'extérieur.' }],
           },
         ],
       },
@@ -3675,7 +3675,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Arrêt immédiat.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Arrêt immédiat.' }, { attribute: 'mental', delta: -1 }],
           },
           {
             weight: 15,
@@ -3713,7 +3713,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 15,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Tu perds quelques yards.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu perds quelques yards.' }],
           },
         ],
       },
@@ -3743,7 +3743,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 10,
-            effects: [{ exposureDelta: 2, log: 'Le safety intervient brutalement.' }],
+            effects: [{ exposureDelta: -2, log: 'Le safety intervient brutalement.' }],
           },
         ],
       },
@@ -3773,7 +3773,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu rates une opportunité plus importante.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu rates une opportunité plus importante.' }],
           },
         ],
       },
@@ -3799,7 +3799,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le linebacker ferme l\'extérieur.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le linebacker ferme l\'extérieur.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -3814,7 +3814,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu coupes trop tôt.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu coupes trop tôt.' }],
           },
         ],
       },
@@ -3855,7 +3855,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le défenseur lit la screen.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le défenseur lit la screen.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -3870,7 +3870,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tu choisis le mauvais angle.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tu choisis le mauvais angle.' }],
           },
         ],
       },
@@ -3885,7 +3885,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La défense ferme rapidement.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'La défense ferme rapidement.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -3930,7 +3930,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvais angle.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvais angle.' }],
           },
         ],
       },
@@ -3994,8 +3994,6 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         id: 'c3',
         label: 'Sécuriser davantage le ballon à l\'avenir',
         effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
-        variants: [
-        ],
       },
     ],
   },
@@ -4038,7 +4036,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'La ligne défensive gagne le duel.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'La ligne défensive gagne le duel.' }],
           },
         ],
       },
@@ -4057,7 +4055,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Perte de yards.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Perte de yards.' }],
           },
         ],
       },
@@ -4158,7 +4156,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Arrêt.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Arrêt.' }, { attribute: 'mental', delta: -1 }],
           },
           {
             weight: 15,
@@ -4177,7 +4175,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Tu laisses passer quelques yards.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu laisses passer quelques yards.' }],
           },
         ],
       },
@@ -4203,7 +4201,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le trou n\'existe pas.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le trou n\'existe pas.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -4218,7 +4216,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'mental', delta: 2, log: 'La défense revient.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'La défense revient.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -4233,7 +4231,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tackle derrière la ligne.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tackle derrière la ligne.' }],
           },
         ],
       },
@@ -4315,7 +4313,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le défenseur ferme.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le défenseur ferme.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -4330,7 +4328,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tackle immédiat.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tackle immédiat.' }],
           },
         ],
       },
@@ -4345,7 +4343,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Tu es stoppé.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Tu es stoppé.' }],
           },
         ],
       },
@@ -4386,7 +4384,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Sack.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Sack.' }],
           },
         ],
       },
@@ -4431,7 +4429,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le safety arrive.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le safety arrive.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -4446,7 +4444,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu ralentis trop.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu ralentis trop.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -4502,7 +4500,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ exposureDelta: 2, log: 'Le QB est sacké avant.' }],
+            effects: [{ exposureDelta: -2, log: 'Le QB est sacké avant.' }],
           },
         ],
       },
@@ -4603,7 +4601,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu rates l\'ouverture.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu rates l\'ouverture.' }],
           },
         ],
       },
@@ -4618,7 +4616,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le cutback n\'existe pas.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le cutback n\'existe pas.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -4633,7 +4631,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Tackle immédiat.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Tackle immédiat.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -4659,7 +4657,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Stoppé.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Stoppé.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -4674,7 +4672,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Défense trop rapide.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Défense trop rapide.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -4689,7 +4687,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Stoppé.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Stoppé.' }, { exposureDelta: -2 }],
           },
           {
             weight: 20,
@@ -4753,7 +4751,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Le coach voulait davantage de yards.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le coach voulait davantage de yards.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -4779,7 +4777,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 65,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Tackle.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Tackle.' }],
           },
         ],
       },
@@ -4794,7 +4792,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Arrêt.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Arrêt.' }],
           },
         ],
       },
@@ -4809,7 +4807,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le défenseur reste avec toi.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le défenseur reste avec toi.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -4835,7 +4833,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 55,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le CB gagne le duel.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le CB gagne le duel.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -4850,7 +4848,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Défenseur ferme rapidement.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Défenseur ferme rapidement.' }],
           },
         ],
       },
@@ -4865,7 +4863,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Aucune séparation.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Aucune séparation.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -4891,7 +4889,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 15,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Perte de quelques yards.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Perte de quelques yards.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -4925,7 +4923,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 10,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Tu perds un yard.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu perds un yard.' }],
           },
         ],
       },
@@ -4951,7 +4949,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu coupes trop tôt.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu coupes trop tôt.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -4966,7 +4964,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Le safety revient.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le safety revient.' }],
           },
         ],
       },
@@ -5022,7 +5020,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le DE atteint quand même le QB.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le DE atteint quand même le QB.' }],
           },
         ],
       },
@@ -5063,7 +5061,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'mental', delta: 2, log: 'La pression reste présente.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'La pression reste présente.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -5157,7 +5155,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 10,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Perte de yards.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Perte de yards.' }],
           },
         ],
       },
@@ -5187,7 +5185,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'leadership', delta: 2, log: 'Grosse erreur.' }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Grosse erreur.' }],
           },
         ],
       },
@@ -5202,7 +5200,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 2, log: 'L\'équipe manque de big plays.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'L\'équipe manque de big plays.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -5266,7 +5264,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Tu aurais pu gagner davantage.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Tu aurais pu gagner davantage.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -5281,7 +5279,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Stoppé.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Stoppé.' }, { attribute: 'leadership', delta: -1 }],
           },
           {
             weight: 15,
@@ -5349,7 +5347,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Arrêt.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Arrêt.' }, { attribute: 'mental', delta: -1 }],
           },
           {
             weight: 15,
@@ -5368,7 +5366,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 10,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Tu laisses quelques yards sur le terrain.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Tu laisses quelques yards sur le terrain.' }],
           },
         ],
       },
@@ -5394,7 +5392,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le tackle ferme l\'angle.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le tackle ferme l\'angle.' }, { attribute: 'physique', delta: -1 }],
           },
         ],
       },
@@ -5409,7 +5407,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Tu es contenu.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Tu es contenu.' }],
           },
         ],
       },
@@ -5424,7 +5422,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Tu laisses passer une opportunité.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Tu laisses passer une opportunité.' }],
           },
         ],
       },
@@ -5450,7 +5448,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Tu es neutralisé.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Tu es neutralisé.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -5465,7 +5463,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu es bloqué.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu es bloqué.' }],
           },
         ],
       },
@@ -5480,7 +5478,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'leadership', delta: 2, log: 'Tu es toi-même éliminé.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Tu es toi-même éliminé.' }, { attribute: 'physique', delta: -1 }],
           },
         ],
       },
@@ -5506,7 +5504,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu es trop agressif.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu es trop agressif.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -5536,7 +5534,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Le RB gagne quelques yards.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le RB gagne quelques yards.' }],
           },
         ],
       },
@@ -5566,7 +5564,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 15,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tackle fermé.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tackle fermé.' }, { attribute: 'physique', delta: -1 }],
           },
         ],
       },
@@ -5581,7 +5579,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'technique', delta: 3, log: 'Le tackle absorbe le mouvement.' }],
+            effects: [{ attribute: 'technique', delta: -3, log: 'Le tackle absorbe le mouvement.' }],
           },
         ],
       },
@@ -5596,7 +5594,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Trop tard.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Trop tard.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -5622,7 +5620,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'physique', delta: 3, log: 'Le tackle tient.' }],
+            effects: [{ attribute: 'physique', delta: -3, log: 'Le tackle tient.' }],
           },
         ],
       },
@@ -5637,7 +5635,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu perds ton équilibre.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu perds ton équilibre.' }, { attribute: 'physique', delta: -1 }],
           },
         ],
       },
@@ -5652,7 +5650,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 55,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Il s\'adapte.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Il s\'adapte.' }],
           },
         ],
       },
@@ -5678,7 +5676,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le QB échappe au contact.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le QB échappe au contact.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -5693,7 +5691,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le QB lance avant.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le QB lance avant.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -5705,6 +5703,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 2, log: 'Le QB est forcé à rester dans la poche.' }, { attribute: 'leadership', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le QB trouve une fenêtre et sort de la poche.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -5745,7 +5747,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Le QB exploite l\'hésitation.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le QB exploite l\'hésitation.' }],
           },
         ],
       },
@@ -5760,7 +5762,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Mauvais angle.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Mauvais angle.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -5786,7 +5788,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 55,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le QB protège le ballon.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le QB protège le ballon.' }],
           },
         ],
       },
@@ -5801,7 +5803,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Le QB lâche le ballon avant.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le QB lâche le ballon avant.' }],
           },
         ],
       },
@@ -5820,7 +5822,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le QB échappe au contact.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Le QB échappe au contact.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -5846,7 +5848,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Tu es déjà trop loin.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Tu es déjà trop loin.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -5876,7 +5878,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le RB échappe au contact.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le RB échappe au contact.' }],
           },
         ],
       },
@@ -5902,7 +5904,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Neutralisé.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Neutralisé.' }],
           },
         ],
       },
@@ -5917,7 +5919,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Tu perds ton équilibre.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Tu perds ton équilibre.' }],
           },
         ],
       },
@@ -5929,6 +5931,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'leadership', delta: 3, log: 'Un coéquipier réalise le play.' }, { attribute: 'mental', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Le linebacker arrive trop tard.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -5954,7 +5960,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 3, log: 'La ligne lit le stunt.' }],
+            effects: [{ attribute: 'technique', delta: -3, log: 'La ligne lit le stunt.' }],
           },
         ],
       },
@@ -5982,6 +5988,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 75,
             effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }, { exposureDelta: 1, log: 'Le DT profite du stunt.' }],
           },
+          {
+            weight: 25,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le DT est bloqué avant d\'arriver.' }, { attribute: 'leadership', delta: -1 }],
+          },
         ],
       },
     ],
@@ -6006,7 +6016,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le QB lance en mouvement.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le QB lance en mouvement.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6018,6 +6028,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 2, log: 'Le QB est forcé à lancer rapidement.' }, { attribute: 'technique', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le QB trouve une passe rapide malgré tout.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -6032,7 +6046,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le QB trouve son receveur.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le QB trouve son receveur.' }],
           },
         ],
       },
@@ -6058,7 +6072,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le QB gagne l\'angle.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Le QB gagne l\'angle.' }],
           },
         ],
       },
@@ -6073,7 +6087,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le QB accélère.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le QB accélère.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -6085,6 +6099,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'leadership', delta: 3, log: 'Un coéquipier termine le tackle.' }, { attribute: 'mental', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Le QB s\'échappe pour un gain important.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -6114,7 +6132,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le tackle tient.' }, { attribute: 'technique', delta: 2 }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le tackle tient.' }, { attribute: 'technique', delta: -2 }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6129,7 +6147,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 3, log: 'Le QB lance avant.' }],
+            effects: [{ attribute: 'technique', delta: -3, log: 'Le QB lance avant.' }],
           },
         ],
       },
@@ -6141,6 +6159,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 2, log: 'Le QB ne peut pas sortir de la poche.' }, { attribute: 'leadership', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le QB trouve une ouverture pour lancer.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -6237,7 +6259,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 2, log: 'L\'attaque change son rythme.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'L\'attaque change son rythme.' }],
           },
         ],
       },
@@ -6249,6 +6271,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 60,
             effects: [{ attribute: 'technique', delta: 2, log: 'Meilleure anticipation au snap suivant.' }, { attribute: 'mental', delta: 1 }],
+          },
+          {
+            weight: 40,
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le QB varie encore son rythme.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -6274,7 +6300,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le tackle s\'est adapté.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le tackle s\'est adapté.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6304,7 +6330,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le tackle absorbe.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Le tackle absorbe.' }],
           },
         ],
       },
@@ -6334,7 +6360,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le QB s\'échappe.' }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le QB s\'échappe.' }],
           },
         ],
       },
@@ -6349,7 +6375,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Il trouve une solution.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Il trouve une solution.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -6364,7 +6390,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Le ballon part avant.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le ballon part avant.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -6390,7 +6416,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 70,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le RB protège le ballon.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le RB protège le ballon.' }],
           },
         ],
       },
@@ -6402,6 +6428,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 80,
             effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: 1 }, { exposureDelta: 2, log: 'Tackle réussi.' }],
+          },
+          {
+            weight: 20,
+            effects: [{ attribute: 'mental', delta: -1, log: 'Le RB se dégage juste avant.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6420,7 +6450,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le RB casse le contact.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Le RB casse le contact.' }],
           },
         ],
       },
@@ -6461,7 +6491,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Hésitation.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Hésitation.' }],
           },
         ],
       },
@@ -6473,6 +6503,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'leadership', delta: 2, log: 'Le QB est contenu.' }, { attribute: 'technique', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Le QB trouve l\'intérieur.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -6498,7 +6532,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 3, log: 'Le tackle corrige.' }],
+            effects: [{ attribute: 'technique', delta: -3, log: 'Le tackle corrige.' }],
           },
         ],
       },
@@ -6513,7 +6547,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le tackle absorbe.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le tackle absorbe.' }],
           },
         ],
       },
@@ -6528,7 +6562,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Neutralisé.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Neutralisé.' }],
           },
         ],
       },
@@ -6554,7 +6588,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Tu es trop large pour participer au play.' }, { attribute: 'leadership', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Tu es trop large pour participer au play.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -6569,7 +6603,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 55,
-            effects: [{ attribute: 'physique', delta: 1, log: 'QB sort de la poche.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'QB sort de la poche.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6584,7 +6618,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 2, log: 'QB trouve une passe.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'QB trouve une passe.' }],
           },
         ],
       },
@@ -6610,7 +6644,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le guard ferme.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le guard ferme.' }],
           },
         ],
       },
@@ -6623,6 +6657,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 60,
             effects: [{ attribute: 'physique', delta: 1 }, { exposureDelta: 1, log: 'Tu conserves ton rush.' }],
           },
+          {
+            weight: 40,
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le tackle recolle à l\'extérieur.' }, { exposureDelta: -1 }],
+          },
         ],
       },
       {
@@ -6633,6 +6671,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 2, log: 'Excellente coordination avec le DT.' }, { attribute: 'leadership', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le stunt se désynchronise.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -6658,7 +6700,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le tackle tient.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le tackle tient.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6673,7 +6715,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le QB lance avant.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le QB lance avant.' }],
           },
         ],
       },
@@ -6685,6 +6727,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: 1, log: 'Le QB reste enfermé.' }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le QB trouve une fenêtre de lancer.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6710,7 +6756,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Tu perds du temps.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Tu perds du temps.' }],
           },
         ],
       },
@@ -6722,6 +6768,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'technique', delta: 2 }, { exposureDelta: 2, log: 'Tu te libères rapidement.' }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le RB tient bon.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -6736,7 +6786,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Perte de temps.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Perte de temps.' }, { attribute: 'physique', delta: -1 }],
           },
         ],
       },
@@ -6762,7 +6812,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le QB lance.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le QB lance.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -6777,7 +6827,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 65,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Le ballon passe.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le ballon passe.' }],
           },
         ],
       },
@@ -6792,7 +6842,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le QB lance avant le contact.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Le QB lance avant le contact.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6833,7 +6883,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Légère hésitation.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Légère hésitation.' }],
           },
         ],
       },
@@ -6848,7 +6898,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 55,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le QB lance derrière toi.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le QB lance derrière toi.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6874,7 +6924,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Le QB échappe au contact.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Le QB échappe au contact.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -6893,7 +6943,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'technique', delta: 2, log: 'QB échappe au rush.' }, { exposureDelta: 1 }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'QB échappe au rush.' }, { exposureDelta: -1 }],
           },
         ],
       },
@@ -6912,7 +6962,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'physique', delta: 2, log: 'QB s\'échappe.' }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'QB s\'échappe.' }],
           },
         ],
       },
@@ -6942,7 +6992,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Fatigue.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Fatigue.' }],
           },
         ],
       },
@@ -6954,6 +7004,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'technique', delta: 2, log: 'Tu compenses ta fatigue par ton placement.' }, { attribute: 'mental', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'technique', delta: -2, log: 'La fatigue finit par te ralentir.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -6998,7 +7052,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'physique', delta: 2, log: 'Le tackle tient.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -2, log: 'Le tackle tient.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -7013,7 +7067,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'technique', delta: 3, log: 'Le tackle anticipe le mouvement.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -3, log: 'Le tackle anticipe le mouvement.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -7357,7 +7411,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Il identifie quand même la couverture.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Il identifie quand même la couverture.' }],
           },
         ],
       },
@@ -7486,6 +7540,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 80,
             effects: [{ attribute: 'technique', delta: 2, log: 'Tackle réussi.' }],
           },
+          {
+            weight: 20,
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le RB te contourne au dernier moment.' }],
+          },
         ],
       },
       {
@@ -7529,7 +7587,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Le QB te manipule.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Le QB te manipule.' }],
           },
         ],
       },
@@ -7639,6 +7697,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 70,
             effects: [{ attribute: 'technique', delta: 2, log: 'Couverture réussie.' }],
           },
+          {
+            weight: 30,
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le RB gagne un peu de séparation.' }],
+          },
         ],
       },
       {
@@ -7690,6 +7752,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 75,
             effects: [{ attribute: 'leadership', delta: 3, log: 'Tout le monde est correctement placé.' }],
+          },
+          {
+            weight: 25,
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Un coéquipier reste mal aligné malgré tout.' }],
           },
         ],
       },
@@ -7812,7 +7878,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Gain moyen.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Gain moyen.' }],
           },
         ],
       },
@@ -7980,7 +8046,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ log: 'Mauvaise communication.' }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Mauvaise communication.' }],
           },
         ],
       },
@@ -8051,7 +8117,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Fenêtre d\'interception disparue.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Fenêtre d\'interception disparue.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -8077,7 +8143,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 15,
-            effects: [{ log: 'Collision.' }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Collision.' }],
           },
         ],
       },
@@ -8108,6 +8174,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 80,
             effects: [{ attribute: 'leadership', delta: 1, log: 'Un coéquipier récupère.' }, { attribute: 'mental', delta: 1 }],
+          },
+          {
+            weight: 20,
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Personne n\'est en position pour couvrir.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
@@ -8163,7 +8233,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Le RB accélère avant ton contact.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Le RB accélère avant ton contact.' }],
           },
         ],
       },
@@ -8275,7 +8345,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Petite réception mais gain contrôlé.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Petite réception mais gain contrôlé.' }],
           },
         ],
       },
@@ -8301,7 +8371,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Mauvaise compréhension.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Mauvaise compréhension.' }],
           },
         ],
       },
@@ -8559,7 +8629,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Mauvaise communication.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Mauvaise communication.' }],
           },
         ],
       },
@@ -8619,7 +8689,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Cafouillage.' }, { attribute: 'technique', delta: 1 }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Cafouillage.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -8645,7 +8715,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Le WR absorbe le contact.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Le WR absorbe le contact.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -8660,7 +8730,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvais angle.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvais angle.' }],
           },
         ],
       },
@@ -9408,7 +9478,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Mauvaise compréhension.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Mauvaise compréhension.' }],
           },
         ],
       },
@@ -9539,7 +9609,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 20,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvais angle.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvais angle.' }],
           },
         ],
       },
@@ -9648,6 +9718,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 75,
             effects: [{ attribute: 'mental', delta: 1, log: 'Couverture correcte.' }],
+          },
+          {
+            weight: 25,
+            effects: [{ attribute: 'mental', delta: -1, log: 'Le WR casse sa route trop vite.' }],
           },
         ],
       },
@@ -9869,6 +9943,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 75,
             effects: [{ attribute: 'technique', delta: 2, log: 'Tu évites le duel physique.' }],
           },
+          {
+            weight: 25,
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le WR impose son gabarit malgré tout.' }],
+          },
         ],
       },
       {
@@ -9938,7 +10016,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Confusion.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Confusion.' }],
           },
         ],
       },
@@ -10078,6 +10156,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 75,
             effects: [{ attribute: 'technique', delta: 2, log: 'Retour contenu.' }],
           },
+          {
+            weight: 25,
+            effects: [{ attribute: 'technique', delta: -2, log: 'Le retourneur casse l\'angle.' }],
+          },
         ],
       },
       {
@@ -10132,7 +10214,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 65,
-            effects: [{ attribute: 'technique', delta: 2, log: 'Passe incomplète ou réception.' }],
+            effects: [{ attribute: 'technique', delta: -2, log: 'Passe incomplète ou réception.' }],
           },
         ],
       },
@@ -10244,7 +10326,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 1, log: 'L\'arbitre maintient sa décision.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'L\'arbitre maintient sa décision.' }],
           },
         ],
       },
@@ -10271,6 +10353,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 80,
             effects: [{ attribute: 'mental', delta: 2, log: 'Tu récupères immédiatement mentalement.' }],
+          },
+          {
+            weight: 20,
+            effects: [{ attribute: 'mental', delta: -2, log: 'L\'épisode continue de te perturber.' }],
           },
         ],
       },
@@ -10308,6 +10394,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 2, log: 'Tu anticipes mieux ses routes.' }, { attribute: 'technique', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Il varie ses routes pour te déjouer.' }, { attribute: 'technique', delta: -1 }],
           },
         ],
       },
@@ -10348,7 +10438,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Trop de changements.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Trop de changements.' }],
           },
         ],
       },
@@ -10502,6 +10592,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 75,
             effects: [{ exposureDelta: 1, log: 'Tu profites de la soirée sans conséquence.' }],
           },
+          {
+            weight: 25,
+            effects: [{ exposureDelta: -1, log: 'Un ami remarque que tu ne restes jamais longtemps.' }],
+          },
         ],
       },
     ],
@@ -10578,6 +10672,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 75,
             effects: [{ attribute: 'mental', delta: 1, log: 'Relation saine.' }],
           },
+          {
+            weight: 25,
+            effects: [{ attribute: 'mental', delta: -1, log: 'L\'équilibre est plus fragile que prévu.' }],
+          },
         ],
       },
       {
@@ -10628,6 +10726,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 60,
             effects: [{ attribute: 'mental', delta: 1, log: 'Le buzz disparaît rapidement.' }],
+          },
+          {
+            weight: 40,
+            effects: [{ attribute: 'mental', delta: -1, log: 'Des captures d\'écran continuent de circuler.' }],
           },
         ],
       },
@@ -10680,6 +10782,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 70,
             effects: [{ attribute: 'mental', delta: 2, log: 'Le conflit disparaît.' }],
           },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -1, log: 'Il continue de te chercher.' }],
+          },
         ],
       },
       {
@@ -10710,7 +10816,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Y aller avec tes amis',
-        effects: [{ exposureDelta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ exposureDelta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -10723,7 +10829,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Petite tension.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Petite tension.' }],
           },
         ],
       },
@@ -10756,6 +10862,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 75,
             effects: [{ attribute: 'leadership', delta: 1, log: 'Réconciliation.' }, { attribute: 'mental', delta: 1 }],
+          },
+          {
+            weight: 25,
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Il refuse ta tentative de réconciliation.' }],
           },
         ],
       },
@@ -10802,12 +10912,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Travailler davantage',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Demander de l\'aide',
-        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -10858,6 +10968,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
             weight: 70,
             effects: [{ attribute: 'mental', delta: 1, log: 'Elle disparaît.' }],
           },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -1, log: 'Elle continue de circuler malgré tout.' }],
+          },
         ],
       },
       {
@@ -10891,20 +11005,24 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 2 }],
         variants: [
           {
+            weight: 70,
+            effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 2, log: 'Tu inspires vraiment les autres.' }],
+          },
+          {
             weight: 30,
-            effects: [{ attribute: 'leadership', delta: 2, log: 'Certains pensent que tu prends la grosse tête.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Certains pensent que tu prends la grosse tête.' }],
           },
         ],
       },
       {
         id: 'c2',
         label: 'Rester discret',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
         label: 'Motiver les autres',
-        effects: [{ attribute: 'leadership', delta: 3 }],
+        effects: [{ attribute: 'leadership', delta: 3 }, { attribute: 'physique', delta: -1 }],
       },
     ],
   },
@@ -10927,14 +11045,14 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 30,
-            effects: [{ exposureDelta: 1, log: 'Image de sportif trop commercial.' }],
+            effects: [{ exposureDelta: -1, log: 'Image de sportif trop commercial.' }],
           },
         ],
       },
       {
         id: 'c2',
         label: 'Refuser',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -10947,7 +11065,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ attribute: 'leadership', delta: 2, log: 'L\'entreprise se retire.' }, { exposureDelta: 2 }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'L\'entreprise se retire.' }, { exposureDelta: -2 }],
           },
         ],
       },
@@ -10975,12 +11093,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Profiter avec tes proches',
-        effects: [{ attribute: 'mental', delta: 3 }],
+        effects: [{ attribute: 'mental', delta: 3 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
         label: 'Déjà penser à l\'université',
-        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }, { exposureDelta: -1 }],
       },
     ],
   },
@@ -10997,12 +11115,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Faire connaissance avec tout le monde',
-        effects: [{ exposureDelta: 3 }],
+        effects: [{ exposureDelta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Rester avec les joueurs',
-        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11045,7 +11163,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Garder tes distances',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -11088,12 +11206,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Passer rapidement',
-        effects: [{ exposureDelta: 1 }],
+        effects: [{ exposureDelta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
         label: 'Ne pas y aller',
-        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: 1 }, { exposureDelta: -1 }],
       },
     ],
   },
@@ -11160,12 +11278,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Garder la tête froide',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
         label: 'Utiliser ton influence',
-        effects: [{ attribute: 'leadership', delta: 3 }, { exposureDelta: 2 }],
+        effects: [{ attribute: 'leadership', delta: 3 }, { exposureDelta: 2 }, { attribute: 'mental', delta: -1 }],
       },
     ],
   },
@@ -11180,12 +11298,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'L\'aider',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Refuser poliment',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -11213,19 +11331,19 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ exposureDelta: 1, log: 'Une phrase est mal interprétée.' }],
+            effects: [{ exposureDelta: -1, log: 'Une phrase est mal interprétée.' }],
           },
         ],
       },
       {
         id: 'c2',
         label: 'Refuser',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
         label: 'Parler uniquement du football',
-        effects: [{ exposureDelta: 2 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ exposureDelta: 2 }, { attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
     ],
   },
@@ -11255,7 +11373,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Garder tes anciens amis',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11285,7 +11403,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Accepter',
-        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 2 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 2 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -11311,7 +11429,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Jouer la carte humble',
-        effects: [{ attribute: 'mental', delta: 1 }, { exposureDelta: 2 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { exposureDelta: 2 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c2',
@@ -11324,7 +11442,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ exposureDelta: 2, log: 'Certains te trouvent arrogant.' }],
+            effects: [{ exposureDelta: -2, log: 'Certains te trouvent arrogant.' }],
           },
         ],
       },
@@ -11367,12 +11485,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Couper les notifications',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
         label: 'Confier tes réseaux à quelqu\'un',
-        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
     ],
   },
@@ -11387,7 +11505,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Écouter ses conseils',
-        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -11403,7 +11521,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'Construire une vraie relation',
-        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 1 }, { attribute: 'mental', delta: -1 }],
       },
     ],
   },
@@ -11448,7 +11566,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'L\'aider en privé',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
     ],
   },
@@ -11463,12 +11581,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Participer',
-        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 2 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 2 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Participer sans communication',
-        effects: [{ attribute: 'leadership', delta: 3 }],
+        effects: [{ attribute: 'leadership', delta: 3 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -11505,7 +11623,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Refuser poliment',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11596,7 +11714,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 40,
-            effects: [{ log: 'Mauvaise gestion.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Mauvaise gestion.' }],
           },
         ],
       },
@@ -11608,6 +11726,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 80,
             effects: [{ attribute: 'mental', delta: 2, log: 'Tu évites un mauvais choix.' }],
+          },
+          {
+            weight: 20,
+            effects: [{ attribute: 'mental', delta: -2, log: 'Tu laisses passer une opportunité entre-temps.' }],
           },
         ],
       },
@@ -11635,12 +11757,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Être très sociable',
-        effects: [{ exposureDelta: 3 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ exposureDelta: 3 }, { attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Rester professionnel',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11653,7 +11775,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 35,
-            effects: [{ log: 'Ils te trouvent trop confiant.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Ils te trouvent trop confiant.' }],
           },
         ],
       },
@@ -11672,12 +11794,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Explorer la ville',
-        effects: [{ exposureDelta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ exposureDelta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Rester avec l\'équipe',
-        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11714,12 +11836,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Investir',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
         label: 'Faire plaisir à ta famille',
-        effects: [{ attribute: 'mental', delta: 3 }],
+        effects: [{ attribute: 'mental', delta: 3 }, { exposureDelta: -1 }],
       },
     ],
   },
@@ -11745,12 +11867,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Acheter raisonnable',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
         label: 'Investir plutôt que consommer',
-        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: 1 }, { exposureDelta: -1 }],
       },
     ],
   },
@@ -11780,7 +11902,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Fixer des limites',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11810,12 +11932,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Accepter la célébrité',
-        effects: [{ exposureDelta: 4 }],
+        effects: [{ exposureDelta: 4 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Protéger ta vie privée',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11896,12 +12018,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Communiquer avec eux',
-        effects: [{ exposureDelta: 3 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ exposureDelta: 3 }, { attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Rester discret',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -11927,12 +12049,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Tout partager',
-        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Garder une certaine distance',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -11963,6 +12085,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 1, log: 'Réconciliation.' }, { attribute: 'leadership', delta: 1 }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: -1, log: 'Le malaise persiste dans le vestiaire.' }, { attribute: 'leadership', delta: -1 }],
           },
         ],
       },
@@ -12031,7 +12157,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'Trouver un équilibre',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
     ],
   },
@@ -12054,7 +12180,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 25,
-            effects: [{ exposureDelta: 2, log: 'Campagne mal reçue.' }],
+            effects: [{ exposureDelta: -2, log: 'Campagne mal reçue.' }],
           },
         ],
       },
@@ -12072,7 +12198,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'Négocier pour garder ton image',
-        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 3 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { exposureDelta: 3 }, { attribute: 'mental', delta: -1 }],
       },
     ],
   },
@@ -12087,7 +12213,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Les ignorer',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { exposureDelta: -1 }],
       },
       {
         id: 'c2',
@@ -12132,12 +12258,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Créer une fondation',
-        effects: [{ attribute: 'leadership', delta: 4 }, { exposureDelta: 2 }],
+        effects: [{ attribute: 'leadership', delta: 4 }, { exposureDelta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Donner anonymement',
-        effects: [{ attribute: 'mental', delta: 3 }],
+        effects: [{ attribute: 'mental', delta: 3 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -12145,8 +12271,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         effects: [{ attribute: 'leadership', delta: 3 }, { exposureDelta: 3 }],
         variants: [
           {
+            weight: 80,
+            effects: [{ attribute: 'leadership', delta: 3, log: 'Événement très réussi.' }, { exposureDelta: 3 }],
+          },
+          {
             weight: 20,
-            effects: [{ attribute: 'leadership', delta: 2, log: 'Organisation ratée.' }, { exposureDelta: 3 }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Organisation ratée.' }],
           },
         ],
       },
@@ -12174,7 +12304,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Ne parler qu\'en conférence',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -12203,15 +12333,19 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         effects: [{ exposureDelta: 3 }, { attribute: 'mental', delta: 2 }],
         variants: [
           {
+            weight: 75,
+            effects: [{ exposureDelta: 3, log: 'Une cérémonie magnifique et largement célébrée.' }, { attribute: 'mental', delta: 2 }],
+          },
+          {
             weight: 25,
-            effects: [{ exposureDelta: 3, log: 'Pression médiatique.' }],
+            effects: [{ exposureDelta: -2, log: 'Pression médiatique.' }, { attribute: 'mental', delta: -1 }],
           },
         ],
       },
       {
         id: 'c2',
         label: 'Rester très privé',
-        effects: [{ attribute: 'mental', delta: 3 }],
+        effects: [{ attribute: 'mental', delta: 3 }, { exposureDelta: -1 }],
       },
       {
         id: 'c3',
@@ -12263,7 +12397,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'Trouver un équilibre',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: -1 }],
       },
     ],
   },
@@ -12293,7 +12427,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Poser des limites',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12366,7 +12500,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Préparer une reconversion',
-        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -12382,7 +12516,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'Commencer à devenir mentor',
-        effects: [{ attribute: 'leadership', delta: 3 }, { exposureDelta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 3 }, { exposureDelta: 1 }, { attribute: 'physique', delta: -1 }],
       },
     ],
   },
@@ -12397,7 +12531,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Devenir coach',
-        effects: [{ attribute: 'leadership', delta: 4 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 4 }, { attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
@@ -12428,7 +12562,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         variants: [
           {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 2, log: 'Sentiment de vide.' }],
+            effects: [{ attribute: 'mental', delta: -2, log: 'Sentiment de vide.' }],
           },
         ],
       },
@@ -12450,7 +12584,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Maîtriser d\'abord les concepts principaux',
-        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12483,20 +12617,24 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         effects: [{ attribute: 'technique', delta: 2 }],
         variants: [
           {
+            weight: 75,
+            effects: [{ attribute: 'technique', delta: 2, log: 'Excellente exécution.' }],
+          },
+          {
             weight: 25,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Mauvaise exécution.' }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Mauvaise exécution.' }],
           },
         ],
       },
       {
         id: 'c2',
         label: 'Faire seulement quelques reps',
-        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
         label: 'Rentrer récupérer',
-        effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
     ],
   },
@@ -12511,7 +12649,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Prendre ça très au sérieux',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -12541,12 +12679,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Copier chaque détail',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Jouer naturellement',
-        effects: [{ attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12572,7 +12710,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Répéter jusqu\'à automatisation',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
@@ -12580,15 +12718,19 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1 }],
         variants: [
           {
+            weight: 70,
+            effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1, log: 'Bonne adaptation.' }],
+          },
+          {
             weight: 30,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Mauvaise synchronisation.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'Mauvaise synchronisation.' }],
           },
         ],
       },
       {
         id: 'c3',
         label: 'Rester sur tes habitudes',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
     ],
   },
@@ -12614,7 +12756,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Observer avant d\'essayer',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12645,7 +12787,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Rester méthodique',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12675,12 +12817,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Écouter attentivement',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Poser une question',
-        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12706,7 +12848,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Réviser sérieusement',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
@@ -12726,7 +12868,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'Réviser uniquement les plays principaux',
-        effects: [{ attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
     ],
   },
@@ -12741,12 +12883,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Accepter',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Te concentrer sur ton poste',
-        effects: [{ attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12766,7 +12908,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Jouer normalement',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -12797,7 +12939,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Répondre par le travail',
-        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'leadership', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -12817,7 +12959,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c3',
         label: 'Ne rien montrer',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
     ],
   },
@@ -12837,7 +12979,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Identifier uniquement les différences',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12867,17 +13009,17 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Prendre des notes',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Participer activement',
-        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
         label: 'Écouter sans intervenir',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
     ],
   },
@@ -12893,12 +13035,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'La mémoriser parfaitement',
-        effects: [{ attribute: 'technique', delta: 3 }],
+        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Comprendre le principe plutôt que le texte',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12928,12 +13070,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Apprendre tous les checks',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'N\'utiliser que les checks simples',
-        effects: [{ attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12963,12 +13105,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Les aider',
-        effects: [{ attribute: 'leadership', delta: 3 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 3 }, { attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Leur dire de demander au coach',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -1 }],
       },
       {
         id: 'c3',
@@ -12998,12 +13140,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Mémoriser chaque détail',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Comprendre l\'intention globale',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13038,7 +13180,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Rester régulier',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13068,12 +13210,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Prendre le rôle',
-        effects: [{ attribute: 'leadership', delta: 3 }],
+        effects: [{ attribute: 'leadership', delta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Partager le rôle',
-        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13086,7 +13228,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 65,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Leadership -2.' }],
+            effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -2, log: 'Leadership -2.' }],
           },
         ],
       },
@@ -13103,12 +13245,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'La corriger immédiatement',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Travailler progressivement dessus',
-        effects: [{ attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13128,7 +13270,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Prendre ça au sérieux',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
@@ -13163,12 +13305,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Étudier les détails',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Étudier seulement les situations principales',
-        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13198,12 +13340,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Te concentrer sur tes erreurs',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Profiter de la victoire',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13233,12 +13375,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Demander une nouvelle rep',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Laisser les autres passer devant',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13268,12 +13410,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Apprendre sérieusement',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'leadership', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Faire juste le nécessaire',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13303,12 +13445,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Construire une routine stricte',
-        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Garder de la flexibilité',
-        effects: [{ attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13339,7 +13481,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Demander une explication',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13352,7 +13494,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Technique -1.' }],
+            effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1, log: 'Technique -1.' }],
           },
         ],
       },
@@ -13369,12 +13511,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Prendre le commandement',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Être plus vocal',
-        effects: [{ attribute: 'leadership', delta: 2 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13400,12 +13542,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Maximiser chaque rep',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Travailler la fluidité',
-        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13418,7 +13560,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 50,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Technique -1.' }],
+            effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: -1, log: 'Technique -1.' }],
           },
         ],
       },
@@ -13435,12 +13577,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Tout apprendre avant le camp',
-        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Apprendre progressivement',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13475,7 +13617,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c2',
         label: 'Comprendre les familles de concepts',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13505,12 +13647,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Être obsédé par les détails',
-        effects: [{ attribute: 'technique', delta: 3 }],
+        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Travailler à haute intensité',
-        effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13540,12 +13682,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Montrer tout ce que tu sais',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Poser beaucoup de questions',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13575,7 +13717,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Accepter tous les rôles',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
@@ -13612,12 +13754,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Prendre le commandement',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Exécuter strictement le script',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13647,12 +13789,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Prendre le temps de lui expliquer',
-        effects: [{ attribute: 'leadership', delta: 3 }],
+        effects: [{ attribute: 'leadership', delta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Lui donner une réponse rapide',
-        effects: [{ attribute: 'leadership', delta: 1 }],
+        effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13665,7 +13807,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 65,
-            effects: [{ attribute: 'mental', delta: 1, log: 'Leadership -2.' }],
+            effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -2, log: 'Leadership -2.' }],
           },
         ],
       },
@@ -13682,12 +13824,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Répéter jusqu\'à automatisation',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Comprendre pourquoi le changement existe',
-        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 2 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13707,12 +13849,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Tester sa méthode',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Comparer les deux',
-        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13725,7 +13867,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 60,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Technique -1.' }],
+            effects: [{ attribute: 'leadership', delta: 1 }, { attribute: 'technique', delta: -1, log: 'Technique -1.' }],
           },
         ],
       },
@@ -13742,12 +13884,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Le corriger immédiatement',
-        effects: [{ attribute: 'technique', delta: 3 }],
+        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Le travailler progressivement',
-        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13767,12 +13909,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Travailler ton plus gros défaut',
-        effects: [{ attribute: 'technique', delta: 3 }],
+        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Perfectionner ton meilleur atout',
-        effects: [{ attribute: 'technique', delta: 2 }, { exposureDelta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { exposureDelta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13785,7 +13927,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 70,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Progrès limité.' }, { attribute: 'mental', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Progrès limité.' }, { attribute: 'mental', delta: 1 }],
           },
         ],
       },
@@ -13802,12 +13944,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Demander à refaire la séquence',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Analyser pourquoi tu perds',
-        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13833,7 +13975,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Accepter immédiatement',
-        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'leadership', delta: 2 }, { attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
@@ -13843,6 +13985,10 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           {
             weight: 70,
             effects: [{ attribute: 'mental', delta: 1, log: 'Le coach apprécie ta prudence.' }],
+          },
+          {
+            weight: 30,
+            effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'leadership', delta: -1, log: 'Le staff attendait plus d\'initiative.' }],
           },
         ],
       },
@@ -13874,12 +14020,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'T\'adapter immédiatement',
-        effects: [{ attribute: 'physique', delta: 2 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'physique', delta: 2 }, { attribute: 'technique', delta: 1 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Prioriser la précision',
-        effects: [{ attribute: 'technique', delta: 2 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13909,7 +14055,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Reprendre progressivement',
-        effects: [{ attribute: 'physique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'physique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -13917,15 +14063,19 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         effects: [{ attribute: 'physique', delta: 3 }],
         variants: [
           {
+            weight: 70,
+            effects: [{ attribute: 'physique', delta: 3, log: 'Retour en pleine forme.' }],
+          },
+          {
             weight: 30,
-            effects: [{ attribute: 'physique', delta: 1, log: 'Mauvaise adaptation.' }],
+            effects: [{ attribute: 'physique', delta: -1, log: 'Mauvaise adaptation.' }],
           },
         ],
       },
       {
         id: 'c3',
         label: 'Profiter pour retravailler ta technique',
-        effects: [{ attribute: 'technique', delta: 3 }],
+        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'physique', delta: -1 }],
       },
     ],
   },
@@ -13940,12 +14090,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Suivre ses conseils',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Lui demander de cibler un point précis',
-        effects: [{ attribute: 'technique', delta: 3 }],
+        effects: [{ attribute: 'technique', delta: 3 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c3',
@@ -13975,12 +14125,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Suivre strictement le protocole',
-        effects: [{ attribute: 'physique', delta: 2 }],
+        effects: [{ attribute: 'physique', delta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Adapter selon tes sensations',
-        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -14013,15 +14163,23 @@ export const SCENARIO_EVENTS: GameEvent[] = [
         effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: 1 }],
         variants: [
           {
-            weight: 30,
+            weight: 25,
             effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: 3, log: 'Très bon résultat.' }],
+          },
+          {
+            weight: 50,
+            effects: [{ attribute: 'physique', delta: 1 }, { attribute: 'technique', delta: 1, log: 'Résultat dans la moyenne.' }],
+          },
+          {
+            weight: 25,
+            effects: [{ attribute: 'technique', delta: -1, log: 'Résultat décevant.' }],
           },
         ],
       },
       {
         id: 'c2',
         label: 'Rester régulier',
-        effects: [{ attribute: 'mental', delta: 2 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -14051,12 +14209,12 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Optimiser tes points forts',
-        effects: [{ attribute: 'physique', delta: 2 }, { exposureDelta: 2 }],
+        effects: [{ attribute: 'physique', delta: 2 }, { exposureDelta: 2 }, { attribute: 'mental', delta: -1 }],
       },
       {
         id: 'c2',
         label: 'Corriger tes faiblesses',
-        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }],
+        effects: [{ attribute: 'technique', delta: 2 }, { attribute: 'mental', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c3',
@@ -14069,7 +14227,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 70,
-            effects: [{ attribute: 'technique', delta: 1, log: 'Résultat correct.' }, { attribute: 'physique', delta: 1 }],
+            effects: [{ attribute: 'technique', delta: -1, log: 'Résultat correct.' }, { attribute: 'physique', delta: 1 }],
           },
         ],
       },
@@ -14086,7 +14244,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
       {
         id: 'c1',
         label: 'Jouer la sécurité',
-        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: 1 }],
+        effects: [{ attribute: 'mental', delta: 2 }, { attribute: 'technique', delta: 1 }, { attribute: 'physique', delta: -1 }],
       },
       {
         id: 'c2',
@@ -14114,7 +14272,7 @@ export const SCENARIO_EVENTS: GameEvent[] = [
           },
           {
             weight: 45,
-            effects: [{ attribute: 'leadership', delta: 1, log: 'Ils trouvent ton approche risquée.' }],
+            effects: [{ attribute: 'leadership', delta: -1, log: 'Ils trouvent ton approche risquée.' }],
           },
         ],
       },

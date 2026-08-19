@@ -48,7 +48,7 @@ export function computeFinalScore(player: Player): ScoreBreakdown {
   // Une production soutenue, digne des meilleures références réelles à ce poste, doit à elle
   // seule pouvoir porter une carrière vers l'exceptionnel — pas seulement les trophées MVP,
   // qui restent rares et dépendants de la chance d'une seule saison.
-  const statsNorm = Math.min(1, statsPerSeason / (headline.seasonTarget * 1.75))
+  const statsNorm = Math.min(1, statsPerSeason / (headline.seasonTarget * 1.5))
   const rookieNorm = stats.offRookieOfYear || stats.defRookieOfYear ? 1 : 0
   const allStarNorm = diminishing(stats.proBowls, 7)
   const allProNorm = diminishing(stats.allProFirstTeam, 4)
@@ -62,8 +62,8 @@ export function computeFinalScore(player: Player): ScoreBreakdown {
 
   const collectiveRaw = superBowlNorm * 0.45 + superBowlMvpNorm * 0.15 + playoffNorm * 0.4
 
-  const individualBlock = Math.round(individualRaw * 14.5 * 10) / 10
-  const collectiveBlock = Math.round(collectiveRaw * 14.5 * 10) / 10
+  const individualBlock = Math.round(individualRaw * 17 * 10) / 10
+  const collectiveBlock = Math.round(collectiveRaw * 17 * 10) / 10
 
   const finalScore = Math.min(99, Math.ceil(70 + individualBlock + collectiveBlock))
 

@@ -1,18 +1,22 @@
 const CONSENT_KEY = 'calling:cookie-consent:v1'
 
-export function hasCookieConsent(): boolean {
+export type CookieConsentStatus = 'accepted' | 'declined'
+
+// null = no choice recorded yet (banner should show).
+export function getCookieConsent(): CookieConsentStatus | null {
   try {
-    return localStorage.getItem(CONSENT_KEY) === 'accepted'
+    const raw = localStorage.getItem(CONSENT_KEY)
+    return raw === 'accepted' || raw === 'declined' ? raw : null
   } catch {
-    return false
+    return null
   }
 }
 
-export function setCookieConsent(): void {
+export function setCookieConsent(status: CookieConsentStatus): void {
   try {
-    localStorage.setItem(CONSENT_KEY, 'accepted')
+    localStorage.setItem(CONSENT_KEY, status)
   } catch {
-    // Storage full/unavailable (private browsing...) — consent still applies for this session,
-    // it just won't be remembered on the next visit.
+    // Storage full/unavailable (private browsing...) — the choice still applies for this
+    // session, it just won't be remembered on the next visit.
   }
 }

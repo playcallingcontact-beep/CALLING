@@ -52,7 +52,7 @@ import type { EventChoice, EventEffect, GameEvent } from './types/events'
 import { initAnalytics, trackAdBannerImpression, trackCareerCreated, trackInterstitialAdShown } from './lib/analytics'
 import { InterstitialAdOverlay } from './components/InterstitialAdOverlay'
 import { CookieConsent } from './components/CookieConsent'
-import { hasCookieConsent, setCookieConsent } from './lib/cookieConsent'
+import { getCookieConsent, setCookieConsent, type CookieConsentStatus } from './lib/cookieConsent'
 import { clearSavedGame, loadSavedGame, saveGame, type SavedGameState } from './lib/saveGame'
 
 const EVENTS_PER_SEASON = 3
@@ -128,15 +128,15 @@ function App() {
   // flash. Ne sert qu'à afficher ce résumé sur l'accueil — le vrai chargement dans le jeu
   // n'a lieu qu'au clic, via handleContinue().
   const [savedGame] = useState<SavedGameState | null>(() => loadSavedGame())
-  const [cookieConsent, setCookieConsentGiven] = useState(() => hasCookieConsent())
+  const [cookieConsent, setCookieConsentState] = useState<CookieConsentStatus | null>(() => getCookieConsent())
 
   useEffect(() => {
-    if (cookieConsent) initAnalytics()
+    if (cookieConsent === 'accepted') initAnalytics()
   }, [cookieConsent])
 
-  function handleAcceptCookies() {
-    setCookieConsent()
-    setCookieConsentGiven(true)
+  function handleCookieChoice(status: CookieConsentStatus) {
+    setCookieConsent(status)
+    setCookieConsentState(status)
   }
 
   // Sauvegarde automatique de toute carrière en cours (pas sur l'accueil, ni une fois la
@@ -620,7 +620,12 @@ function App() {
 
       <AdBannerPlaceholder />
       {showRestartAd && <InterstitialAdOverlay onFinished={handleRestartAdFinished} />}
-      {!cookieConsent && <CookieConsent onAccept={handleAcceptCookies} />}
+      {cookieConsent === null && (
+        <CookieConsent
+          onAccept={() => handleCookieChoice('accepted')}
+          onDecline={() => handleCookieChoice('declined')}
+        />
+      )}
     </div>
   )
 }

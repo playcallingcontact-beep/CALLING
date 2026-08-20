@@ -160,6 +160,15 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
               </div>
             ))}
           </div>
+
+          <a
+            href="https://x.com/choosecalling"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-white/70 transition-colors hover:text-white"
+          >
+            <span className="text-sm font-black">𝕏</span>@CHOOSECALLING
+          </a>
         </div>
       </div>
 

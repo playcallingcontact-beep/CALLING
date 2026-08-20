@@ -9,6 +9,7 @@ import { Act1End } from './screens/Act1End'
 import { RedshirtDecision } from './screens/RedshirtDecision'
 import { Act2End } from './screens/Act2End'
 import { CombineDecision } from './screens/CombineDecision'
+import { CombineResult } from './screens/CombineResult'
 import { DraftResult } from './screens/DraftResult'
 import { ProSeasonRecap } from './screens/ProSeasonRecap'
 import { PlayoffMatchup } from './screens/PlayoffMatchup'
@@ -24,7 +25,14 @@ import { generateOffers } from './engine/signingDay'
 import { enterCollege, applyRedshirt, refreshDepthChart } from './engine/collegeFactory'
 import { generateTransferOffers, transferToCollege, type TransferOffer } from './engine/transferPortal'
 import { resolveAmateurSeason } from './engine/amateurSeasonEngine'
-import { applyCombineStepChoice, runDraft, COMBINE_STEPS, type CombineChoiceId, type CombineStep } from './engine/draftEngine'
+import {
+  applyCombineStepChoice,
+  runDraft,
+  COMBINE_STEPS,
+  type CombineChoiceId,
+  type CombineStep,
+  type CombineStepDef,
+} from './engine/draftEngine'
 import { resolveProSeason, type ProSeasonResult } from './engine/proSeasonEngine'
 import {
   buildPlayoffBracket,
@@ -75,6 +83,7 @@ export type Screen =
   | 'transfer'
   | 'end2'
   | 'combine'
+  | 'combineresult'
   | 'draftresult'
   | 'playoffgame'
   | 'playoffresult'
@@ -118,6 +127,11 @@ function App() {
   const [faOffers, setFaOffers] = useState<FreeAgencyOffer[]>([])
   const [transferOffers, setTransferOffers] = useState<TransferOffer[]>([])
   const [combineStep, setCombineStep] = useState<CombineStep>(1)
+  const [activeCombineResult, setActiveCombineResult] = useState<{
+    stepDef: CombineStepDef
+    before: Player
+    after: Player
+  } | null>(null)
   const [playoffBracket, setPlayoffBracket] = useState<PlayoffRoundDef[]>([])
   const [playoffRoundIndex, setPlayoffRoundIndex] = useState(0)
   const [playoffOutcome, setPlayoffOutcome] = useState<'won' | 'lost'>('lost')
@@ -160,6 +174,7 @@ function App() {
       faOffers,
       transferOffers,
       combineStep,
+      activeCombineResult,
       playoffBracket,
       playoffRoundIndex,
       playoffOutcome,
@@ -182,6 +197,7 @@ function App() {
     faOffers,
     transferOffers,
     combineStep,
+    activeCombineResult,
     playoffBracket,
     playoffRoundIndex,
     playoffOutcome,
@@ -211,6 +227,7 @@ function App() {
     setFaOffers(savedGame.faOffers)
     setTransferOffers(savedGame.transferOffers)
     setCombineStep(savedGame.combineStep)
+    setActiveCombineResult(savedGame.activeCombineResult)
     setPlayoffBracket(savedGame.playoffBracket)
     setPlayoffRoundIndex(savedGame.playoffRoundIndex)
     setPlayoffOutcome(savedGame.playoffOutcome)
@@ -414,9 +431,18 @@ function App() {
   function handleCombineDecision(choice: CombineChoiceId) {
     if (!player) return
     const updated = applyCombineStepChoice(player, combineStep, choice)
+    setActiveCombineResult({ stepDef: COMBINE_STEPS[combineStep - 1], before: player, after: updated })
+    setScreen('combineresult')
+  }
+
+  function handleCombineResultContinue() {
+    if (!activeCombineResult) return
+    const updated = activeCombineResult.after
+    setActiveCombineResult(null)
     if (combineStep < COMBINE_STEPS.length) {
       setPlayer(updated)
       setCombineStep((s) => (s + 1) as CombineStep)
+      setScreen('combine')
       return
     }
     const drafted = runDraft(updated)
@@ -574,6 +600,15 @@ function App() {
 
       {screen === 'combine' && player && (
         <CombineDecision player={player} step={combineStep} onDecide={handleCombineDecision} />
+      )}
+
+      {screen === 'combineresult' && activeCombineResult && (
+        <CombineResult
+          stepDef={activeCombineResult.stepDef}
+          before={activeCombineResult.before}
+          after={activeCombineResult.after}
+          onContinue={handleCombineResultContinue}
+        />
       )}
 
       {screen === 'draftresult' && player && (

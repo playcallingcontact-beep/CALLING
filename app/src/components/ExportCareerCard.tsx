@@ -201,6 +201,9 @@ export const ExportCareerCard = forwardRef<
           </span>
           <span className="h-px flex-1" style={{ background: solid, opacity: 0.35 }} />
         </div>
+        <div className="flex items-center justify-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
+          <span className="text-sm font-black">𝕏</span>@CHOOSECALLING
+        </div>
       </div>
     </div>
   )

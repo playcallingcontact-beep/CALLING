@@ -3,7 +3,7 @@ import type { EventChoice, EventEffect, GameEvent } from '../types/events'
 import type { ProSeasonResult } from '../engine/proSeasonEngine'
 import type { FreeAgencyOffer } from '../engine/contractEngine'
 import type { TransferOffer } from '../engine/transferPortal'
-import type { CombineStep } from '../engine/draftEngine'
+import type { CombineStep, CombineStepDef } from '../engine/draftEngine'
 import type { PlayoffRoundDef } from '../engine/playoffEngine'
 import type { Screen } from '../App'
 
@@ -30,6 +30,7 @@ export interface SavedGameState {
   faOffers: FreeAgencyOffer[]
   transferOffers: TransferOffer[]
   combineStep: CombineStep
+  activeCombineResult: { stepDef: CombineStepDef; before: Player; after: Player } | null
   playoffBracket: PlayoffRoundDef[]
   playoffRoundIndex: number
   playoffOutcome: 'won' | 'lost'

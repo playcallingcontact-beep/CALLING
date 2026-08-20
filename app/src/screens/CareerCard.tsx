@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import html2canvas from 'html2canvas-pro'
 import { PillButton } from '../components/PillButton'
 import { AdRewardReadyOverlay, RewardedAdOverlay } from '../components/RewardedAdOverlay'
@@ -8,6 +8,13 @@ import { POSITION_STATS } from '../data/proStats'
 import { TIER_ACCENT, TIER_BADGE, TIER_TITLE, pickNickname } from '../data/careerFlavor'
 import { computeFinalScore } from '../engine/scoreEngine'
 import { buildAwardEntriesByAct } from '../data/awards'
+import {
+  trackCardDownloaded,
+  trackCareerCompleted,
+  trackRewardedAdCancelled,
+  trackRewardedAdCompleted,
+  trackRewardedAdStarted,
+} from '../lib/analytics'
 import type { Player } from '../types/player'
 
 type DownloadPhase = 'idle' | 'watching-ad' | 'ready' | 'saving'
@@ -25,6 +32,10 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
   const destinBrisee = player.retirementType === 'destin-brisee'
   const accent = TIER_ACCENT[breakdown.tier]
 
+  useEffect(() => {
+    trackCareerCompleted(breakdown.tier, player.retirementType ?? 'inconnu')
+  }, [breakdown.tier, player.retirementType])
+
   async function handleDownload() {
     if (!exportCardRef.current) return
     setDownloadPhase('saving')
@@ -34,6 +45,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
     link.download = `carte-carriere-${slug || 'joueur'}.png`
     link.href = canvas.toDataURL('image/png')
     link.click()
+    trackCardDownloaded(breakdown.tier)
     setDownloadPhase('idle')
   }
 
@@ -157,7 +169,10 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
         </PillButton>
         <PillButton
           variant="gold"
-          onClick={() => setDownloadPhase('watching-ad')}
+          onClick={() => {
+            trackRewardedAdStarted()
+            setDownloadPhase('watching-ad')
+          }}
           disabled={downloadPhase === 'saving'}
         >
           📥 {downloadPhase === 'saving' ? 'Génération...' : 'Enregistrer ma carte'}
@@ -166,8 +181,14 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
 
       {downloadPhase === 'watching-ad' && (
         <RewardedAdOverlay
-          onFinished={() => setDownloadPhase('ready')}
-          onCancel={() => setDownloadPhase('idle')}
+          onFinished={() => {
+            trackRewardedAdCompleted()
+            setDownloadPhase('ready')
+          }}
+          onCancel={() => {
+            trackRewardedAdCancelled()
+            setDownloadPhase('idle')
+          }}
         />
       )}
       {downloadPhase === 'ready' && (

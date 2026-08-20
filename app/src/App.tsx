@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Intro } from './screens/Intro'
 import { CharacterCreation } from './screens/CharacterCreation'
 import { SeasonEvent } from './screens/SeasonEvent'
@@ -49,6 +49,8 @@ import { PRO_EVENTS } from './data/events/pro'
 import { SCENARIO_EVENTS } from './data/events/scenarios'
 import type { Attributes, Player, RecruitingOffer } from './types/player'
 import type { EventChoice, EventEffect, GameEvent } from './types/events'
+import { initAnalytics, trackAdBannerImpression, trackCareerCreated, trackInterstitialAdShown } from './lib/analytics'
+import { InterstitialAdOverlay } from './components/InterstitialAdOverlay'
 
 const EVENTS_PER_SEASON = 3
 const TOTAL_HS_SEASONS = 2
@@ -117,6 +119,11 @@ function App() {
   const [playoffRoundIndex, setPlayoffRoundIndex] = useState(0)
   const [playoffOutcome, setPlayoffOutcome] = useState<'won' | 'lost'>('lost')
   const [playoffMVP, setPlayoffMVP] = useState(false)
+  const [showRestartAd, setShowRestartAd] = useState(false)
+
+  useEffect(() => {
+    initAnalytics()
+  }, [])
 
   function startSeason(p: Player, seen: Set<string>) {
     const events = pickSeasonEvents(p, ALL_EVENTS, seen, EVENTS_PER_SEASON)
@@ -215,6 +222,7 @@ function App() {
 
   function handleCreationComplete(choices: CharacterChoices) {
     const p = createPlayer(choices)
+    trackCareerCreated(p.position)
     const seen = new Set<string>()
     startSeason(p, seen)
   }
@@ -404,6 +412,19 @@ function App() {
     setScreen('intro')
   }
 
+  // Toute demande de "Nouvelle carrière" (CareerCard, Act1End, Act2End) passe par ici : une
+  // pub interstitielle s'affiche d'abord, le vrai reset (handleRestart) n'a lieu qu'une fois
+  // celle-ci terminée.
+  function requestRestart() {
+    trackInterstitialAdShown()
+    setShowRestartAd(true)
+  }
+
+  function handleRestartAdFinished() {
+    setShowRestartAd(false)
+    handleRestart()
+  }
+
   return (
     <div className="flex min-h-svh flex-1 flex-col">
       {screen === 'intro' && <Intro onStart={() => setScreen('creation')} />}
@@ -441,7 +462,7 @@ function App() {
       )}
 
       {screen === 'end' && player && (
-        <Act1End player={player} signedWith={signedWith} onContinue={handleEnterCollege} onRestart={handleRestart} />
+        <Act1End player={player} signedWith={signedWith} onContinue={handleEnterCollege} onRestart={requestRestart} />
       )}
 
       {screen === 'redshirt' && player && (
@@ -453,7 +474,7 @@ function App() {
       )}
 
       {screen === 'end2' && player && (
-        <Act2End player={player} onContinue={handleGoToCombine} onRestart={handleRestart} />
+        <Act2End player={player} onContinue={handleGoToCombine} onRestart={requestRestart} />
       )}
 
       {screen === 'combine' && player && (
@@ -500,9 +521,10 @@ function App() {
         <DestinBrisee player={player} onContinue={handleDestinBriseeContinue} />
       )}
 
-      {screen === 'careercard' && player && <CareerCard player={player} onRestart={handleRestart} />}
+      {screen === 'careercard' && player && <CareerCard player={player} onRestart={requestRestart} />}
 
       <AdBannerPlaceholder />
+      {showRestartAd && <InterstitialAdOverlay onFinished={handleRestartAdFinished} />}
     </div>
   )
 }
@@ -511,6 +533,10 @@ function App() {
 // l'écran sur tous les écrans du jeu. La hauteur réelle vient de --ad-banner-height
 // (index.css), et body.padding-bottom lui laisse toujours la place pour ne rien recouvrir.
 function AdBannerPlaceholder() {
+  useEffect(() => {
+    trackAdBannerImpression()
+  }, [])
+
   return (
     <div
       className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-center border-t border-black/10 bg-white/95 backdrop-blur-sm"

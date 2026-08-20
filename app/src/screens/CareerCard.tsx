@@ -2,6 +2,7 @@ import { useMemo, useRef, useState } from 'react'
 import html2canvas from 'html2canvas-pro'
 import { PillButton } from '../components/PillButton'
 import { AdRewardReadyOverlay, RewardedAdOverlay } from '../components/RewardedAdOverlay'
+import { ExportCareerCard } from '../components/ExportCareerCard'
 import { getPosition } from '../data/positions'
 import { POSITION_STATS } from '../data/proStats'
 import { TIER_ACCENT, TIER_BADGE, TIER_TITLE, pickNickname } from '../data/careerFlavor'
@@ -18,16 +19,16 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
   const stats = player.careerStats
   const positionStats = POSITION_STATS[player.position]
   const awardGroups = useMemo(() => buildAwardEntriesByAct(player.awardsCareer), [player.awardsCareer])
-  const cardRef = useRef<HTMLDivElement>(null)
+  const exportCardRef = useRef<HTMLDivElement>(null)
   const [downloadPhase, setDownloadPhase] = useState<DownloadPhase>('idle')
 
   const destinBrisee = player.retirementType === 'destin-brisee'
   const accent = TIER_ACCENT[breakdown.tier]
 
   async function handleDownload() {
-    if (!cardRef.current) return
+    if (!exportCardRef.current) return
     setDownloadPhase('saving')
-    const canvas = await html2canvas(cardRef.current, { backgroundColor: null, scale: 2 })
+    const canvas = await html2canvas(exportCardRef.current, { backgroundColor: null, scale: 2 })
     const link = document.createElement('a')
     const slug = player.name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
     link.download = `carte-carriere-${slug || 'joueur'}.png`
@@ -43,7 +44,6 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
       </span>
 
       <div
-        ref={cardRef}
         className="rounded-3xl p-[3px] shadow-2xl shadow-black/30"
         style={{ background: accent.borderGradient, boxShadow: `0 25px 50px -12px rgba(0,0,0,0.4), 0 0 45px ${accent.glow}` }}
       >
@@ -173,6 +173,18 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
       {downloadPhase === 'ready' && (
         <AdRewardReadyOverlay onDownload={handleDownload} onClose={() => setDownloadPhase('idle')} />
       )}
+
+      {/* Carte exportable : rendue hors-écran, capturée par handleDownload — même habillage que
+          la carte visible ci-dessus, juste sans la section Parcours (voir ExportCareerCard.tsx). */}
+      <div style={{ position: 'fixed', top: 0, left: -99999 }} aria-hidden="true">
+        <ExportCareerCard
+          ref={exportCardRef}
+          player={player}
+          tier={breakdown.tier}
+          finalScore={breakdown.finalScore}
+          nickname={nickname}
+        />
+      </div>
     </div>
   )
 }

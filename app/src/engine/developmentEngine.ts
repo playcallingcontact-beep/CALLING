@@ -1,4 +1,4 @@
-import type { Attributes, Player } from '../types/player'
+import type { Attributes, Player, Position } from '../types/player'
 import { clamp } from './eventEngine'
 import { AGE_CURVES, isInDecline, seasonalDevelopment } from './ageCurves'
 import { potentialGrowthMultiplier } from './potentialEngine'
@@ -21,6 +21,28 @@ function jitter(spread: number): number {
   return (Math.random() - 0.5) * 2 * spread
 }
 
+// Largeur approximative (en saisons) de la fenêtre de croissance Pro pré-pic de chaque poste
+// (du repêchage jusqu'à mi-pic, cf. peakMidpoint plus bas) — dérivée de AGE_CURVES. Sert
+// uniquement à calibrer variancePositionBoost ci-dessous, pas à changer les courbes elles-mêmes.
+const PRO_GROWTH_WINDOW: Record<Position, number> = {
+  QB: 9,
+  WR: 5,
+  'RB-FB': 2,
+  CB: 4,
+  SS: 5,
+  EDGE: 5,
+}
+const MAX_PRO_GROWTH_WINDOW = Math.max(...Object.values(PRO_GROWTH_WINDOW))
+
+// Un poste à fenêtre de croissance courte (RB-FB en tête) a moins d'occasions de "moyenniser"
+// la chance sur la durée d'une carrière : chaque saison doit donc compter davantage, en bien
+// comme en mal, pour que le meilleur des cas puisse viser aussi haut qu'un poste à fenêtre
+// longue — sans changer la moyenne (voir varianceFactor plus bas, centré sur 1). QB (fenêtre la
+// plus longue) reste la référence, sans boost.
+function variancePositionBoost(position: Position): number {
+  return Math.sqrt(MAX_PRO_GROWTH_WINDOW / PRO_GROWTH_WINDOW[position])
+}
+
 function applyUniformGrowth(attributes: Attributes, amount: number): Attributes {
   return {
     ...attributes,
@@ -33,7 +55,7 @@ function applyUniformGrowth(attributes: Attributes, amount: number): Attributes 
 
 export function applyAmateurDevelopment(player: Player): Attributes {
   const multiplier = potentialGrowthMultiplier(player.potential)
-  const amount = Math.max(0, AMATEUR_BASE_GROWTH * multiplier + jitter(0.4))
+  const amount = Math.max(0, AMATEUR_BASE_GROWTH * multiplier + jitter(1.3))
   return applyUniformGrowth(player.attributes, amount)
 }
 
@@ -77,7 +99,13 @@ export function applyProDevelopment(player: Player): { attributes: Attributes; l
   if (player.age >= curve.peakStart - 3) base *= 0.5
 
   const multiplier = potentialGrowthMultiplier(player.potential)
-  const amount = Math.max(0, base * multiplier + jitter(0.3))
+  const boost = variancePositionBoost(player.position)
+  // Facteur centré sur 1 (E[varianceFactor] = 1, jitter() étant lui-même centré sur 0) : la
+  // moyenne de la croissance Pro n'est donc pas modifiée par ce facteur, seule sa dispersion
+  // l'est, davantage pour les postes à fenêtre courte — un plancher à 0.15 (jamais 0 ni négatif)
+  // évite qu'une très mauvaise saison n'annule complètement la croissance.
+  const varianceFactor = Math.max(0.15, 1 + jitter(1.8) * boost)
+  const amount = Math.max(0, base * multiplier * varianceFactor)
   return { attributes: applyUniformGrowth(a, amount), logs: [] }
 }
 

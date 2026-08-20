@@ -37,7 +37,7 @@ import { computeFinalScore } from '../src/engine/scoreEngine'
 import { headlineStatDef } from '../src/data/proStats'
 import { AWARDS_LIST } from '../src/data/awards'
 import type { InjurySeverity, Player, Position } from '../src/types/player'
-import type { GameEvent } from '../src/types/events'
+import type { EventChoice, GameEvent } from '../src/types/events'
 
 const EVENTS_PER_SEASON = 3
 const TOTAL_HS_SEASONS = 2
@@ -49,22 +49,24 @@ function pick<T>(arr: T[]): T {
 
 const ALL_EVENTS: GameEvent[] = [...HIGHSCHOOL_EVENTS, ...COLLEGE_EVENTS, ...PRO_EVENTS, ...SCENARIO_EVENTS]
 
-function playSeasonEvents(player: Player, seenIds: Set<string>): Player {
+export type ChooseFn = (event: GameEvent, player: Player) => EventChoice
+
+function playSeasonEvents(player: Player, seenIds: Set<string>, chooseFn: ChooseFn = (e) => pick(e.choices)): Player {
   const events = pickSeasonEvents(player, ALL_EVENTS, seenIds, EVENTS_PER_SEASON)
   let current = player
   for (const event of events) {
-    current = applyChoice(current, pick(event.choices)).player
+    current = applyChoice(current, chooseFn(event, current)).player
     if (current.act === 'COLLEGE') current = refreshDepthChart(current)
     seenIds.add(event.id)
   }
   return current
 }
 
-function randomChoices(): CharacterChoices {
+function randomChoices(forcedPosition?: Position): CharacterChoices {
   return {
     name: 'Sim',
     avatarId: pick(AVATAR_IDS),
-    position: pick(POSITIONS).id,
+    position: forcedPosition ?? pick(POSITIONS).id,
     regionId: pick(REGIONS).id,
     originId: pick(ORIGINS).id,
     lifestyleId: pick(LIFESTYLES).id,
@@ -84,6 +86,7 @@ export interface CareerRecord {
   injuries: Record<InjurySeverity, number>
   finalOvr: number
   finalScore: number
+  rawBlock: number
   tier: string
   starterSeasons: number
   backupSeasons: number
@@ -91,12 +94,12 @@ export interface CareerRecord {
   awardsCareer: Record<string, number>
 }
 
-export function simulateOneCareer(): CareerRecord {
-  let player = createPlayer(randomChoices())
+export function simulateOneCareer(forcedPosition?: Position, chooseFn?: ChooseFn): CareerRecord {
+  let player = createPlayer(randomChoices(forcedPosition))
   let seenIds = new Set<string>()
 
   for (let s = 0; s < TOTAL_HS_SEASONS; s++) {
-    player = playSeasonEvents(player, seenIds)
+    player = playSeasonEvents(player, seenIds, chooseFn)
     player = resolveAmateurSeason(player).player
     if (s < TOTAL_HS_SEASONS - 1) player = { ...player, season: player.season + 1, age: player.age + 1 }
   }
@@ -110,7 +113,7 @@ export function simulateOneCareer(): CareerRecord {
 
   let declared = false
   while (!declared) {
-    player = playSeasonEvents(player, seenIds)
+    player = playSeasonEvents(player, seenIds, chooseFn)
     player = resolveAmateurSeason(player).player
 
     if (player.season >= MAX_COLLEGE_SEASON) {
@@ -148,7 +151,7 @@ export function simulateOneCareer(): CareerRecord {
   let guard = 0
   while (guard < 40) {
     guard++
-    player = playSeasonEvents(player, seenIds)
+    player = playSeasonEvents(player, seenIds, chooseFn)
     const result = resolveProSeason(player)
     player = result.player
 
@@ -243,6 +246,7 @@ export function simulateOneCareer(): CareerRecord {
     injuries,
     finalOvr: overallOf(player),
     finalScore: retirementType === 'destin-brisee' ? 0 : breakdown.finalScore,
+    rawBlock: retirementType === 'destin-brisee' ? 0 : breakdown.individualBlock + breakdown.collectiveBlock,
     tier: breakdown.tier,
     starterSeasons,
     backupSeasons,

@@ -31,9 +31,7 @@ export function initAnalytics(): void {
   window.gtag = gtag
   gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied' })
   gtag('js', new Date())
-  // TEMPORAIRE (diagnostic GA4 DebugView) : force les hits à apparaître dans DebugView
-  // instantanément, indépendamment de tout souci Temps réel. À retirer une fois résolu.
-  gtag('config', MEASUREMENT_ID, { debug_mode: true })
+  gtag('config', MEASUREMENT_ID)
 
   const script = document.createElement('script')
   script.async = true

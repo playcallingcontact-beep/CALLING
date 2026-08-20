@@ -26,7 +26,9 @@ export function initAnalytics(): void {
   // restreindre silencieusement l'envoi de données pour les visiteurs européens (Consent Mode).
   window.gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied' })
   window.gtag('js', new Date())
-  window.gtag('config', MEASUREMENT_ID)
+  // TEMPORAIRE (diagnostic GA4 DebugView) : force les hits à apparaître dans DebugView
+  // instantanément, indépendamment de tout souci Temps réel. À retirer une fois résolu.
+  window.gtag('config', MEASUREMENT_ID, { debug_mode: true })
 
   const script = document.createElement('script')
   script.async = true

@@ -60,14 +60,19 @@ export function CharacterCreation({ onComplete }: { onComplete: (choices: Charac
     entourageId !== null,
   ][step]
 
+  // Bypasse entièrement les 7 écrans de création : calcule un choix complet et lance la
+  // carrière directement, plutôt que de pré-remplir l'état et laisser l'utilisateur cliquer
+  // "Next" à travers chaque écran.
   function randomizeAll() {
-    setName(pick(RANDOM_NAMES))
-    setAvatarId(pick(AVATARS).id)
-    setRegionId(pick(REGIONS).id)
-    setPosition(pick(POSITIONS).id)
-    setOriginId(pick(ORIGINS).id)
-    setLifestyleId(pick(LIFESTYLES).id)
-    setEntourageId(pick(ENTOURAGE).id)
+    onComplete({
+      name: pick(RANDOM_NAMES),
+      avatarId: pick(AVATARS).id,
+      regionId: pick(REGIONS).id,
+      position: pick(POSITIONS).id,
+      originId: pick(ORIGINS).id,
+      lifestyleId: pick(LIFESTYLES).id,
+      entourageId: pick(ENTOURAGE).id,
+    })
   }
 
   function next() {

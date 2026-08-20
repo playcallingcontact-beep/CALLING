@@ -20,6 +20,11 @@ export function initAnalytics(): void {
   window.gtag = function gtag(...args: unknown[]) {
     window.dataLayer!.push(args)
   }
+  // initAnalytics() n'est appelé qu'après acceptation de notre propre bandeau cookies (voir
+  // App.tsx) : le consentement est donc déjà acquis à ce stade, d'où 'granted' direct plutôt
+  // qu'un 'default' restrictif suivi d'un 'update' — sans ce signal explicite, gtag.js peut
+  // restreindre silencieusement l'envoi de données pour les visiteurs européens (Consent Mode).
+  window.gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied' })
   window.gtag('js', new Date())
   window.gtag('config', MEASUREMENT_ID)
 

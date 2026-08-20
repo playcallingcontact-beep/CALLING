@@ -16,19 +16,24 @@ export function initAnalytics(): void {
   if (initialized || !MEASUREMENT_ID) return
   initialized = true
 
-  window.dataLayer = window.dataLayer ?? []
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer!.push(args)
+  // Reprend le squelette officiel Google au caractère près (dataLayer.push(arguments), pas un
+  // wrapper à spread args) : Tag Assistant signalait le consentement comme "non configuré" au
+  // moment de l'initialisation de la collecte malgré un appel consent/default présent dans le
+  // code — la commande consent doit être la toute première poussée dans dataLayer, avant même
+  // que window.gtag existe sous une autre forme, pour être lue à temps par le script Google.
+  const w = window as unknown as { dataLayer: unknown[] }
+  w.dataLayer = w.dataLayer || []
+  function gtag(..._args: unknown[]) {
+    // Pousse le vrai objet `arguments` (pas `_args`) : c'est le modèle officiel Google, et
+    // Tag Assistant ne reconnaissait pas notre commande consent avec la version à spread args.
+    w.dataLayer.push(arguments)
   }
-  // initAnalytics() n'est appelé qu'après acceptation de notre propre bandeau cookies (voir
-  // App.tsx) : le consentement est donc déjà acquis à ce stade, d'où 'granted' direct plutôt
-  // qu'un 'default' restrictif suivi d'un 'update' — sans ce signal explicite, gtag.js peut
-  // restreindre silencieusement l'envoi de données pour les visiteurs européens (Consent Mode).
-  window.gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied' })
-  window.gtag('js', new Date())
+  window.gtag = gtag
+  gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied' })
+  gtag('js', new Date())
   // TEMPORAIRE (diagnostic GA4 DebugView) : force les hits à apparaître dans DebugView
   // instantanément, indépendamment de tout souci Temps réel. À retirer une fois résolu.
-  window.gtag('config', MEASUREMENT_ID, { debug_mode: true })
+  gtag('config', MEASUREMENT_ID, { debug_mode: true })
 
   const script = document.createElement('script')
   script.async = true

@@ -51,6 +51,7 @@ import type { Attributes, Player, RecruitingOffer } from './types/player'
 import type { EventChoice, EventEffect, GameEvent } from './types/events'
 import { initAnalytics, trackAdBannerImpression, trackCareerCreated, trackInterstitialAdShown } from './lib/analytics'
 import { InterstitialAdOverlay } from './components/InterstitialAdOverlay'
+import { clearSavedGame, loadSavedGame, saveGame, type SavedGameState } from './lib/saveGame'
 
 const EVENTS_PER_SEASON = 3
 const TOTAL_HS_SEASONS = 2
@@ -60,7 +61,7 @@ const MAX_COLLEGE_SEASON = 4
 // par acte se fait entièrement dans isEligible(), donc un seul pool combiné suffit ici.
 const ALL_EVENTS: GameEvent[] = [...HIGHSCHOOL_EVENTS, ...COLLEGE_EVENTS, ...PRO_EVENTS, ...SCENARIO_EVENTS]
 
-type Screen =
+export type Screen =
   | 'intro'
   | 'creation'
   | 'event'
@@ -120,10 +121,93 @@ function App() {
   const [playoffOutcome, setPlayoffOutcome] = useState<'won' | 'lost'>('lost')
   const [playoffMVP, setPlayoffMVP] = useState(false)
   const [showRestartAd, setShowRestartAd] = useState(false)
+  // Chargée une seule fois au tout premier rendu (initialiseur paresseux) pour que le bouton
+  // "Continuer ma carrière" soit déjà là dès le premier affichage de l'écran d'accueil, sans
+  // flash. Ne sert qu'à afficher ce résumé sur l'accueil — le vrai chargement dans le jeu
+  // n'a lieu qu'au clic, via handleContinue().
+  const [savedGame] = useState<SavedGameState | null>(() => loadSavedGame())
 
   useEffect(() => {
     initAnalytics()
   }, [])
+
+  // Sauvegarde automatique de toute carrière en cours (pas sur l'accueil, ni une fois la
+  // carrière terminée — voir l'effet ci-dessous qui vide la sauvegarde à ce moment-là).
+  useEffect(() => {
+    if (!player || screen === 'intro' || screen === 'careercard') return
+    saveGame({
+      screen,
+      player,
+      seenIds: [...seenIds],
+      queue,
+      activeChoice,
+      attributesBefore,
+      starRatingBefore,
+      logsThisSeason,
+      seasonStatsForRecap,
+      seasonAwardsForRecap,
+      offers,
+      signedWith,
+      proResult,
+      faOffers,
+      transferOffers,
+      combineStep,
+      playoffBracket,
+      playoffRoundIndex,
+      playoffOutcome,
+      playoffMVP,
+    })
+  }, [
+    screen,
+    player,
+    seenIds,
+    queue,
+    activeChoice,
+    attributesBefore,
+    starRatingBefore,
+    logsThisSeason,
+    seasonStatsForRecap,
+    seasonAwardsForRecap,
+    offers,
+    signedWith,
+    proResult,
+    faOffers,
+    transferOffers,
+    combineStep,
+    playoffBracket,
+    playoffRoundIndex,
+    playoffOutcome,
+    playoffMVP,
+  ])
+
+  // La carrière est terminée dès qu'on affiche son bilan — plus rien à "continuer".
+  useEffect(() => {
+    if (screen === 'careercard') clearSavedGame()
+  }, [screen])
+
+  function handleContinue() {
+    if (!savedGame) return
+    setScreen(savedGame.screen)
+    setPlayer(savedGame.player)
+    setSeenIds(new Set(savedGame.seenIds))
+    setQueue(savedGame.queue)
+    setActiveChoice(savedGame.activeChoice)
+    setAttributesBefore(savedGame.attributesBefore)
+    setStarRatingBefore(savedGame.starRatingBefore)
+    setLogsThisSeason(savedGame.logsThisSeason)
+    setSeasonStatsForRecap(savedGame.seasonStatsForRecap)
+    setSeasonAwardsForRecap(savedGame.seasonAwardsForRecap)
+    setOffers(savedGame.offers)
+    setSignedWith(savedGame.signedWith)
+    setProResult(savedGame.proResult)
+    setFaOffers(savedGame.faOffers)
+    setTransferOffers(savedGame.transferOffers)
+    setCombineStep(savedGame.combineStep)
+    setPlayoffBracket(savedGame.playoffBracket)
+    setPlayoffRoundIndex(savedGame.playoffRoundIndex)
+    setPlayoffOutcome(savedGame.playoffOutcome)
+    setPlayoffMVP(savedGame.playoffMVP)
+  }
 
   function startSeason(p: Player, seen: Set<string>) {
     const events = pickSeasonEvents(p, ALL_EVENTS, seen, EVENTS_PER_SEASON)
@@ -395,6 +479,7 @@ function App() {
   }
 
   function handleRestart() {
+    clearSavedGame()
     setPlayer(null)
     setSeenIds(new Set())
     setQueue([])
@@ -427,7 +512,9 @@ function App() {
 
   return (
     <div className="flex min-h-svh flex-1 flex-col">
-      {screen === 'intro' && <Intro onStart={() => setScreen('creation')} />}
+      {screen === 'intro' && (
+        <Intro onStart={() => setScreen('creation')} savedPlayer={savedGame?.player ?? null} onContinue={handleContinue} />
+      )}
 
       {screen === 'creation' && <CharacterCreation onComplete={handleCreationComplete} />}
 

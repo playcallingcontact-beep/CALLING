@@ -14,12 +14,12 @@ interface CollegeStint {
 // pas passé toutes ses saisons NCAA dans son école finale (player.collegeName).
 function computeCollegeStints(player: Player): CollegeStint[] {
   const entries = player.careerPath.filter(
-    (step) => step.label.endsWith('(NC2A)') || step.label.endsWith('(transfert NC2A)'),
+    (step) => step.label.endsWith('(NC2A)') || step.label.endsWith('(NC2A transfer)'),
   )
   if (entries.length === 0) return [{ school: player.collegeName ?? '', years: player.season }]
 
   return entries.map((entry, i) => {
-    const school = entry.label.replace(/ \((NC2A|transfert NC2A)\)$/, '')
+    const school = entry.label.replace(/ \((NC2A|NC2A transfer)\)$/, '')
     const nextAge = i + 1 < entries.length ? entries[i + 1].age : player.age + 1
     return { school, years: Math.max(1, nextAge - entry.age) }
   })

@@ -51,6 +51,8 @@ import type { Attributes, Player, RecruitingOffer } from './types/player'
 import type { EventChoice, EventEffect, GameEvent } from './types/events'
 import { initAnalytics, trackAdBannerImpression, trackCareerCreated, trackInterstitialAdShown } from './lib/analytics'
 import { InterstitialAdOverlay } from './components/InterstitialAdOverlay'
+import { CookieConsent } from './components/CookieConsent'
+import { hasCookieConsent, setCookieConsent } from './lib/cookieConsent'
 import { clearSavedGame, loadSavedGame, saveGame, type SavedGameState } from './lib/saveGame'
 
 const EVENTS_PER_SEASON = 3
@@ -126,10 +128,16 @@ function App() {
   // flash. Ne sert qu'à afficher ce résumé sur l'accueil — le vrai chargement dans le jeu
   // n'a lieu qu'au clic, via handleContinue().
   const [savedGame] = useState<SavedGameState | null>(() => loadSavedGame())
+  const [cookieConsent, setCookieConsentGiven] = useState(() => hasCookieConsent())
 
   useEffect(() => {
-    initAnalytics()
-  }, [])
+    if (cookieConsent) initAnalytics()
+  }, [cookieConsent])
+
+  function handleAcceptCookies() {
+    setCookieConsent()
+    setCookieConsentGiven(true)
+  }
 
   // Sauvegarde automatique de toute carrière en cours (pas sur l'accueil, ni une fois la
   // carrière terminée — voir l'effet ci-dessous qui vide la sauvegarde à ce moment-là).
@@ -612,6 +620,7 @@ function App() {
 
       <AdBannerPlaceholder />
       {showRestartAd && <InterstitialAdOverlay onFinished={handleRestartAdFinished} />}
+      {!cookieConsent && <CookieConsent onAccept={handleAcceptCookies} />}
     </div>
   )
 }

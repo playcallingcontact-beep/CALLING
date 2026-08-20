@@ -1,11 +1,15 @@
-import { useMemo } from 'react'
+import { useMemo, useRef, useState } from 'react'
+import html2canvas from 'html2canvas-pro'
 import { PillButton } from '../components/PillButton'
+import { AdRewardReadyOverlay, RewardedAdOverlay } from '../components/RewardedAdOverlay'
 import { getPosition } from '../data/positions'
 import { POSITION_STATS } from '../data/proStats'
 import { TIER_ACCENT, TIER_BADGE, TIER_TITLE, pickNickname } from '../data/careerFlavor'
 import { computeFinalScore } from '../engine/scoreEngine'
 import { buildAwardEntriesByAct } from '../data/awards'
 import type { Player } from '../types/player'
+
+type DownloadPhase = 'idle' | 'watching-ad' | 'ready' | 'saving'
 
 export function CareerCard({ player, onRestart }: { player: Player; onRestart: () => void }) {
   const position = getPosition(player.position)
@@ -14,9 +18,23 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
   const stats = player.careerStats
   const positionStats = POSITION_STATS[player.position]
   const awardGroups = useMemo(() => buildAwardEntriesByAct(player.awardsCareer), [player.awardsCareer])
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [downloadPhase, setDownloadPhase] = useState<DownloadPhase>('idle')
 
   const destinBrisee = player.retirementType === 'destin-brisee'
   const accent = TIER_ACCENT[breakdown.tier]
+
+  async function handleDownload() {
+    if (!cardRef.current) return
+    setDownloadPhase('saving')
+    const canvas = await html2canvas(cardRef.current, { backgroundColor: null, scale: 2 })
+    const link = document.createElement('a')
+    const slug = player.name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+    link.download = `carte-carriere-${slug || 'joueur'}.png`
+    link.href = canvas.toDataURL('image/png')
+    link.click()
+    setDownloadPhase('idle')
+  }
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-4 px-4 py-8">
@@ -25,6 +43,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
       </span>
 
       <div
+        ref={cardRef}
         className="rounded-3xl p-[3px] shadow-2xl shadow-black/30"
         style={{ background: accent.borderGradient, boxShadow: `0 25px 50px -12px rgba(0,0,0,0.4), 0 0 45px ${accent.glow}` }}
       >
@@ -132,9 +151,28 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
         </div>
       </div>
 
-      <PillButton variant="outline" onClick={onRestart} className="self-center">
-        Nouvelle carrière
-      </PillButton>
+      <div className="flex flex-col items-center gap-3 self-center sm:flex-row">
+        <PillButton variant="outline" onClick={onRestart}>
+          Nouvelle carrière
+        </PillButton>
+        <PillButton
+          variant="gold"
+          onClick={() => setDownloadPhase('watching-ad')}
+          disabled={downloadPhase === 'saving'}
+        >
+          📥 {downloadPhase === 'saving' ? 'Génération...' : 'Enregistrer ma carte'}
+        </PillButton>
+      </div>
+
+      {downloadPhase === 'watching-ad' && (
+        <RewardedAdOverlay
+          onFinished={() => setDownloadPhase('ready')}
+          onCancel={() => setDownloadPhase('idle')}
+        />
+      )}
+      {downloadPhase === 'ready' && (
+        <AdRewardReadyOverlay onDownload={handleDownload} onClose={() => setDownloadPhase('idle')} />
+      )}
     </div>
   )
 }

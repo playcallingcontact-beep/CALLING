@@ -7,12 +7,12 @@ export function RedshirtDecision({ player, onDecide }: { player: Player; onDecid
     <GameShell player={player}>
       <Card className="flex flex-col gap-4">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          ⏳ Année 1 · {player.collegeName}
+          ⏳ Year 1 · {player.collegeName}
         </span>
         <p className="text-[var(--text)]">
-          Avant la première saison, le coordinateur propose une décision qui pèsera sur toute la carrière college :
-          prendre une année de <strong>redshirt</strong> (ne pas jouer, préserver une année d’éligibilité et
-          progresser sans pression) ou se lancer immédiatement dans la compétition pour une place de titulaire.
+          Before the first season, the coordinator lays out a decision that will weigh on the whole college career:
+          take a <strong>redshirt</strong> year (sit out, preserve a year of eligibility, and develop without
+          pressure) or jump straight into the competition for a starting spot.
         </p>
         <div className="mt-1 flex flex-col gap-2">
           <button
@@ -20,9 +20,9 @@ export function RedshirtDecision({ player, onDecide }: { player: Player; onDecid
             onClick={() => onDecide(true)}
             className="w-full rounded-xl bg-black/5 px-4 py-3.5 text-left font-bold text-[var(--text)] transition-colors hover:bg-[var(--de-success-bg)]"
           >
-            Prendre le redshirt
+            Take the redshirt
             <div className="mt-1 text-sm font-normal text-[var(--text-dim)]">
-              Une année de développement à l’abri des projecteurs, sans risque de blessure en match.
+              A year of development away from the spotlight, with no risk of injury in games.
             </div>
           </button>
           <button
@@ -30,9 +30,9 @@ export function RedshirtDecision({ player, onDecide }: { player: Player; onDecid
             onClick={() => onDecide(false)}
             className="w-full rounded-xl bg-black/5 px-4 py-3.5 text-left font-bold text-[var(--text)] transition-colors hover:bg-[var(--de-success-bg)]"
           >
-            Jouer dès la première année
+            Play from year one
             <div className="mt-1 text-sm font-normal text-[var(--text-dim)]">
-              Exposition immédiate et chance de percer le depth chart, mais aucune sécurité.
+              Immediate exposure and a shot at cracking the depth chart, but no safety net.
             </div>
           </button>
         </div>

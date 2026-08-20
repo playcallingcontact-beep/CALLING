@@ -65,7 +65,7 @@ export function createPlayer(choices: CharacterChoices): Player {
     valueHistory: [{ age: 15, value: exposureScore }],
     careerEarningsM: 0,
     flags: { entourage: choices.entourageId, lifestyle: choices.lifestyleId },
-    log: [`${choices.name || 'Le joueur'} entre en 1ère année à ${highSchoolName}.`],
+    log: [`${choices.name || 'The player'} enters freshman year at ${highSchoolName}.`],
     awardsCareer: {},
   }
 }

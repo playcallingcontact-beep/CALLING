@@ -79,7 +79,7 @@ export function applyProDevelopment(player: Player): { attributes: Attributes; l
       mental: clamp(a.mental - physiqueDecline * MENTAL_DECLINE_FACTOR),
       leadership: clamp(a.leadership + leadershipGain),
     }
-    return { attributes: next, logs: ['Le déclin physique se fait sentir avec l’âge.'] }
+    return { attributes: next, logs: ['Physical decline is starting to show with age.'] }
   }
 
   // Fenêtre de pic = montée puis plateau, pas une croissance continue jusqu'au déclin :

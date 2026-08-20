@@ -52,7 +52,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-4 px-4 py-8">
       <span className="self-center rounded-full bg-[var(--de-gold)] px-5 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#3a2a05]">
-        Fin de carrière
+        End of career
       </span>
 
       <div
@@ -65,7 +65,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
         >
           {destinBrisee && (
             <span className="self-center rounded-full bg-red-600 px-4 py-1 text-[11px] font-extrabold uppercase tracking-wide text-white">
-              Destin Brisée
+              Shattered Destiny
             </span>
           )}
 
@@ -79,7 +79,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
           <div className="mx-auto rounded-full p-1" style={{ background: accent.borderGradient }}>
             <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-[#0a4d2f]">
               <span className="text-4xl font-black text-white">{breakdown.finalScore}</span>
-              <span className="text-[9px] font-bold uppercase tracking-wide text-white/70">Note de carrière</span>
+              <span className="text-[9px] font-bold uppercase tracking-wide text-white/70">Career score</span>
             </div>
           </div>
 
@@ -88,19 +88,19 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
               {position.emoji} {player.name}
             </h2>
             <p className="text-sm font-semibold text-white/70">
-              {position.name} · {player.nflTeam} · retraite à {player.age} ans
+              {position.name} · {player.nflTeam} · retired at {player.age}
             </p>
           </div>
 
           <h3 className="text-2xl font-black uppercase text-white">{TIER_TITLE[breakdown.tier]}</h3>
           <p className="text-sm italic text-white/80">
-            « {player.name}, {nickname} »
+            "{player.name}, {nickname}"
           </p>
 
           <div className="grid grid-cols-3 gap-2">
             <div className="flex flex-col items-center gap-0.5 rounded-xl bg-white/10 py-3">
               <span className="text-lg font-black text-[var(--de-gold)]">{stats?.gamesPlayed ?? 0}</span>
-              <span className="text-[9px] font-bold uppercase text-white/70">Matchs</span>
+              <span className="text-[9px] font-bold uppercase text-white/70">Games</span>
             </div>
             {positionStats.map((def) => (
               <div key={def.key} className="flex flex-col items-center gap-0.5 rounded-xl bg-white/10 py-3">
@@ -110,11 +110,11 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
             ))}
             <div className="flex flex-col items-center gap-0.5 rounded-xl bg-white/10 py-3">
               <span className="text-lg font-black text-[var(--de-gold)]">{player.season}</span>
-              <span className="text-[9px] font-bold uppercase text-white/70">Saisons pro</span>
+              <span className="text-[9px] font-bold uppercase text-white/70">Pro seasons</span>
             </div>
             <div className="flex flex-col items-center gap-0.5 rounded-xl bg-white/10 py-3">
-              <span className="text-lg font-black text-[var(--de-gold)]">{player.careerEarningsM} M$</span>
-              <span className="text-[9px] font-bold uppercase text-white/70">Gains de carrière</span>
+              <span className="text-lg font-black text-[var(--de-gold)]">${player.careerEarningsM}M</span>
+              <span className="text-[9px] font-bold uppercase text-white/70">Career earnings</span>
             </div>
           </div>
 
@@ -127,7 +127,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
               </div>
             )}
             {awardGroups.length === 0 && (!stats || stats.playoffAppearances === 0) ? (
-              <p className="text-sm italic text-white/70">Aucun titre ni distinction sur cette carrière.</p>
+              <p className="text-sm italic text-white/70">No titles or honors in this career.</p>
             ) : (
               awardGroups.map((group) => (
                 <div key={group.act} className="flex flex-col gap-1">
@@ -151,11 +151,11 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
           </div>
 
           <div className="flex flex-col gap-1.5 rounded-2xl bg-white/10 p-4 text-left">
-            <div className="mb-1 text-[11px] font-extrabold uppercase tracking-wide text-white/60">Parcours</div>
+            <div className="mb-1 text-[11px] font-extrabold uppercase tracking-wide text-white/60">Career path</div>
             {player.careerPath.map((step, i) => (
               <div key={i} className="flex items-center gap-2 text-sm text-white/90">
                 <span className="text-[var(--de-gold)]">●</span>
-                <span className="font-semibold">{step.age} ans</span>
+                <span className="font-semibold">{step.age} yo</span>
                 <span>{step.label}</span>
               </div>
             ))}
@@ -165,7 +165,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
 
       <div className="flex flex-col items-center gap-3 self-center sm:flex-row">
         <PillButton variant="outline" onClick={onRestart}>
-          Nouvelle carrière
+          New career
         </PillButton>
         <PillButton
           variant="gold"
@@ -175,7 +175,7 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
           }}
           disabled={downloadPhase === 'saving'}
         >
-          📥 {downloadPhase === 'saving' ? 'Génération...' : 'Enregistrer ma carte'}
+          📥 {downloadPhase === 'saving' ? 'Generating...' : 'Save my card'}
         </PillButton>
       </div>
 

@@ -1,14 +1,14 @@
 export const LEAGUE_NEWS = [
-  'Un rookie fait déjà sensation à l’entraînement, présenté comme la future star de sa franchise.',
-  'Rumeurs de trade autour d’un quarterback historique en fin de contrat.',
-  'Un vétéran All-Pro annonce une saison sabbatique pour raisons personnelles.',
-  'Polémique arbitrale après un match serré en fin de semaine.',
-  'Un coordinateur offensif réputé s’apprête à décrocher son premier poste de head coach.',
-  'Une franchise historique change de propriétaire pour un montant record.',
-  'Un ancien premier choix de draft est coupé après une saison décevante.',
-  'La ligue annonce l’ouverture d’un nouveau marché international pour un match de saison régulière.',
-  'Un joueur en fin de carrière évoque publiquement sa possible retraite en fin de saison.',
-  'Une franchise en reconstruction mise tout sur son jeune noyau pour la saison prochaine.',
+  'A rookie is already turning heads at practice, being talked up as his franchise\'s next star.',
+  'Trade rumors swirl around a veteran quarterback entering the final year of his contract.',
+  'An All-Pro veteran announces a sabbatical season for personal reasons.',
+  'Officiating controversy after a tight game over the weekend.',
+  'A respected offensive coordinator is reportedly closing in on his first head coaching job.',
+  'A storied franchise changes ownership for a record sum.',
+  'A former first-round pick gets cut after a disappointing season.',
+  'The league announces a new international market for a regular-season game.',
+  'A veteran nearing the end of his career publicly hints at retiring after this season.',
+  'A rebuilding franchise is going all-in on its young core for next season.',
 ]
 
 export function pickLeagueNews(): string {

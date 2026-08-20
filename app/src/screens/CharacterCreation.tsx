@@ -14,21 +14,21 @@ import type { CharacterChoices } from '../engine/characterFactory'
 import type { EntourageId, LifestyleId, OriginId, Position, RegionId } from '../types/player'
 
 const STEP_META = [
-  { key: 'nom', title: 'Votre nom', subtitle: 'Comment le monde va-t-il vous connaître ?' },
-  { key: 'avatar', title: 'Votre visage', subtitle: 'Choisissez l’allure qui vous représentera toute la carrière.' },
-  { key: 'region', title: 'Votre région', subtitle: 'Elle influence votre exposition auprès des recruteurs.' },
+  { key: 'nom', title: 'Your name', subtitle: 'How will the world know you?' },
+  { key: 'avatar', title: 'Your look', subtitle: 'Choose the appearance that will represent you your whole career.' },
+  { key: 'region', title: 'Your region', subtitle: 'It shapes your exposure to recruiters.' },
   {
     key: 'poste',
-    title: 'Votre poste',
-    subtitle: 'Il façonnera vos statistiques, vos événements et votre légende.',
+    title: 'Your position',
+    subtitle: 'It will shape your stats, your events, and your legend.',
   },
-  { key: 'origine', title: 'Votre origine', subtitle: 'D’où venez-vous, avant les projecteurs ?' },
+  { key: 'origine', title: 'Your background', subtitle: 'Where do you come from, before the spotlight?' },
   {
     key: 'adolescence',
-    title: 'Votre adolescence',
-    subtitle: 'Le mode de vie qui forgera votre discipline… et votre réputation.',
+    title: 'Your teenage years',
+    subtitle: 'The lifestyle that will forge your discipline… and your reputation.',
   },
-  { key: 'entourage', title: 'Votre entourage', subtitle: 'Qui vous accompagne avant les recruteurs de college ?' },
+  { key: 'entourage', title: 'Your circle', subtitle: 'Who has your back before the college recruiters come calling?' },
 ] as const
 
 function pick<T>(arr: readonly T[]): T {
@@ -118,7 +118,7 @@ export function CharacterCreation({ onComplete }: { onComplete: (choices: Charac
             autoFocus
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Nom du joueur"
+            placeholder="Player name"
             className="rounded-2xl bg-white px-5 py-4 text-center text-lg font-extrabold text-[var(--text)] shadow-md shadow-black/10 outline-none placeholder:text-[var(--text-dim)]"
           />
         )}
@@ -206,7 +206,7 @@ export function CharacterCreation({ onComplete }: { onComplete: (choices: Charac
       </div>
 
       <PillButton variant="white" onClick={next} disabled={!canAdvance} className="mt-2 self-center px-10">
-        {step === STEP_META.length - 1 ? 'Commencer la carrière' : 'Suivant'}
+        {step === STEP_META.length - 1 ? 'Start career' : 'Next'}
       </PillButton>
     </div>
   )

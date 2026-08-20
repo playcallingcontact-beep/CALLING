@@ -31,12 +31,12 @@ export function RewardedAdOverlay({
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-black/80 px-4">
       <Card variant="white" className="flex w-full max-w-sm flex-col items-center gap-4 text-center">
         <span className="text-xs font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
-          Publicité sponsorisée
+          Sponsored Ad
         </span>
         <div className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-black/10 bg-black/5">
           <span className="text-3xl">📺</span>
           <span className="text-xs font-bold uppercase tracking-wide text-[var(--text-dim)]">
-            Espace publicitaire
+            Ad Space
           </span>
         </div>
         <div className="h-2 w-full overflow-hidden rounded-full bg-black/10">
@@ -46,14 +46,14 @@ export function RewardedAdOverlay({
           />
         </div>
         <p className="text-sm font-semibold text-[var(--text)]">
-          Ta carte sera disponible dans {secondsLeft}s
+          Your card will be ready in {secondsLeft}s
         </p>
         <button
           type="button"
           onClick={onCancel}
           className="text-xs font-bold uppercase tracking-wide text-[var(--text-dim)] underline underline-offset-2"
         >
-          Annuler
+          Cancel
         </button>
       </Card>
     </div>
@@ -71,17 +71,17 @@ export function AdRewardReadyOverlay({
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-black/80 px-4">
       <Card variant="gold" className="flex w-full max-w-sm flex-col items-center gap-4 text-center">
         <span className="text-3xl">✅</span>
-        <h3 className="text-lg font-black text-[var(--text)]">Publicité terminée</h3>
-        <p className="text-sm text-[var(--text-dim)]">Ta carte de carrière est prête à être téléchargée.</p>
+        <h3 className="text-lg font-black text-[var(--text)]">Ad Complete</h3>
+        <p className="text-sm text-[var(--text-dim)]">Your career card is ready to download.</p>
         <PillButton variant="gold" onClick={onDownload} fullWidth>
-          Télécharger ma carte
+          Download My Card
         </PillButton>
         <button
           type="button"
           onClick={onClose}
           className="text-xs font-bold uppercase tracking-wide text-[var(--text-dim)] underline underline-offset-2"
         >
-          Fermer
+          Close
         </button>
       </Card>
     </div>

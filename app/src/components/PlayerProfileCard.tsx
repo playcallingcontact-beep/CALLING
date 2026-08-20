@@ -17,11 +17,11 @@ import type { AttributeKey, Player, ValuePoint } from '../types/player'
 // On ne l'affiche pas ici pour ne pas laisser croire qu'elle tire la note vers le bas.
 const CORE_ATTRIBUTE_KEYS: AttributeKey[] = ['physique', 'technique', 'mental', 'leadership']
 const ATTRIBUTE_LABELS: Record<AttributeKey, string> = {
-  physique: 'Physique',
+  physique: 'Physical',
   technique: 'Technique',
   mental: 'Mental',
   leadership: 'Leadership',
-  exposition: 'Exposition',
+  exposition: 'Exposure',
 }
 
 // Dégradé du plus faible (rouge) au plus fort (vert foncé) — mêmes seuils que le classement
@@ -140,7 +140,7 @@ export function PlayerProfileCard({ player }: { player: Player }) {
             <span className="rounded-full bg-[var(--de-success-bg)] px-2 py-0.5 text-[11px] font-bold text-[var(--de-success-text)]">
               {position.name}
             </span>
-            <span className="text-xs font-semibold text-[var(--text-dim)]">{player.age} ans</span>
+            <span className="text-xs font-semibold text-[var(--text-dim)]">{player.age} yrs</span>
           </div>
         </div>
         <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-[var(--de-gold)] text-lg font-black text-[#3a2a05]">
@@ -149,7 +149,7 @@ export function PlayerProfileCard({ player }: { player: Player }) {
       </div>
 
       <div className="flex items-center justify-between text-xs">
-        <span className="font-bold uppercase text-[var(--text-dim)]">Classement</span>
+        <span className="font-bold uppercase text-[var(--text-dim)]">Ranking</span>
         <StarRating value={player.starRating} />
       </div>
 
@@ -166,18 +166,18 @@ export function PlayerProfileCard({ player }: { player: Player }) {
 
       {isPro && player.contractValueM !== undefined && (
         <p className="text-center text-xs font-semibold text-[var(--text-dim)]">
-          {player.contractValueM} M$/an · {player.contractYearsRemaining} an
-          {(player.contractYearsRemaining ?? 0) > 1 ? 's' : ''} de contrat restants
+          ${player.contractValueM}M/yr · {player.contractYearsRemaining} yr
+          {(player.contractYearsRemaining ?? 0) > 1 ? 's' : ''} left on contract
         </p>
       )}
 
       <div className={`${expanded ? 'flex flex-col gap-3' : 'hidden'} lg:contents`}>
         {actStats && (
           <div className="border-t border-black/10 pt-3">
-            <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Statistiques</div>
+            <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Statistics</div>
             <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
               <div className="flex items-center justify-between">
-                <span className="text-[var(--text-dim)]">Matchs joués</span>
+                <span className="text-[var(--text-dim)]">Games Played</span>
                 <span className="font-bold text-[var(--text)]">{actStats.gamesPlayed}</span>
               </div>
               {positionStats.map((def) => (
@@ -191,7 +191,7 @@ export function PlayerProfileCard({ player }: { player: Player }) {
         )}
 
         <div className="border-t border-black/10 pt-3">
-          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Profil</div>
+          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Profile</div>
           <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
             {CORE_ATTRIBUTE_KEYS.map((key) => (
               <div key={key} className="flex items-center justify-between">
@@ -205,12 +205,12 @@ export function PlayerProfileCard({ player }: { player: Player }) {
         </div>
 
         <div className="grid grid-cols-2 gap-3 border-t border-black/10 pt-3">
-          <GradientBar label="Forme" value={player.attributes.physique} kind="warm" />
+          <GradientBar label="Form" value={player.attributes.physique} kind="warm" />
           <GradientBar label="Mental" value={player.attributes.mental} kind="cool" />
         </div>
 
         <div className="border-t border-black/10 pt-3">
-          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Palmarès</div>
+          <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">Trophies</div>
           {trophies.length > 0 ? (
             <div className="flex flex-wrap gap-1.5">
               {trophies.map((t, i) => (
@@ -218,13 +218,13 @@ export function PlayerProfileCard({ player }: { player: Player }) {
               ))}
             </div>
           ) : (
-            <p className="text-xs italic text-[var(--text-dim)]">Aucun titre pour l’instant. Ils viennent avec les grandes saisons.</p>
+            <p className="text-xs italic text-[var(--text-dim)]">No titles yet. They come with big seasons.</p>
           )}
         </div>
 
         <div>
           <div className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
-            Distinctions individuelles
+            Individual Awards
           </div>
           {individualAwards.length > 0 ? (
             <div className="flex flex-wrap gap-1.5">
@@ -233,15 +233,15 @@ export function PlayerProfileCard({ player }: { player: Player }) {
               ))}
             </div>
           ) : (
-            <p className="text-xs italic text-[var(--text-dim)]">Aucune récompense individuelle. Elles viennent avec les grandes saisons.</p>
+            <p className="text-xs italic text-[var(--text-dim)]">No individual awards yet. They come with big seasons.</p>
           )}
         </div>
 
         <div className="border-t border-black/10 pt-3">
           <div className="mb-1 flex items-center justify-between text-[11px] font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
-            <span>Cote</span>
+            <span>Buzz</span>
             <span>
-              Sommet : {peakPoint.value} ({peakPoint.age} ans)
+              Peak: {peakPoint.value} (age {peakPoint.age})
             </span>
           </div>
           <div className="text-2xl font-black text-[var(--de-green)]">{currentValue}</div>
@@ -255,7 +255,7 @@ export function PlayerProfileCard({ player }: { player: Player }) {
         className="-mx-5 -mb-5 mt-1 flex items-center justify-between rounded-b-3xl bg-[var(--de-gold)] px-5 py-2.5 text-xs font-extrabold text-[#3a2a05] lg:hidden"
       >
         <span>
-          Saison {player.season} · {overall} OVR
+          Season {player.season} · {overall} OVR
         </span>
         <span className="text-sm">{expanded ? '▴' : '▾'}</span>
       </button>

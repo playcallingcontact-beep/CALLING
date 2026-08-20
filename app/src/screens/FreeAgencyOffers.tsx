@@ -21,7 +21,7 @@ export function FreeAgencyOffers({
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-base">🏈</span>
         </h2>
         <p className="text-sm font-bold text-white/85">
-          {player.nflTeam} n’a pas prolongé {player.name}. Plusieurs franchises se positionnent.
+          The {player.nflTeam} didn't re-sign {player.name}. Several franchises are circling.
         </p>
       </div>
 
@@ -41,13 +41,13 @@ export function FreeAgencyOffers({
                     : 'bg-black/5 text-[var(--text-dim)]'
                 }`}
               >
-                {offer.role === 'starter' ? '🏈 Titulaire' : '🪑 Rotation'}
+                {offer.role === 'starter' ? '🏈 Starter' : '🪑 Rotation'}
               </span>
               <TeamDots colors={getTeamColors(offer.team)} />
               <span className="font-extrabold text-[var(--text)]">{offer.team}</span>
             </div>
             <p className="mt-1 text-sm text-[var(--text-dim)]">
-              {offer.valueM} M$/an · {offer.years} an{offer.years > 1 ? 's' : ''} de contrat
+              ${offer.valueM}M/yr · {offer.years}-year contract
             </p>
           </button>
         ))}

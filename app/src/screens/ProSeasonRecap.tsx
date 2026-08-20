@@ -23,13 +23,13 @@ export function ProSeasonRecap({
     <GameShell player={player}>
       <Card variant="gold" className="flex flex-col gap-4">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          📊 Saison {player.season} · {player.nflTeam}
+          📊 Season {player.season} · {player.nflTeam}
         </span>
 
         <div className="grid grid-cols-3 gap-2">
           <div className="flex flex-col items-center gap-0.5 rounded-xl bg-black/5 py-3">
             <span className="text-lg font-black text-[var(--de-green)]">{result.gamesPlayed}</span>
-            <span className="text-[10px] font-bold uppercase text-[var(--text-dim)]">Matchs</span>
+            <span className="text-[10px] font-bold uppercase text-[var(--text-dim)]">Games</span>
           </div>
           {positionStats.map((def) => (
             <div key={def.key} className="flex flex-col items-center gap-0.5 rounded-xl bg-black/5 py-3">
@@ -39,27 +39,27 @@ export function ProSeasonRecap({
           ))}
           <div className="flex flex-col items-center gap-0.5 rounded-xl bg-black/5 py-3">
             <span className="text-lg font-black text-[var(--de-gold-dark)]">{result.note || '—'}</span>
-            <span className="text-[10px] font-bold uppercase text-[var(--text-dim)]">Note</span>
+            <span className="text-[10px] font-bold uppercase text-[var(--text-dim)]">Grade</span>
           </div>
         </div>
 
         <p className="flex items-center gap-2 text-sm text-[var(--text)]">
-          {result.objectiveMet ? '✅' : '❌'} Objectif du club : {result.objectiveLabel}
+          {result.objectiveMet ? '✅' : '❌'} Club objective: {result.objectiveLabel}
           {result.objectiveMet && result.objectiveBonusM > 0 && (
-            <span className="font-extrabold text-[var(--de-success-text)]">(prime +{result.objectiveBonusM} M$)</span>
+            <span className="font-extrabold text-[var(--de-success-text)]">(bonus +${result.objectiveBonusM}M)</span>
           )}
         </p>
 
         {result.seasonEarningsM > 0 && (
           <p className="text-sm font-semibold text-[var(--text)]">
-            💰 +{result.seasonEarningsM} M$ <span className="text-[var(--text-dim)]">(salaire &amp; sponsors)</span>
+            💰 +${result.seasonEarningsM}M <span className="text-[var(--text-dim)]">(salary &amp; sponsors)</span>
           </p>
         )}
 
         {(result.madePlayoffs || result.wonSuperBowl) && (
           <div className="flex flex-wrap gap-2">
             {result.madePlayoffs && <EffectPill label="🏟️ Playoffs" />}
-            {result.wonSuperBowl && <EffectPill label="🏆 Trophée Final" />}
+            {result.wonSuperBowl && <EffectPill label="🏆 Final Trophy" />}
           </div>
         )}
 
@@ -81,7 +81,7 @@ export function ProSeasonRecap({
 
         {result.leagueNews && (
           <p className="border-t border-dashed border-black/10 pt-3 text-xs italic text-[var(--text-dim)]">
-            🗞️ Ailleurs dans la ligue : {result.leagueNews}
+            🗞️ Elsewhere in the league: {result.leagueNews}
           </p>
         )}
 

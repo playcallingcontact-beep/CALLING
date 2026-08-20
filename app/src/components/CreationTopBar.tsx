@@ -12,10 +12,10 @@ export function CreationTopBar({
   return (
     <div className="flex items-center justify-between">
       <PillButton variant="outline" onClick={onBack} disabled={backDisabled} className="px-4 py-2 text-xs normal-case">
-        ← Retour
+        ← Back
       </PillButton>
       <PillButton variant="gold" onClick={onRandom} className="px-4 py-2 text-xs normal-case">
-        🎲 Tout aléatoire
+        🎲 Randomize All
       </PillButton>
     </div>
   )

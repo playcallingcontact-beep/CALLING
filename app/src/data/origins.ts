@@ -11,40 +11,37 @@ export interface OriginDef {
 export const ORIGINS: OriginDef[] = [
   {
     id: 'programme-elite',
-    name: 'Programme lycéen élite',
+    name: 'Elite high school program',
     emoji: '🏫',
-    description:
-      'Lycée avec tradition, bon encadrement, mais concurrence interne forte dès le départ.',
+    description: 'A school with tradition and strong coaching, but fierce internal competition from day one.',
     attributes: { physique: 58, technique: 52, mental: 48, leadership: 44, exposition: 35 },
   },
   {
     id: 'multi-sport',
-    name: 'Athlète multi-sport',
+    name: 'Multi-sport athlete',
     emoji: '🏀',
-    description:
-      'Vient d’un autre sport (basket, athlétisme), profil physique brut, football moins maîtrisé techniquement.',
+    description: 'Coming from another sport (basketball, track), raw physical profile, less technically polished at football.',
     attributes: { physique: 62, technique: 44, mental: 55, leadership: 46, exposition: 15 },
   },
   {
     id: 'fils-ancien-pro',
-    name: 'Fils d’ancien pro',
+    name: 'Son of a former pro',
     emoji: '👨‍👦',
-    description: 'Déjà un nom, du réseau, mais pression et attentes fortes dès le lycée.',
+    description: 'Already a name and a network, but heavy pressure and expectations from high school on.',
     attributes: { physique: 50, technique: 54, mental: 42, leadership: 58, exposition: 40 },
   },
   {
     id: 'walk-on-rural',
-    name: 'Walk-on de zone rurale',
+    name: 'Rural walk-on',
     emoji: '🌾',
-    description: 'Peu vu par les recruteurs, très motivé, doit se faire remarquer par la performance pure.',
+    description: 'Barely seen by recruiters, highly motivated, has to get noticed on pure performance.',
     attributes: { physique: 56, technique: 58, mental: 60, leadership: 38, exposition: 8 },
   },
   {
     id: 'prodige-precoce',
-    name: 'Prodige précoce',
+    name: 'Early prodigy',
     emoji: '💎',
-    description:
-      'Très bonne lecture du jeu dès le plus jeune âge (surtout pertinent pour QB), physique encore à développer.',
+    description: 'Excellent game-reading from a young age (especially relevant for QB), physical tools still developing.',
     attributes: { physique: 46, technique: 62, mental: 50, leadership: 50, exposition: 30 },
   },
 ]

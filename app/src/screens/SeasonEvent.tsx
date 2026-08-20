@@ -16,7 +16,7 @@ export function SeasonEvent({
     <GameShell player={player}>
       <Card className="flex flex-col gap-4">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          {event.emoji} {event.title} · {player.age} ans
+          {event.emoji} {event.title} · {player.age} yo
         </span>
         <p className="text-[var(--text)]">{event.context}</p>
         <div className="mt-1 flex flex-col gap-2">

@@ -22,7 +22,7 @@ export function PlayoffMatchup({
     <GameShell player={player}>
       <Card variant="gold" className="flex flex-col items-center gap-4 text-center">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          🏆 Playoffs BFL · {game.roundLabel}
+          🏆 BFL Playoffs · {game.roundLabel}
         </span>
 
         <div className="flex w-full items-center justify-center gap-6">
@@ -30,7 +30,7 @@ export function PlayoffMatchup({
             <TeamDots colors={ownColors} />
             <span className="text-sm font-extrabold text-[var(--text)]">{player.nflTeam}</span>
           </div>
-          <span className="text-xs font-bold uppercase text-[var(--text-dim)]">Contre</span>
+          <span className="text-xs font-bold uppercase text-[var(--text-dim)]">vs</span>
           <div className="flex flex-1 flex-col items-center gap-1">
             <TeamDots colors={game.opponentColors} />
             <span className="text-sm font-extrabold text-[var(--text)]">{game.opponentName}</span>
@@ -38,15 +38,15 @@ export function PlayoffMatchup({
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <p className="text-sm font-bold uppercase tracking-wide text-[var(--text-dim)]">Vos chances de passer</p>
+          <p className="text-sm font-bold uppercase tracking-wide text-[var(--text-dim)]">Your chances of advancing</p>
           <p className="text-4xl font-black text-[var(--de-green)]">{chance}%</p>
         </div>
         <p className="text-xs italic text-[var(--text-dim)]">
-          Le résultat ne dépend pas que de toi, mais chaque snap peut tout changer.
+          The outcome isn't all up to you, but every snap can change everything.
         </p>
 
         <PillButton variant="dark" onClick={onPlay} className="self-stretch">
-          Jouer le match
+          Play the game
         </PillButton>
       </Card>
     </GameShell>

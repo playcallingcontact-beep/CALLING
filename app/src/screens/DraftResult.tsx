@@ -18,17 +18,17 @@ export function DraftResult({ player, onContinue }: { player: Player; onContinue
 
         {undrafted ? (
           <p className="text-[var(--text)]">
-            Non sélectionné lors des 7 rounds — {player.name} signe comme{' '}
-            <span className="font-extrabold">agent libre non drafté</span> avec les{' '}
+            Not selected across the 7 rounds — {player.name} signs as an{' '}
+            <span className="font-extrabold">undrafted free agent</span> with the{' '}
             <span className="inline-flex items-center gap-1.5 font-extrabold text-[var(--de-green)]">
               <TeamDots colors={getTeamColors(player.nflTeam ?? '')} />
               {player.nflTeam}
             </span>
-            . Aucune garantie, tout reste à prouver.
+            . No guarantees, everything still to prove.
           </p>
         ) : (
           <p className="text-[var(--text)]">
-            Sélectionné en <span className="font-extrabold">round {player.draftRound}</span> par les{' '}
+            Selected in <span className="font-extrabold">round {player.draftRound}</span> by the{' '}
             <span className="inline-flex items-center gap-1.5 font-extrabold text-[var(--de-green)]">
               <TeamDots colors={getTeamColors(player.nflTeam ?? '')} />
               {player.nflTeam}
@@ -37,15 +37,15 @@ export function DraftResult({ player, onContinue }: { player: Player; onContinue
         )}
 
         <div className="mx-auto flex flex-col items-center gap-1 rounded-2xl bg-black/5 px-6 py-4">
-          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Contrat rookie</span>
+          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Rookie contract</span>
           <span className="text-lg font-extrabold text-[var(--text)]">
-            {player.contractYearsRemaining} an{(player.contractYearsRemaining ?? 0) > 1 ? 's' : ''} — {player.contractValueM} M$
+            {player.contractYearsRemaining} year{(player.contractYearsRemaining ?? 0) > 1 ? 's' : ''} — ${player.contractValueM}M
           </span>
         </div>
       </Card>
 
       <PillButton variant="white" onClick={onContinue} className="self-stretch">
-        Rejoindre le camp d’entraînement
+        Join training camp
       </PillButton>
     </div>
   )

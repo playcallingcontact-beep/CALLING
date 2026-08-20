@@ -22,16 +22,16 @@ export function InterstitialAdOverlay({ onFinished }: { onFinished: () => void }
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-black/90 px-4">
       <Card variant="white" className="flex w-full max-w-sm flex-col items-center gap-4 text-center">
         <span className="text-xs font-extrabold uppercase tracking-wide text-[var(--text-dim)]">
-          Publicité sponsorisée
+          Sponsored Ad
         </span>
         <div className="flex h-48 w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-black/10 bg-black/5">
           <span className="text-3xl">📺</span>
           <span className="text-xs font-bold uppercase tracking-wide text-[var(--text-dim)]">
-            Espace publicitaire
+            Ad Space
           </span>
         </div>
         <p className="text-sm font-semibold text-[var(--text)]">
-          {secondsLeft > 0 ? `Reprise dans ${secondsLeft}s` : 'Un instant…'}
+          {secondsLeft > 0 ? `Resuming in ${secondsLeft}s` : 'One moment…'}
         </p>
       </Card>
     </div>

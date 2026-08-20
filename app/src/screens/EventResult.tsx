@@ -6,11 +6,11 @@ import type { Player } from '../types/player'
 import type { EventEffect, GameEvent } from '../types/events'
 
 const ATTRIBUTE_LABELS: Record<string, string> = {
-  physique: 'Physique',
+  physique: 'Physical',
   technique: 'Technique',
   mental: 'Mental',
   leadership: 'Leadership',
-  exposition: 'Exposition',
+  exposition: 'Exposure',
 }
 
 export function EventResult({
@@ -36,7 +36,7 @@ export function EventResult({
     }
     if (effect.exposureDelta) {
       pills.push({
-        label: `${effect.exposureDelta > 0 ? '+' : ''}${effect.exposureDelta} Exposition`,
+        label: `${effect.exposureDelta > 0 ? '+' : ''}${effect.exposureDelta} Exposure`,
         negative: effect.exposureDelta < 0,
       })
     }
@@ -48,7 +48,7 @@ export function EventResult({
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
           {event.emoji} {event.title}
         </span>
-        <p className="text-[var(--text)]">{outcomeText || 'La saison suit son cours.'}</p>
+        <p className="text-[var(--text)]">{outcomeText || 'The season carries on.'}</p>
         {pills.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {pills.map((p, i) => (
@@ -57,7 +57,7 @@ export function EventResult({
           </div>
         )}
         <PillButton variant="dark" onClick={onContinue} className="mt-1 self-stretch">
-          Continuer
+          Continue
         </PillButton>
       </Card>
     </GameShell>

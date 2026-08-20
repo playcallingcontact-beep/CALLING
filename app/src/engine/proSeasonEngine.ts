@@ -35,10 +35,10 @@ function teamTier(teamName: string): number {
 }
 
 const INJURY_HEADLINE: Record<string, string> = {
-  legere: '🟡 Blessure légère',
-  moyenne: '🟠 Blessure moyenne',
-  grave: '🔴 Blessure grave',
-  catastrophique: '🔴 Blessure très grave',
+  legere: '🟡 Minor injury',
+  moyenne: '🟠 Moderate injury',
+  grave: '🔴 Severe injury',
+  catastrophique: '🔴 Career-threatening injury',
 }
 
 export function resolveProSeason(player: Player): ProSeasonResult {
@@ -52,7 +52,7 @@ export function resolveProSeason(player: Player): ProSeasonResult {
   const dbProb = destinBriseeProbability(player.position, player.age)
   if (Math.random() < dbProb) {
     logs.push(
-      `DESTIN BRISÉE — une blessure catastrophique met fin, sans appel, à la carrière de ${player.name}. Le potentiel inachevé restera la marque de cette histoire.`,
+      `SHATTERED DESTINY — a catastrophic injury ends ${player.name}'s career immediately and for good. The unfinished potential will forever be the mark of this story.`,
     )
     return {
       player: next,
@@ -85,7 +85,7 @@ export function resolveProSeason(player: Player): ProSeasonResult {
     }
     next.injuryHistory = [...player.injuryHistory, recordInjury(next, injuryRoll)]
     logs.push(
-      `${INJURY_HEADLINE[injuryRoll.severity]} — absence de ${injuryRoll.gamesOut} match${injuryRoll.gamesOut > 1 ? 's' : ''}. ${injuryRoll.description}`,
+      `${INJURY_HEADLINE[injuryRoll.severity]} — out ${injuryRoll.gamesOut} game${injuryRoll.gamesOut > 1 ? 's' : ''}. ${injuryRoll.description}`,
     )
   }
 
@@ -223,7 +223,7 @@ export function resolveProSeason(player: Player): ProSeasonResult {
   }
 
   if (awardsWon.length > 0) {
-    logs.push(`Distinctions de la saison : ${awardsWon.join(', ')}.`)
+    logs.push(`Season honors: ${awardsWon.join(', ')}.`)
   }
 
   const headline = headlineStatDef(next.position)
@@ -248,7 +248,7 @@ export function resolveProSeason(player: Player): ProSeasonResult {
   const flavor = potentialFlavorLine(next.potential)
   if (flavor) logs.push(flavor)
 
-  const objectiveLabel = 'Atteindre les playoffs'
+  const objectiveLabel = 'Make the playoffs'
   const objectiveMet = madePlayoffs
   const baseSalaryM = player.contractValueM ?? 3
   const objectiveBonusM = objectiveMet ? Math.round(baseSalaryM * 0.08 * 10) / 10 : 0

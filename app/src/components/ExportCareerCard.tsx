@@ -10,35 +10,35 @@ import type { Player } from '../types/player'
 
 const CARD_WIDTH = 640
 
-const TIER_ORDER: CareerTier[] = ['Argent', 'Or', 'Diamant', 'Saphir', 'Arc-en-ciel']
+const TIER_ORDER: CareerTier[] = ['Silver', 'Gold', 'Diamond', 'Sapphire', 'Rainbow']
 
 // Couleur pleine (non-dégradée) représentative de chaque palier, utilisée pour le texte/les
 // bordures fines où un dégradé ne s'applique pas (contrairement à TIER_ACCENT.borderGradient,
 // pensé pour les bordures épaisses de la carte visible en jeu sur fond vert).
 const TIER_SOLID: Record<CareerTier, string> = {
-  Argent: '#78838f',
-  Or: '#d69a1f',
-  Diamant: '#1f9fc2',
-  Saphir: '#3b5fd6',
-  'Arc-en-ciel': '#9d3fd6',
+  Silver: '#78838f',
+  Gold: '#d69a1f',
+  Diamond: '#1f9fc2',
+  Sapphire: '#3b5fd6',
+  Rainbow: '#9d3fd6',
 }
 
 // Fond de carte très légèrement teinté selon le palier — reste dans la même famille crème que
 // notre thème, juste une nuance plus froide/chaude selon la rareté (jamais saturé).
 const TIER_BACKGROUND: Record<CareerTier, string> = {
-  Argent: 'linear-gradient(165deg, #fcfcfd 0%, #e7e9ec 100%)',
-  Or: 'linear-gradient(165deg, #fffdf6 0%, #f7f1de 100%)',
-  Diamant: 'linear-gradient(165deg, #f6fdff 0%, #e2f3f8 100%)',
-  Saphir: 'linear-gradient(165deg, #f5f7ff 0%, #e1e7fb 100%)',
-  'Arc-en-ciel': 'linear-gradient(165deg, #fffaf6 0%, #f6eef8 100%)',
+  Silver: 'linear-gradient(165deg, #fcfcfd 0%, #e7e9ec 100%)',
+  Gold: 'linear-gradient(165deg, #fffdf6 0%, #f7f1de 100%)',
+  Diamond: 'linear-gradient(165deg, #f6fdff 0%, #e2f3f8 100%)',
+  Sapphire: 'linear-gradient(165deg, #f5f7ff 0%, #e1e7fb 100%)',
+  Rainbow: 'linear-gradient(165deg, #fffaf6 0%, #f6eef8 100%)',
 }
 
 const TIER_BORDER_WIDTH: Record<CareerTier, number> = {
-  Argent: 2,
-  Or: 3,
-  Diamant: 3,
-  Saphir: 4,
-  'Arc-en-ciel': 5,
+  Silver: 2,
+  Gold: 3,
+  Diamond: 3,
+  Sapphire: 4,
+  Rainbow: 5,
 }
 
 // Texte en dégradé (repris de la même palette que la bordure) pour les éléments les plus
@@ -80,12 +80,12 @@ export const ExportCareerCard = forwardRef<
   const solid = TIER_SOLID[tier]
 
   const statRows: { icon: string; label: string; value: number | string }[] = [
-    { icon: '🏈', label: 'Matchs joués', value: stats?.gamesPlayed ?? 0 },
+    { icon: '🏈', label: 'Games Played', value: stats?.gamesPlayed ?? 0 },
     ...positionStats.map((def) => ({ icon: '📊', label: def.label, value: stats?.stats[def.key] ?? 0 })),
-    { icon: '📅', label: 'Saisons pro', value: player.season },
-    { icon: '🏅', label: 'Distinctions', value: totalDistinctions },
-    { icon: '🏆', label: 'Bagues de champion', value: stats?.superBowlWins ?? 0 },
-    { icon: '💰', label: 'Gains de carrière', value: `${player.careerEarningsM} M$` },
+    { icon: '📅', label: 'Pro Seasons', value: player.season },
+    { icon: '🏅', label: 'Awards', value: totalDistinctions },
+    { icon: '🏆', label: 'Championship Rings', value: stats?.superBowlWins ?? 0 },
+    { icon: '💰', label: 'Career Earnings', value: `$${player.careerEarningsM}M` },
   ]
 
   return (
@@ -102,7 +102,7 @@ export const ExportCareerCard = forwardRef<
       <div className="flex flex-col gap-4 rounded-[28px] px-7 py-7" style={{ background: TIER_BACKGROUND[tier] }}>
         {player.retirementType === 'destin-brisee' && (
           <span className="self-center rounded-full bg-red-600 px-4 py-1 text-[11px] font-extrabold uppercase tracking-wide text-white">
-            Destin Brisée
+            Shattered Destiny
           </span>
         )}
 
@@ -133,20 +133,20 @@ export const ExportCareerCard = forwardRef<
 
           <div className="min-w-0 flex-1 text-left">
             <h2 className="truncate text-2xl font-black text-[var(--text)]">{player.name}</h2>
-            <p className="text-sm font-semibold text-[var(--text-dim)]">Retraite à {player.age} ans</p>
+            <p className="text-sm font-semibold text-[var(--text-dim)]">Retired at age {player.age}</p>
             <div className="my-1.5 h-px w-full" style={{ background: solid, opacity: 0.35 }} />
             <p className="truncate text-sm italic text-[var(--text-dim)]">
-              Dernière équipe : {player.nflTeam} · {position.emoji} {position.name}
+              Last team: {player.nflTeam} · {position.emoji} {position.name}
             </p>
           </div>
         </div>
 
         <p className="text-center text-lg font-black italic" style={gradientTextStyle(accent.borderGradient)}>
-          « {player.name}, {nickname} »
+          "{player.name}, {nickname}"
         </p>
 
         <div>
-          <h3 className="mb-2 text-center text-lg font-black italic text-[var(--text)]">Statistiques</h3>
+          <h3 className="mb-2 text-center text-lg font-black italic text-[var(--text)]">Statistics</h3>
           <div className="flex flex-col gap-1 rounded-2xl border-2 bg-white/70 px-4 py-3" style={{ borderColor: solid }}>
             {statRows.map((row) => (
               <div key={row.label} className="flex items-center justify-between border-b border-black/5 py-1.5 text-sm last:border-0">
@@ -160,11 +160,11 @@ export const ExportCareerCard = forwardRef<
         </div>
 
         <div>
-          <h3 className="mb-2 text-center text-lg font-black italic text-[var(--text)]">Palmarès</h3>
+          <h3 className="mb-2 text-center text-lg font-black italic text-[var(--text)]">Achievements</h3>
           <div className="flex flex-col gap-2 rounded-2xl border-2 bg-white/70 px-4 py-3" style={{ borderColor: solid }}>
             {awardGroups.length === 0 ? (
               <p className="py-2 text-center text-sm italic text-[var(--text-dim)]">
-                Aucun titre ni distinction sur cette carrière.
+                No titles or awards this career.
               </p>
             ) : (
               awardGroups.map((group) => (

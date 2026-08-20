@@ -22,7 +22,7 @@ export function Act1End({
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-4 px-4 py-8">
       <span className="self-center rounded-full bg-[var(--de-gold)] px-5 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#3a2a05]">
-        Fin de l’Acte 1
+        End of Act 1
       </span>
 
       <Card variant="cream" className="flex flex-col gap-4 text-center">
@@ -31,12 +31,12 @@ export function Act1End({
             {position.emoji} {player.name}
           </h2>
           <p className="text-sm font-semibold text-[var(--text-dim)]">
-            {position.name} · {region.name} · formé à {player.highSchoolName}
+            {position.name} · {region.name} · trained at {player.highSchoolName}
           </p>
         </div>
 
         <div className="mx-auto flex flex-col items-center gap-1 rounded-2xl bg-black/5 px-6 py-4">
-          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Classement final de recrutement</span>
+          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Final recruiting ranking</span>
           <span className="text-2xl">
             <StarRating value={player.starRating} />
           </span>
@@ -44,21 +44,21 @@ export function Act1End({
 
         {signedWith ? (
           <p className="text-[var(--text)]">
-            Direction <span className="font-extrabold text-[var(--de-green)]">{signedWith.schoolName}</span> pour
-            l’Acte 2 — College.
+            Heading to <span className="font-extrabold text-[var(--de-green)]">{signedWith.schoolName}</span> for
+            Act 2 — College.
           </p>
         ) : (
           <p className="text-[var(--text)]">
-            Sans offre, {player.name} tentera sa chance en walk-on pour l’Acte 2 — College.
+            With no offer, {player.name} will try their luck as a walk-on for Act 2 — College.
           </p>
         )}
       </Card>
 
       <PillButton variant="white" onClick={onContinue} className="self-stretch">
-        Rejoindre le programme
+        Join the program
       </PillButton>
       <PillButton variant="outline" onClick={onRestart} className="self-center">
-        Nouvelle carrière
+        New career
       </PillButton>
     </div>
   )

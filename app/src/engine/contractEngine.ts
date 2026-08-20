@@ -18,7 +18,7 @@ export function applyExtension(player: Player): Player {
     ...player,
     contractYearsRemaining: years,
     contractValueM: valueM,
-    log: [...player.log, `Extension de contrat signée avec les ${player.nflTeam} (${years} ans, ${valueM} M$).`],
+    log: [...player.log, `Contract extension signed with the ${player.nflTeam} (${years} years, $${valueM}M).`],
   }
 }
 
@@ -30,7 +30,7 @@ export function applyFranchiseTag(player: Player): Player {
     contractYearsRemaining: 1,
     contractValueM: valueM,
     flags: { ...player.flags, franchiseTagged: true },
-    log: [...player.log, `Les ${player.nflTeam} activent le franchise tag pour une saison de plus (${valueM} M$).`],
+    log: [...player.log, `The ${player.nflTeam} activate the franchise tag for one more season ($${valueM}M).`],
   }
 }
 
@@ -75,8 +75,8 @@ export function signFreeAgencyOffer(player: Player, offer: FreeAgencyOffer): Pla
     careerPath: [...player.careerPath, { age: player.age, label: `${offer.team} (BFL, free agency)` }],
     log: [
       ...player.log,
-      `Signe en free agency avec les ${offer.team} (${offer.years} ans, ${offer.valueM} M$, ${
-        offer.role === 'starter' ? 'titulaire annoncé' : 'rôle de remplaçant'
+      `Signs in free agency with the ${offer.team} (${offer.years} years, $${offer.valueM}M, ${
+        offer.role === 'starter' ? 'projected starter' : 'backup role'
       }).`,
     ],
   }
@@ -87,6 +87,6 @@ export function forcedRetirement(player: Player): Player {
     ...player,
     retired: true,
     retirementType: 'forcee',
-    log: [...player.log, 'Aucune offre ne se présente en free agency. La carrière s’arrête faute de contrat.'],
+    log: [...player.log, 'No offers come in during free agency. The career ends for lack of a contract.'],
   }
 }

@@ -84,14 +84,14 @@ export type Screen =
 
 function recapNextLabel(p: Player): string {
   if (p.act === 'HS') {
-    return p.season >= TOTAL_HS_SEASONS ? 'Aller au Signing Day' : 'Saison suivante'
+    return p.season >= TOTAL_HS_SEASONS ? 'Go to Signing Day' : 'Next season'
   }
-  if (p.season >= MAX_COLLEGE_SEASON) return 'Se déclarer pour la draft'
-  return 'Saison suivante'
+  if (p.season >= MAX_COLLEGE_SEASON) return 'Declare for the draft'
+  return 'Next season'
 }
 
 function proRecapNextLabel(p: Player): string {
-  return (p.contractYearsRemaining ?? 0) <= 0 ? 'Voir la situation contractuelle' : 'Saison suivante'
+  return (p.contractYearsRemaining ?? 0) <= 0 ? 'View contract situation' : 'Next season'
 }
 
 function App() {
@@ -630,7 +630,7 @@ function AdBannerPlaceholder() {
       style={{ height: 'var(--ad-banner-height)' }}
     >
       <span className="text-[10px] font-bold uppercase tracking-wide text-[var(--text-dim)]">
-        Espace publicitaire (bannière)
+        Ad space (banner)
       </span>
     </div>
   )

@@ -14,7 +14,7 @@ function strongFirst(count: number, extraCap = 2): number {
   return Math.min(1, 0.7 + 0.3 * Math.min(1, (count - 1) / extraCap))
 }
 
-export type CareerTier = 'Argent' | 'Or' | 'Diamant' | 'Saphir' | 'Arc-en-ciel'
+export type CareerTier = 'Silver' | 'Gold' | 'Diamond' | 'Sapphire' | 'Rainbow'
 
 // Certaines carrières (QB en tête) accumulent structurellement plus d'occasions de gagner des
 // distinctions comptées par diminishing()/strongFirst() ci-dessus — bien plus de saisons pro
@@ -132,14 +132,14 @@ export function computeFinalScore(player: Player): ScoreBreakdown {
 
   const tier: CareerTier =
     finalScore >= 95
-      ? 'Arc-en-ciel'
+      ? 'Rainbow'
       : finalScore >= 90
-        ? 'Saphir'
+        ? 'Sapphire'
         : finalScore >= 86
-          ? 'Diamant'
+          ? 'Diamond'
           : finalScore >= 75
-            ? 'Or'
-            : 'Argent'
+            ? 'Gold'
+            : 'Silver'
 
   return { finalScore, individualBlock, collectiveBlock, tier }
 }

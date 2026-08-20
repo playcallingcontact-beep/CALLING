@@ -15,15 +15,15 @@ export interface AvatarDef {
 }
 
 export const AVATARS: AvatarDef[] = [
-  { id: 'a1', name: 'Boucles courtes', image: a1 },
+  { id: 'a1', name: 'Short curls', image: a1 },
   { id: 'a2', name: 'Fade', image: a2 },
-  { id: 'a3', name: 'Boucles serrées', image: a3 },
+  { id: 'a3', name: 'Tight curls', image: a3 },
   { id: 'a4', name: 'Dreads', image: a4 },
-  { id: 'a5', name: 'Coupe basse', image: a5 },
-  { id: 'a6', name: 'Afro blond', image: a6 },
-  { id: 'a7', name: 'Dreads longues', image: a7 },
-  { id: 'a8', name: 'Crâne rasé & barbe', image: a8 },
-  { id: 'a9', name: 'Boucles longues', image: a9 },
+  { id: 'a5', name: 'Low cut', image: a5 },
+  { id: 'a6', name: 'Blond afro', image: a6 },
+  { id: 'a7', name: 'Long dreads', image: a7 },
+  { id: 'a8', name: 'Shaved head & beard', image: a8 },
+  { id: 'a9', name: 'Long curls', image: a9 },
 ]
 
 export const getAvatar = (id: string | undefined): AvatarDef => AVATARS.find((a) => a.id === id) ?? AVATARS[0]

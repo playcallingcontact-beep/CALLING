@@ -8,22 +8,22 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '🏋️',
-    title: 'Training Camp BFL',
-    context: 'Le rythme professionnel n’a rien à voir avec le college. Chaque snap est chronométré, chaque détail compte.',
+    title: 'BFL Training Camp',
+    context: 'The professional pace has nothing to do with college. Every snap is timed, every detail matters.',
     choices: [
       {
         id: 'grind',
-        label: 'Pousser le corps au maximum',
+        label: 'Push the body to the max',
         effects: [
-          { attribute: 'physique', delta: 3, log: 'Le corps encaisse encore la charge, saison après saison.' },
+          { attribute: 'physique', delta: 3, log: 'The body still holds up under the load, season after season.' },
           { attribute: 'mental', delta: -1 },
         ],
       },
       {
         id: 'smart',
-        label: 'Travailler intelligemment, gérer la fatigue',
+        label: 'Train smart, manage the fatigue',
         effects: [
-          { attribute: 'mental', delta: 2, log: 'Une préparation plus posée, pensée pour durer.' },
+          { attribute: 'mental', delta: 2, log: 'A calmer approach to preparation, built to last.' },
           { attribute: 'physique', delta: -1 },
         ],
       },
@@ -36,22 +36,22 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '📋',
-    title: 'Playbook BFL',
-    context: 'Le playbook professionnel est bien plus dense que celui du college. La maîtriser fait toute la différence le dimanche.',
+    title: 'BFL Playbook',
+    context: 'The pro playbook is far denser than the one in college. Mastering it makes all the difference on Sundays.',
     choices: [
       {
         id: 'master',
-        label: 'Ingurgiter tout le playbook',
+        label: 'Absorb the entire playbook',
         effects: [
-          { attribute: 'technique', delta: 3, log: 'Une lecture du jeu de plus en plus fine.' },
+          { attribute: 'technique', delta: 3, log: 'A read of the game that keeps getting sharper.' },
           { attribute: 'mental', delta: -1 },
         ],
       },
       {
         id: 'basics',
-        label: 'Se concentrer sur les bases, sans faute',
+        label: 'Focus on the basics, no mistakes',
         effects: [
-          { attribute: 'mental', delta: 2, log: 'Une exécution simple, mais solide.' },
+          { attribute: 'mental', delta: 2, log: 'A simple execution, but a solid one.' },
           { attribute: 'technique', delta: -1 },
         ],
       },
@@ -64,25 +64,25 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '🗣️',
-    title: 'Vestiaire',
-    context: 'Un vétéran du vestiaire teste la nouvelle recrue — ou remet en question l’autorité d’un joueur déjà installé.',
+    title: 'Locker Room',
+    context: 'A locker-room veteran tests the new arrival — or challenges the authority of a player already established.',
     choices: [
       {
         id: 'lead',
-        label: 'Prendre la parole, s’imposer',
-        effects: [{ attribute: 'leadership', delta: 3, log: 'Une prise de parole qui marque durablement le vestiaire.' }],
+        label: 'Speak up and assert yourself',
+        effects: [{ attribute: 'leadership', delta: 3, log: 'Speaking up leaves a lasting mark on the locker room.' }],
         variants: [
-          { weight: 1, effects: [{ attribute: 'leadership', delta: 3, log: 'Une prise de parole qui marque durablement le vestiaire.' }] },
+          { weight: 1, effects: [{ attribute: 'leadership', delta: 3, log: 'Speaking up leaves a lasting mark on the locker room.' }] },
           {
             weight: 1,
-            effects: [{ attribute: 'leadership', delta: -2, log: 'La prise de parole tombe à plat — le vestiaire n’était pas prêt à l’entendre de sa part.' }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'The speech falls flat — the locker room wasn’t ready to hear it from him.' }],
           },
         ],
       },
       {
         id: 'earn',
-        label: 'Laisser le terrain parler',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Le respect se gagne en silence, match après match.' }],
+        label: 'Let the play on the field speak',
+        effects: [{ attribute: 'mental', delta: 2, log: 'Respect gets earned in silence, game after game.' }],
       },
     ],
   },
@@ -93,22 +93,22 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '❤️',
-    title: 'Engagement communautaire',
-    context: 'La franchise propose une visite dans un hôpital pour enfants près du stade — bon pour l’image, mais surtout pour de vraies personnes.',
+    title: 'Community Outreach',
+    context: 'The franchise sets up a visit to a children’s hospital near the stadium — good for the image, but mostly for real people.',
     choices: [
       {
         id: 'engage',
-        label: 'S’investir pleinement dans le projet',
+        label: 'Commit fully to the visit',
         effects: [
-          { attribute: 'leadership', delta: 2, log: 'Un engagement sincère qui dépasse largement le terrain.' },
+          { attribute: 'leadership', delta: 2, log: 'A sincere commitment that goes well beyond the field.' },
           { exposureDelta: 3 },
           { attribute: 'physique', delta: -1 },
         ],
       },
       {
         id: 'skip',
-        label: 'Rester concentré sur la saison',
-        effects: [{ attribute: 'mental', delta: 1, log: 'Toute l’énergie reste dirigée vers le prochain match.' }],
+        label: 'Stay focused on the season',
+        effects: [{ attribute: 'mental', delta: 1, log: 'All the energy stays pointed at the next game.' }],
       },
     ],
   },
@@ -120,23 +120,23 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMax: 20,
     requiresFlag: { key: 'entourage', value: 'mentor-prive' },
     emoji: '💼',
-    title: 'Contrat de sponsoring',
-    context: 'L’agent négocie un gros contrat publicitaire national, en plus du salaire BFL.',
+    title: 'Endorsement Deal',
+    context: 'The agent negotiates a big national ad contract, on top of the BFL salary.',
     choices: [
       {
         id: 'sign',
-        label: 'Signer le contrat',
+        label: 'Sign the contract',
         effects: [
-          { exposureDelta: 6, log: 'Le visage du joueur apparaît maintenant sur les panneaux publicitaires.' },
+          { exposureDelta: 6, log: 'The player’s face now shows up on billboards.' },
           { attribute: 'mental', delta: -1 },
         ],
       },
       {
         id: 'decline',
-        label: 'Rester concentré sur le jeu',
+        label: 'Stay focused on the game',
         effects: [
-          { attribute: 'mental', delta: 2, log: 'Aucune distraction, seulement le prochain adversaire.' },
-          { exposureDelta: -2, log: 'Un beau contrat qui passe à quelqu’un d’autre.' },
+          { attribute: 'mental', delta: 2, log: 'No distractions, just the next opponent.' },
+          { exposureDelta: -2, log: 'A good contract goes to someone else.' },
         ],
       },
     ],
@@ -149,23 +149,23 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMax: 20,
     requiresFlag: { key: 'lifestyle', value: 'popularite' },
     emoji: '🎤',
-    title: 'Enfant du pays',
-    context: 'Les médias locaux veulent absolument raconter l’histoire de l’enfant du pays devenu joueur BFL.',
+    title: 'Hometown Hero',
+    context: 'Local media wants to tell the story of the hometown kid turned BFL player.',
     choices: [
       {
         id: 'embrace',
-        label: 'Embrasser le statut de héros local',
+        label: 'Embrace the hometown hero role',
         effects: [
-          { exposureDelta: 4, log: 'Une histoire qui inspire toute une région.' },
+          { exposureDelta: 4, log: 'A story that inspires an entire region.' },
           { attribute: 'mental', delta: -1 },
         ],
       },
       {
         id: 'humble',
-        label: 'Rester discret sur le sujet',
+        label: 'Stay quiet about it',
         effects: [
-          { attribute: 'mental', delta: 2, log: 'Une discrétion qui protège la concentration.' },
-          { exposureDelta: -1, log: 'Une belle histoire qui ne sortira jamais vraiment du quartier.' },
+          { attribute: 'mental', delta: 2, log: 'A low profile that protects the focus.' },
+          { exposureDelta: -1, log: 'A great story that never really leaves the neighborhood.' },
         ],
       },
     ],
@@ -177,26 +177,26 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '🩹',
-    title: 'Gêne physique',
-    context: 'Une douleur traîne depuis plusieurs semaines. Le staff médical hésite avant un match important.',
+    title: 'Injury Scare',
+    context: 'A pain has lingered for several weeks. The medical staff hesitates ahead of a big game.',
     choices: [
       {
         id: 'play-through',
-        label: 'Jouer à travers la douleur',
+        label: 'Play through the pain',
         effects: [
-          { attribute: 'leadership', delta: 2, log: 'Un geste que le vestiaire n’oubliera pas.' },
+          { attribute: 'leadership', delta: 2, log: 'A gesture the locker room won’t forget.' },
           { attribute: 'physique', delta: -3 },
         ],
       },
       {
         id: 'rest',
-        label: 'Se préserver pour la suite de la saison',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Une décision raisonnable pour préserver l’avenir.' }],
+        label: 'Rest up for the rest of the season',
+        effects: [{ attribute: 'mental', delta: 2, log: 'A sensible decision to protect the future.' }],
         variants: [
-          { weight: 1, effects: [{ attribute: 'mental', delta: 2, log: 'Une décision raisonnable pour préserver l’avenir.' }] },
+          { weight: 1, effects: [{ attribute: 'mental', delta: 2, log: 'A sensible decision to protect the future.' }] },
           {
             weight: 1,
-            effects: [{ exposureDelta: -3, log: 'Le remplaçant profite de l’occasion et ne relâche plus le poste aussi facilement.' }],
+            effects: [{ exposureDelta: -3, log: 'The backup makes the most of the chance and doesn’t give the job back easily.' }],
           },
         ],
       },
@@ -209,26 +209,26 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '📐',
-    title: 'Désaccord tactique',
-    context: 'Le coordinateur impose un système qui ne colle pas totalement au profil du joueur.',
+    title: 'Scheme Disagreement',
+    context: 'The coordinator installs a system that doesn’t fully fit the player’s profile.',
     choices: [
       {
         id: 'adapt',
-        label: 'S’adapter sans faire de vagues',
-        effects: [{ attribute: 'mental', delta: 2, log: 'Une flexibilité qui rassure le staff.' }],
+        label: 'Adapt without making waves',
+        effects: [{ attribute: 'mental', delta: 2, log: 'A flexibility that reassures the staff.' }],
         variants: [
-          { weight: 1, effects: [{ attribute: 'mental', delta: 2, log: 'Une flexibilité qui rassure le staff.' }] },
+          { weight: 1, effects: [{ attribute: 'mental', delta: 2, log: 'A flexibility that reassures the staff.' }] },
           {
             weight: 1,
-            effects: [{ attribute: 'leadership', delta: -2, log: 'S’adapter sans broncher passe pour un manque de caractère aux yeux du vestiaire.' }],
+            effects: [{ attribute: 'leadership', delta: -2, log: 'Adapting without pushing back reads as a lack of backbone to the locker room.' }],
           },
         ],
       },
       {
         id: 'push-back',
-        label: 'Défendre son propre style',
+        label: 'Defend your own style',
         effects: [
-          { attribute: 'leadership', delta: 2, log: 'Un coup de gueule qui fait évoluer le système.' },
+          { attribute: 'leadership', delta: 2, log: 'Speaking up forces the system to evolve.' },
           { attribute: 'mental', delta: -1 },
         ],
       },
@@ -241,22 +241,22 @@ export const PRO_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 20,
     emoji: '💪',
-    title: 'Intersaison',
-    context: 'L’intersaison est courte. Certains partent en vacances, d’autres retournent directement à la salle.',
+    title: 'Offseason',
+    context: 'The offseason is short. Some head off on vacation, others go straight back to the weight room.',
     choices: [
       {
         id: 'train',
-        label: 'Rester s’entraîner tout l’été',
+        label: 'Stay and train all summer',
         effects: [
-          { attribute: 'physique', delta: 3, log: 'Un été de travail qui se voit dès le premier training camp.' },
+          { attribute: 'physique', delta: 3, log: 'A summer of work that shows from the first day of training camp.' },
           { attribute: 'mental', delta: -1 },
         ],
       },
       {
         id: 'recover',
-        label: 'Prendre un vrai temps de repos',
+        label: 'Take real time to rest',
         effects: [
-          { attribute: 'mental', delta: 3, log: 'Un esprit reposé, prêt pour une nouvelle saison.' },
+          { attribute: 'mental', delta: 3, log: 'A rested mind, ready for a new season.' },
           { attribute: 'physique', delta: -1 },
         ],
       },
@@ -272,16 +272,16 @@ export const PRO_EVENTS: GameEvent[] = [
     requiresFlag: { key: 'arc-rival-intro', value: true },
     forbidsFlag: 'arc-rival-nfl-done',
     emoji: '🚩',
-    title: 'Le Rival, en BFL',
+    title: 'The Rival, in BFL',
     context:
-      'Le rival de toujours a lui aussi percé en BFL. Le calendrier les met face à face pour la première fois au plus haut niveau.',
+      'The longtime rival has also broken through in BFL. The schedule pits them against each other for the first time at the highest level.',
     choices: [
       {
         id: 'dominate',
-        label: 'Marquer les esprits dans ce duel',
+        label: 'Make a statement in this duel',
         effects: [
           { flag: 'arc-rival-nfl-done', flagValue: true },
-          { exposureDelta: 5, log: 'Le duel de toujours franchit un nouveau cap sous les projecteurs BFL.' },
+          { exposureDelta: 5, log: 'The lifelong duel reaches a new level under the BFL lights.' },
           { attribute: 'leadership', delta: 2 },
         ],
         variants: [
@@ -289,7 +289,7 @@ export const PRO_EVENTS: GameEvent[] = [
             weight: 1,
             effects: [
               { flag: 'arc-rival-nfl-done', flagValue: true },
-              { exposureDelta: 5, log: 'Le duel de toujours franchit un nouveau cap sous les projecteurs BFL.' },
+              { exposureDelta: 5, log: 'The lifelong duel reaches a new level under the BFL lights.' },
               { attribute: 'leadership', delta: 2 },
             ],
           },
@@ -297,17 +297,17 @@ export const PRO_EVENTS: GameEvent[] = [
             weight: 1,
             effects: [
               { flag: 'arc-rival-nfl-done', flagValue: true },
-              { attribute: 'mental', delta: -2, log: 'Le rival prend le dessus au sommet — la rivalité de toujours tourne à son désavantage.' },
+              { attribute: 'mental', delta: -2, log: 'The rival comes out on top at the summit — the lifelong rivalry tips against him.' },
             ],
           },
         ],
       },
       {
         id: 'respect',
-        label: 'Jouer le match, pas l’histoire',
+        label: 'Play the game, not the history',
         effects: [
           { flag: 'arc-rival-nfl-done', flagValue: true },
-          { attribute: 'mental', delta: 2, log: 'Une rivalité qui a mûri, loin de la rancune du lycée.' },
+          { attribute: 'mental', delta: 2, log: 'A rivalry that has matured, far from the grudges of high school.' },
         ],
       },
     ],

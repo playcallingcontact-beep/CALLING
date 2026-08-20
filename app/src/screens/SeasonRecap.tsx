@@ -7,11 +7,11 @@ import { POSITION_STATS } from '../data/proStats'
 import type { Attributes, Player } from '../types/player'
 
 const ATTRIBUTE_LABELS: Record<keyof Attributes, string> = {
-  physique: 'Physique',
+  physique: 'Physical',
   technique: 'Technique',
   mental: 'Mental',
   leadership: 'Leadership',
-  exposition: 'Exposition',
+  exposition: 'Exposure',
 }
 
 function buildHeadline(player: Player, attributesBefore: Attributes, schoolName: string): string {
@@ -20,8 +20,8 @@ function buildHeadline(player: Player, attributesBefore: Attributes, schoolName:
     delta: player.attributes[key] - attributesBefore[key],
   }))
   const best = gains.sort((a, b) => b.delta - a.delta)[0]
-  if (!best || best.delta <= 0) return `« ${player.name}, une saison de transition à ${schoolName} »`
-  return `« ${player.name} explose en ${ATTRIBUTE_LABELS[best.key].toLowerCase()} à ${schoolName} »`
+  if (!best || best.delta <= 0) return `"${player.name}, a transition season at ${schoolName}"`
+  return `"${player.name} breaks out in ${ATTRIBUTE_LABELS[best.key].toLowerCase()} at ${schoolName}"`
 }
 
 export function SeasonRecap({
@@ -52,7 +52,7 @@ export function SeasonRecap({
     <GameShell player={player}>
       <Card variant="gold" className="flex flex-col gap-4">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          📊 Saison {player.season} · {schoolName}
+          📊 Season {player.season} · {schoolName}
         </span>
 
         <p className="rounded-xl bg-[var(--de-success-bg)] px-4 py-3 text-sm font-semibold italic text-[var(--de-success-text)]">
@@ -62,7 +62,7 @@ export function SeasonRecap({
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           <div className="flex flex-col items-center gap-0.5 rounded-xl bg-black/5 py-3">
             <span className="text-lg font-black text-[var(--de-green)]">{gamesThisSeason}</span>
-            <span className="text-[10px] font-bold uppercase text-[var(--text-dim)]">Matchs</span>
+            <span className="text-[10px] font-bold uppercase text-[var(--text-dim)]">Games</span>
           </div>
           {positionStats.map((def) => (
             <div key={def.key} className="flex flex-col items-center gap-0.5 rounded-xl bg-black/5 py-3">
@@ -94,7 +94,7 @@ export function SeasonRecap({
         <div className="flex items-center justify-between rounded-xl bg-black/5 px-4 py-3">
           <div>
             <div className="text-[11px] font-bold uppercase text-[var(--text-dim)]">
-              {isCollege ? 'Draft Stock' : 'Classement recrutement'}
+              {isCollege ? 'Draft Stock' : 'Recruiting ranking'}
             </div>
             <div className="text-lg">
               <StarRating value={player.starRating} />
@@ -102,7 +102,7 @@ export function SeasonRecap({
           </div>
           {player.starRating !== starRatingBefore && (
             <span className={`text-sm font-extrabold ${player.starRating > starRatingBefore ? 'text-[var(--de-success-text)]' : 'text-red-500'}`}>
-              {player.starRating > starRatingBefore ? '▲ progression' : '▼ recul'}
+              {player.starRating > starRatingBefore ? '▲ rising' : '▼ falling'}
             </span>
           )}
         </div>
@@ -111,7 +111,7 @@ export function SeasonRecap({
           <div className="flex items-center justify-between rounded-xl bg-black/5 px-4 py-3">
             <div className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Depth Chart</div>
             <span className="text-sm font-extrabold text-[var(--text)]">
-              {player.depthChartStatus === 'starter' ? '🏈 Titulaire' : '🪑 Remplaçant'}
+              {player.depthChartStatus === 'starter' ? '🏈 Starter' : '🪑 Backup'}
             </span>
           </div>
         )}

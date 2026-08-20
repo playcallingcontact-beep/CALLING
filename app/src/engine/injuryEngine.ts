@@ -18,28 +18,28 @@ const INJURY_TIERS: InjuryTierDef[] = [
     weight: 0.55,
     gamesOutRange: [1, 3],
     attributeImpact: 0,
-    description: 'Blessure légère, quelques matchs manqués, sans séquelle notable.',
+    description: 'Minor injury, a few missed games, no lasting effects.',
   },
   {
     severity: 'moyenne',
     weight: 0.28,
     gamesOutRange: [4, 7],
     attributeImpact: 1.5,
-    description: 'Blessure plus sérieuse, absence prolongée et petite gêne physique.',
+    description: 'More serious injury, extended absence and some lingering physical effects.',
   },
   {
     severity: 'grave',
     weight: 0.14,
     gamesOutRange: [8, 13],
     attributeImpact: 3,
-    description: 'Blessure grave, longue absence et séquelles physiques notables.',
+    description: 'Severe injury, long absence and noticeable physical effects.',
   },
   {
     severity: 'catastrophique',
     weight: 0.03,
     gamesOutRange: [14, 17],
     attributeImpact: 5,
-    description: 'Blessure très grave — la saison est quasiment perdue et le corps en garde la trace.',
+    description: 'Very severe injury — the season is essentially lost and the body carries the scars.',
   },
 ]
 

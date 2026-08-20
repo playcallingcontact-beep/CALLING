@@ -16,7 +16,7 @@ export interface PlayoffRoundDef {
 export const PLAYOFF_ROUND_LABELS: Record<PlayoffRoundId, string> = {
   wildcard: 'Wild Card',
   divisional: 'Divisional Round',
-  conference: 'Finale de conférence',
+  conference: 'Conference Championship',
   superbowl: 'Ring Bowl',
 }
 

@@ -10,21 +10,21 @@ export interface EntourageDef {
 export const ENTOURAGE: EntourageDef[] = [
   {
     id: 'famille',
-    name: 'Famille encadrante',
+    name: 'Supportive family',
     emoji: '👨‍👩‍👧',
-    description: 'Gère les offres de recrutement, protège des dérives.',
+    description: 'Manages recruiting offers, protects against bad influences.',
   },
   {
     id: 'mentor-prive',
-    name: 'Recruteur / mentor personnel',
+    name: 'Private recruiter / mentor',
     emoji: '🕴️',
-    description: 'Pousse vers l’exposition maximale, mais coûte de l’argent et crée une dépendance.',
+    description: 'Pushes for maximum exposure, but costs money and creates dependency.',
   },
   {
     id: 'cercle-amis',
-    name: 'Cercle d’amis du lycée',
+    name: 'High school friend group',
     emoji: '🤙',
-    description: 'Fidélité forte, mais influence parfois négative sur la discipline.',
+    description: 'Strong loyalty, but can sometimes be a bad influence on discipline.',
   },
 ]
 

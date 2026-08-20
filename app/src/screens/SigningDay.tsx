@@ -6,19 +6,19 @@ import { getCollegeColors } from '../data/colleges'
 import type { Player, RecruitingOffer } from '../types/player'
 
 const TIER_LABELS: Record<number, string> = {
-  5: 'Programme Elite',
-  4: 'Grand Programme',
-  3: 'Programme Solide',
-  2: 'Petit Programme',
-  1: 'Programme Modeste',
+  5: 'Elite Program',
+  4: 'Major Program',
+  3: 'Solid Program',
+  2: 'Small Program',
+  1: 'Modest Program',
 }
 
 const TIER_DESCRIPTIONS: Record<number, string> = {
-  5: 'Exposition nationale immédiate — la concurrence interne sera féroce.',
-  4: 'Beau tremplin vers la draft, bon encadrement.',
-  3: 'Du temps de jeu réaliste et de vrais éducateurs.',
-  2: 'Une vraie chance de percer, loin des projecteurs.',
-  1: 'Peu de visibilité, mais chaque snap compte pour se faire remarquer.',
+  5: 'Immediate national exposure — internal competition will be fierce.',
+  4: 'A strong springboard to the draft, solid coaching.',
+  3: 'Realistic playing time and real mentors.',
+  2: 'A real chance to break through, away from the spotlight.',
+  1: 'Little visibility, but every snap counts toward getting noticed.',
 }
 
 export function SigningDay({
@@ -34,17 +34,17 @@ export function SigningDay({
     <GameShell player={player}>
       <div className="flex flex-col items-center gap-1 text-center">
         <h2 className="flex items-center gap-2 text-2xl font-black uppercase tracking-tight text-white">
-          Les programmes vous ont repéré
+          Programs have noticed you
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-base">🏈</span>
         </h2>
         <p className="text-sm font-bold text-white/85">
-          Les recruteurs ont observé votre profil. Potentiel estimé : <StarRating value={player.starRating} />
+          Recruiters have been watching your profile. Estimated potential: <StarRating value={player.starRating} />
         </p>
       </div>
 
       {offers.length === 0 && (
         <p className="rounded-2xl bg-white p-4 text-center text-sm font-semibold text-[var(--text-dim)] shadow-md">
-          Aucune offre de programme college n’est arrivée. La carrière peut continuer en walk-on non sollicité.
+          No college program offers have come in. The career can continue as an unsolicited walk-on.
         </p>
       )}
 
@@ -70,7 +70,7 @@ export function SigningDay({
 
       {offers.length === 0 && (
         <PillButton variant="white" onClick={() => onSign(null)} className="self-stretch">
-          Tenter sa chance en walk-on
+          Try your luck as a walk-on
         </PillButton>
       )}
     </GameShell>

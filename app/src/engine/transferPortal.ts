@@ -48,11 +48,11 @@ export function transferToCollege(player: Player, offer: TransferOffer): Player 
     // Le transfert se décide en intersaison ; l'âge loggé est celui de la saison à venir (pas
     // celui de la saison qu'on vient de boucler), pour que la durée par école se déduise
     // proprement des écarts d'âge entre entrées de careerPath (cf. Act2End.tsx).
-    careerPath: [...player.careerPath, { age: player.age + 1, label: `${offer.schoolName} (transfert NC2A)` }],
+    careerPath: [...player.careerPath, { age: player.age + 1, label: `${offer.schoolName} (NC2A transfer)` }],
     log: [
       ...player.log,
-      `${player.name} entre au portail des transferts et rejoint ${offer.schoolName} (${
-        offer.role === 'starter' ? 'titulaire annoncé' : 'rôle de remplaçant'
+      `${player.name} enters the transfer portal and joins ${offer.schoolName} (${
+        offer.role === 'starter' ? 'projected starter' : 'backup role'
       }).`,
     ],
   }

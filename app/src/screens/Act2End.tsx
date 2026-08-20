@@ -41,7 +41,7 @@ export function Act2End({
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-4 px-4 py-8">
       <span className="self-center rounded-full bg-[var(--de-gold)] px-5 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#3a2a05]">
-        Fin de l’Acte 2
+        End of Act 2
       </span>
 
       <Card variant="cream" className="flex flex-col gap-4 text-center">
@@ -50,38 +50,38 @@ export function Act2End({
             {position.emoji} {player.name}
           </h2>
           <p className="text-sm font-semibold text-[var(--text-dim)]">
-            {position.name} · {totalYears} an{totalYears > 1 ? 's' : ''} en NC2A
-            {player.redshirted ? ' (dont 1 saison de redshirt)' : ''}
+            {position.name} · {totalYears} year{totalYears > 1 ? 's' : ''} in NC2A
+            {player.redshirted ? ' (including 1 redshirt season)' : ''}
           </p>
           <p className="text-sm text-[var(--text-dim)]">
-            {stints.map((s) => `${s.years} an${s.years > 1 ? 's' : ''} à ${s.school}`).join(' · ')}
+            {stints.map((s) => `${s.years} year${s.years > 1 ? 's' : ''} at ${s.school}`).join(' · ')}
           </p>
         </div>
 
         <div className="mx-auto flex flex-col items-center gap-1 rounded-2xl bg-black/5 px-6 py-4">
-          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Draft Stock final</span>
+          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Final Draft Stock</span>
           <span className="text-2xl">
             <StarRating value={player.starRating} />
           </span>
         </div>
 
         <div className="mx-auto flex flex-col items-center gap-1 rounded-2xl bg-black/5 px-6 py-4">
-          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Statut au depth chart</span>
+          <span className="text-[11px] font-bold uppercase text-[var(--text-dim)]">Depth chart status</span>
           <span className="text-lg font-extrabold text-[var(--text)]">
-            {player.depthChartStatus === 'starter' ? '🏈 Titulaire' : '🪑 Remplaçant'}
+            {player.depthChartStatus === 'starter' ? '🏈 Starter' : '🪑 Backup'}
           </span>
         </div>
 
         <p className="text-[var(--text)]">
-          {player.name} se déclare officiellement pour la <span className="font-extrabold text-[var(--de-green)]">BFL Draft</span>.
+          {player.name} officially declares for the <span className="font-extrabold text-[var(--de-green)]">BFL Draft</span>.
         </p>
       </Card>
 
       <PillButton variant="white" onClick={onContinue} className="self-stretch">
-        Direction le Combine
+        Head to the Combine
       </PillButton>
       <PillButton variant="outline" onClick={onRestart} className="self-center">
-        Nouvelle carrière
+        New career
       </PillButton>
     </div>
   )

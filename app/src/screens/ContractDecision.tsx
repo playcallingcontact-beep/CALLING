@@ -9,10 +9,10 @@ export function ContractDecision({ player, onDecide }: { player: Player; onDecid
     <GameShell player={player}>
       <Card variant="gold" className="flex flex-col gap-4">
         <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[var(--de-arc)]">
-          📄 Fin de contrat · {player.nflTeam}
+          📄 Contract expiring · {player.nflTeam}
         </span>
         <p className="text-[var(--text)]">
-          Le contrat de {player.name} arrive à échéance. L’heure du choix qui façonne la suite de la carrière.
+          {player.name}'s contract is up. Time for the decision that will shape the rest of the career.
         </p>
 
         <div className="mt-1 flex flex-col gap-2">
@@ -21,9 +21,9 @@ export function ContractDecision({ player, onDecide }: { player: Player; onDecid
             onClick={() => onDecide('extension')}
             className="w-full rounded-xl bg-black/5 px-4 py-3.5 text-left font-bold text-[var(--text)] transition-colors hover:bg-[var(--de-success-bg)]"
           >
-            Négocier une extension
+            Negotiate an extension
             <div className="mt-1 text-sm font-normal text-[var(--text-dim)]">
-              Reste chez les {player.nflTeam} sur plusieurs saisons, sécurité et continuité.
+              Stay with the {player.nflTeam} for multiple seasons — security and continuity.
             </div>
           </button>
           <button
@@ -31,9 +31,9 @@ export function ContractDecision({ player, onDecide }: { player: Player; onDecid
             onClick={() => onDecide('tag')}
             className="w-full rounded-xl bg-black/5 px-4 py-3.5 text-left font-bold text-[var(--text)] transition-colors hover:bg-[var(--de-success-bg)]"
           >
-            Accepter le franchise tag
+            Accept the franchise tag
             <div className="mt-1 text-sm font-normal text-[var(--text-dim)]">
-              Une saison de plus imposée par l’équipe, gros salaire, aucun contrôle sur l’avenir.
+              One more season imposed by the team — big paycheck, zero control over the future.
             </div>
           </button>
           <button
@@ -41,9 +41,9 @@ export function ContractDecision({ player, onDecide }: { player: Player; onDecid
             onClick={() => onDecide('free-agency')}
             className="w-full rounded-xl bg-black/5 px-4 py-3.5 text-left font-bold text-[var(--text)] transition-colors hover:bg-[var(--de-success-bg)]"
           >
-            Tenter la free agency
+            Test free agency
             <div className="mt-1 text-sm font-normal text-[var(--text-dim)]">
-              Nouveau départ possible dans une autre franchise — sans garantie d’offre.
+              A possible fresh start with another franchise — no guarantee of an offer.
             </div>
           </button>
           <button
@@ -51,9 +51,9 @@ export function ContractDecision({ player, onDecide }: { player: Player; onDecid
             onClick={() => onDecide('retire')}
             className="w-full rounded-xl bg-black/5 px-4 py-3.5 text-left font-bold text-[var(--text)] transition-colors hover:bg-[var(--de-success-bg)]"
           >
-            Prendre sa retraite
+            Retire
             <div className="mt-1 text-sm font-normal text-[var(--text-dim)]">
-              Choisir son moment plutôt que de le subir.
+              Choose the moment rather than have it chosen for you.
             </div>
           </button>
         </div>

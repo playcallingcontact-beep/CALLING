@@ -10,22 +10,21 @@ export interface LifestyleDef {
 export const LIFESTYLES: LifestyleDef[] = [
   {
     id: 'discipline',
-    name: 'Discipline d’athlète',
+    name: 'Athlete\'s discipline',
     emoji: '🥗',
-    description: 'Routine stricte, nutrition, sommeil. Progression physique plus fiable.',
+    description: 'Strict routine, nutrition, sleep. More reliable physical progression.',
   },
   {
     id: 'equilibre',
-    name: 'Équilibré',
+    name: 'Balanced',
     emoji: '⚖️',
-    description: 'Sérieux mais vie sociale normale.',
+    description: 'Serious but a normal social life.',
   },
   {
     id: 'popularite',
-    name: 'Popularité locale',
+    name: 'Local popularity',
     emoji: '🎉',
-    description:
-      'Devient vite une figure locale : plus d’attention médiatique locale, mais plus de distractions.',
+    description: 'Quickly becomes a local figure: more local media attention, but more distractions.',
   },
 ]
 

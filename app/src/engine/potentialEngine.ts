@@ -27,16 +27,16 @@ export function potentialTierOf(potential: number): PotentialTier {
 
 const FLAVOR_LINES: Record<PotentialTier, string[]> = {
   exceptionnel: [
-    'Les scouts commencent à voir quelque chose de spécial chez toi.',
-    'Un rapport interne qualifie sa marge de progression de « rare ».',
+    'Scouts are starting to see something special in you.',
+    'An internal report calls his growth ceiling "rare."',
   ],
   eleve: [
-    'Le staff technique évoque un profil « à fort potentiel ».',
-    'On commence à parler de toi dans les couloirs du programme.',
+    'The technical staff describes a "high-potential" profile.',
+    'People are starting to talk about you around the program.',
   ],
-  solide: ['Tu as les qualités pour réussir, mais beaucoup reste à prouver.'],
-  moyen: ['Ton avenir dépendra beaucoup de ce que tu feras des prochaines saisons.'],
-  limite: ['Le chemin s’annonce difficile, mais rien n’est jamais totalement écrit.'],
+  solide: ['You have the tools to make it, but a lot remains to be proven.'],
+  moyen: ['Your future will depend a lot on what you do with the next few seasons.'],
+  limite: ['The road ahead looks tough, but nothing is ever fully written.'],
 }
 
 // Ligne narrative occasionnelle (pas systématique) qui laisse deviner le potentiel sans

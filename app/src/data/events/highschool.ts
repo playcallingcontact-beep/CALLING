@@ -10,21 +10,21 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     emoji: '🥵',
     title: 'Two-a-days',
     context:
-      'La pré-saison démarre avec les entraînements bi-quotidiens sous la chaleur. Le coach observe qui tient le rythme.',
+      'Preseason opens with two-a-day practices in the heat. The coach is watching to see who can hold the pace.',
     choices: [
       {
         id: 'push',
-        label: 'Pousser à fond, quitte à s’épuiser',
+        label: 'Push all the way, even if it means burning out',
         effects: [
-          { attribute: 'physique', delta: 4, log: 'Un été de travail acharné a payé physiquement.' },
+          { attribute: 'physique', delta: 4, log: 'A summer of grinding pays off physically.' },
           { attribute: 'mental', delta: -1 },
         ],
       },
       {
         id: 'measured',
-        label: 'Gérer son effort intelligemment',
+        label: 'Manage your effort wisely',
         effects: [
-          { attribute: 'mental', delta: 3, log: 'Une préparation maîtrisée, sans excès.' },
+          { attribute: 'mental', delta: 3, log: 'A controlled approach, no wasted energy.' },
           { attribute: 'physique', delta: 1 },
         ],
       },
@@ -37,22 +37,22 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 3,
     emoji: '🎞️',
-    title: 'Séances vidéo',
-    context: 'Le coordinateur propose des heures supplémentaires d’étude vidéo après l’entraînement.',
+    title: 'Film Study',
+    context: 'The coordinator offers extra film study sessions after practice.',
     choices: [
       {
         id: 'accept',
-        label: 'Rester étudier les schémas',
+        label: 'Stay and study the schemes',
         effects: [
-          { attribute: 'technique', delta: 3, log: 'Les heures de vidéo commencent à payer sur le terrain.' },
+          { attribute: 'technique', delta: 3, log: 'The film hours start paying off on the field.' },
           { attribute: 'physique', delta: -1 },
         ],
       },
       {
         id: 'skip',
-        label: 'Rentrer se reposer',
+        label: 'Go home and rest',
         effects: [
-          { attribute: 'physique', delta: 2, log: 'Une soirée de récupération bienvenue.' },
+          { attribute: 'physique', delta: 2, log: 'A welcome night of recovery.' },
           { attribute: 'technique', delta: -1 },
         ],
       },
@@ -65,29 +65,29 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 3,
     emoji: '📣',
-    title: 'Camp de recrutement régional',
-    context: 'Un camp rassemble des recruteurs de plusieurs programmes college. Chaque prestation compte.',
+    title: 'Regional Recruiting Camp',
+    context: 'A camp draws recruiters from several college programs. Every rep counts.',
     choices: [
       {
         id: 'go-all-in',
-        label: 'Tout donner devant les recruteurs',
+        label: 'Give it everything in front of the recruiters',
         effects: [
-          { exposureDelta: 6, log: 'Une prestation remarquée par plusieurs recruteurs.' },
+          { exposureDelta: 6, log: 'A performance that turns heads among several recruiters.' },
           { attribute: 'physique', delta: -1 },
         ],
       },
       {
         id: 'stay-focused',
-        label: 'Jouer simple et sans erreur',
+        label: 'Play it simple, no mistakes',
         effects: [
-          { attribute: 'technique', delta: 2, log: 'Une prestation propre, sans éclat mais sans faute.' },
+          { attribute: 'technique', delta: 2, log: 'A clean performance, no flash but no errors.' },
           { exposureDelta: 2 },
         ],
         variants: [
           {
             weight: 1,
             effects: [
-              { attribute: 'technique', delta: 2, log: 'Une prestation propre, sans éclat mais sans faute.' },
+              { attribute: 'technique', delta: 2, log: 'A clean performance, no flash but no errors.' },
               { exposureDelta: 2 },
             ],
           },
@@ -95,7 +95,7 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
             weight: 1,
             effects: [
               { attribute: 'technique', delta: 1 },
-              { exposureDelta: -2, log: 'Une prestation trop discrète : les recruteurs retiennent d’autres noms ce jour-là.' },
+              { exposureDelta: -2, log: 'A performance too quiet to notice — recruiters remember other names from today.' },
             ],
           },
         ],
@@ -109,28 +109,28 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 3,
     emoji: '🥊',
-    title: 'Concurrence au poste',
-    context: 'Un autre joueur du lycée vise la même place de titulaire. Le coach doit trancher.',
+    title: 'Position Battle',
+    context: 'Another player at the school is chasing the same starting spot. The coach has to make a call.',
     choices: [
       {
         id: 'confront',
-        label: 'Le défier frontalement à l’entraînement',
+        label: 'Challenge him head-on at practice',
         effects: [
-          { attribute: 'mental', delta: 2, log: 'La confrontation directe forge le mental.' },
+          { attribute: 'mental', delta: 2, log: 'The direct confrontation toughens the mind.' },
           { attribute: 'leadership', delta: 2 },
         ],
         variants: [
           {
             weight: 1,
             effects: [
-              { attribute: 'mental', delta: 2, log: 'La confrontation directe forge le mental.' },
+              { attribute: 'mental', delta: 2, log: 'The direct confrontation toughens the mind.' },
               { attribute: 'leadership', delta: 2 },
             ],
           },
           {
             weight: 1,
             effects: [
-              { attribute: 'leadership', delta: -1, log: 'La confrontation tourne à la tension ouverte, le vestiaire s’en ressent.' },
+              { attribute: 'leadership', delta: -1, log: 'The confrontation boils over into open tension, and the locker room feels it.' },
               { attribute: 'mental', delta: -1 },
             ],
           },
@@ -138,9 +138,9 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
       },
       {
         id: 'collaborate',
-        label: 'Progresser ensemble, sans rivalité ouverte',
+        label: 'Push each other forward, no open rivalry',
         effects: [
-          { attribute: 'technique', delta: 2, log: 'Une émulation saine profite aux deux joueurs.' },
+          { attribute: 'technique', delta: 2, log: 'A healthy push benefits both players.' },
           { attribute: 'leadership', delta: 1 },
         ],
       },
@@ -155,26 +155,26 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     arcId: 'rival-gen',
     forbidsFlag: 'arc-rival-intro',
     emoji: '🚩',
-    title: 'Rivalité',
+    title: 'Rivalry',
     context:
-      'Lors d’un match de conférence, un joueur adverse impressionne tout le monde. Les recruteurs commencent déjà à comparer les deux profils.',
+      'During a conference game, an opposing player impresses everyone. Recruiters are already starting to compare the two.',
     choices: [
       {
         id: 'respect',
-        label: 'Le saluer après le match',
+        label: 'Shake his hand after the game',
         effects: [
           { flag: 'arc-rival-intro', flagValue: true },
           { flag: 'rival-tone', flagValue: 'respect' },
-          { attribute: 'leadership', delta: 1, log: 'Une rivalité respectueuse commence à se dessiner.' },
+          { attribute: 'leadership', delta: 1, log: 'A respectful rivalry starts to take shape.' },
         ],
       },
       {
         id: 'ignore',
-        label: 'L’ignorer, se concentrer sur soi',
+        label: 'Ignore him, focus on yourself',
         effects: [
           { flag: 'arc-rival-intro', flagValue: true },
           { flag: 'rival-tone', flagValue: 'froid' },
-          { attribute: 'mental', delta: 1, log: 'Une rivalité silencieuse commence à couver.' },
+          { attribute: 'mental', delta: 1, log: 'A quiet rivalry starts to simmer.' },
         ],
       },
     ],
@@ -187,23 +187,23 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     seasonMax: 3,
     requiresFlag: { key: 'entourage', value: 'mentor-prive' },
     emoji: '💸',
-    title: 'Facture du mentor',
-    context: 'Le recruteur privé demande davantage de séances individuelles, mais le coût devient conséquent pour la famille.',
+    title: 'Mentor’s Bill',
+    context: 'The private recruiter is asking for more one-on-one sessions, but the cost is starting to strain the family budget.',
     choices: [
       {
         id: 'continue',
-        label: 'Continuer, quitte à faire des sacrifices',
+        label: 'Keep going, even if it means sacrifices',
         effects: [
-          { exposureDelta: 5, log: 'Le réseau du mentor ouvre des portes.' },
-          { attribute: 'mental', delta: -1, log: 'Le poids financier pèse sur toute la famille.' },
+          { exposureDelta: 5, log: 'The mentor’s network keeps opening doors.' },
+          { attribute: 'mental', delta: -1, log: 'The financial strain weighs on the whole family.' },
         ],
       },
       {
         id: 'stop',
-        label: 'Arrêter les séances privées',
+        label: 'Stop the private sessions',
         effects: [
-          { attribute: 'mental', delta: 2, log: 'Un poids financier en moins, l’esprit plus libre.' },
-          { exposureDelta: -2, log: 'Le réseau du mentor s’estompe peu à peu.' },
+          { attribute: 'mental', delta: 2, log: 'One less financial burden, a lighter mind.' },
+          { exposureDelta: -2, log: 'The mentor’s network fades little by little.' },
         ],
       },
     ],
@@ -216,21 +216,21 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     seasonMax: 3,
     requiresFlag: { key: 'lifestyle', value: 'popularite' },
     emoji: '🎉',
-    title: 'Soirée avant match',
-    context: 'Le cercle d’amis insiste pour une soirée la veille d’un match décisif.',
+    title: 'Pre-Game Party',
+    context: 'The friend group is pushing hard for a party the night before a big game.',
     choices: [
       {
         id: 'go',
-        label: 'Y aller un peu',
+        label: 'Go for a bit',
         effects: [
-          { exposureDelta: 2, log: 'Une soirée qui renforce encore la popularité locale.' },
+          { exposureDelta: 2, log: 'A night out that boosts the local popularity even more.' },
           { attribute: 'physique', delta: -2 },
         ],
       },
       {
         id: 'refuse',
-        label: 'Rester concentré sur le match',
-        effects: [{ attribute: 'mental', delta: 2, log: 'La discipline paie, même quand c’est difficile à assumer.' }],
+        label: 'Stay focused on the game',
+        effects: [{ attribute: 'mental', delta: 2, log: 'Discipline pays off, even when it’s hard to own.' }],
       },
     ],
   },
@@ -241,26 +241,26 @@ export const HIGHSCHOOL_EVENTS: GameEvent[] = [
     seasonMin: 1,
     seasonMax: 3,
     emoji: '🏟️',
-    title: 'Match décisif',
-    context: 'Le match qui peut faire basculer la saison. Toute la région regarde.',
+    title: 'The Big Game',
+    context: 'The game that could swing the whole season. The entire region is watching.',
     choices: [
       {
         id: 'take-over',
-        label: 'Prendre le match à son compte',
+        label: 'Take the game over',
         effects: [
-          { exposureDelta: 5, log: 'Une performance qui marque durablement le programme.' },
+          { exposureDelta: 5, log: 'A performance that leaves a lasting mark on the program.' },
           { attribute: 'leadership', delta: 2 },
         ],
       },
       {
         id: 'team-play',
-        label: 'Jouer collectif, laisser l’équipe porter le jeu',
-        effects: [{ attribute: 'technique', delta: 2, log: 'Une victoire collective, discrète mais solide.' }],
+        label: 'Play team ball, let the offense carry itself',
+        effects: [{ attribute: 'technique', delta: 2, log: 'A team win, quiet but solid.' }],
         variants: [
-          { weight: 1, effects: [{ attribute: 'technique', delta: 2, log: 'Une victoire collective, discrète mais solide.' }] },
+          { weight: 1, effects: [{ attribute: 'technique', delta: 2, log: 'A team win, quiet but solid.' }] },
           {
             weight: 1,
-            effects: [{ attribute: 'mental', delta: -1, log: 'Sans prise d’initiative, l’équipe s’effondre dans le money time.' }],
+            effects: [{ attribute: 'mental', delta: -1, log: 'With no one stepping up, the team collapses in crunch time.' }],
           },
         ],
       },

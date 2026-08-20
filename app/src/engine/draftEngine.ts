@@ -26,57 +26,57 @@ export const COMBINE_STEPS: CombineStepDef[] = [
   {
     step: 1,
     emoji: '📏',
-    title: 'Combine — Tests physiques',
+    title: 'Combine — Physical Testing',
     context:
-      'Première étape avant la draft : le combine peut faire grimper — ou chuter — la cote, parfois indépendamment des statistiques college. Un athlète moyen peut y devenir un "workout warrior" du jour au lendemain.',
+      'The first step before the draft: the combine can send your stock up — or down — sometimes independently of your college stats. An average athlete can become an overnight "workout warrior."',
     choices: [
       {
         id: 'aggressive',
-        label: 'Tout donner physiquement',
-        description: 'Fort potentiel de hausse spectaculaire, mais aussi de contre-performance.',
+        label: 'Go all-out physically',
+        description: 'Strong potential for a spectacular boost, but also for a bad showing.',
       },
       {
         id: 'safe',
-        label: 'Une préparation maîtrisée et technique',
-        description: 'Une progression plus modeste, mais fiable et sans risque.',
+        label: 'A controlled, technical preparation',
+        description: 'A more modest gain, but reliable and risk-free.',
       },
     ],
   },
   {
     step: 2,
     emoji: '🎤',
-    title: 'Combine — Entretiens avec les franchises',
+    title: 'Combine — Team Interviews',
     context:
-      'Les états-majors BFL enchaînent les entretiens en coulisses. Ce qui s’y dit compte parfois autant que le chrono au 40 yards — une mauvaise impression peut coûter cher, une bonne peut faire grimper une cote entière.',
+      'BFL front offices run through back-to-back interviews behind closed doors. What gets said there sometimes matters as much as the 40-yard dash — a bad impression can cost you, a good one can boost your entire stock.',
     choices: [
       {
         id: 'confident',
-        label: 'Se vendre avec aplomb',
-        description: 'De quoi marquer les esprits — ou passer pour arrogant selon les franchises.',
+        label: 'Sell yourself with confidence',
+        description: 'Enough to leave a mark — or come off as arrogant, depending on the franchise.',
       },
       {
         id: 'reserved',
-        label: 'Rester sobre et professionnel',
-        description: 'Moins spectaculaire, mais rassure la majorité des recruteurs.',
+        label: 'Stay composed and professional',
+        description: 'Less flashy, but reassures most recruiters.',
       },
     ],
   },
   {
     step: 3,
     emoji: '🎯',
-    title: 'Pro Day — Ateliers spécifiques au poste',
+    title: 'Pro Day — Position-Specific Drills',
     context:
-      'Dernière étape avant la draft : des ateliers taillés pour le poste, souvent décisifs pour les scouts qui doutaient encore du geste technique.',
+      'The final step before the draft: drills tailored to your position, often decisive for scouts still unsure about your technique.',
     choices: [
       {
         id: 'technical',
-        label: 'Viser la démonstration technique',
-        description: 'Un geste impeccable peut faire forte impression — ou trahir un manque de régularité.',
+        label: 'Go for the technical showcase',
+        description: 'A flawless rep can make a strong impression — or expose a lack of consistency.',
       },
       {
         id: 'poised',
-        label: 'Jouer la carte de la régularité',
-        description: 'Rien de spectaculaire, mais une répétition sobre et sans erreur.',
+        label: 'Play the consistency card',
+        description: 'Nothing spectacular, but a clean, error-free rep.',
       },
     ],
   },
@@ -90,19 +90,19 @@ export function applyCombineStepChoice(player: Player, step: CombineStep, choice
       const roll = Math.random()
       if (roll > 0.72) {
         next.exposureScore = clamp(next.exposureScore + 13)
-        next.log.push('Un combine explosif — le profil "workout warrior" fait grimper sa cote bien au-delà des stats college.')
+        next.log.push('An explosive combine — the "workout warrior" profile pushes his stock well past his college stats.')
       } else if (roll < 0.18) {
         next.exposureScore = clamp(next.exposureScore - 5)
         next.attributes.physique = clamp(next.attributes.physique - 2)
-        next.log.push('Un combine décevant, une petite gêne physique en prime.')
+        next.log.push('A disappointing combine, with a minor physical setback on top.')
       } else {
         next.exposureScore = clamp(next.exposureScore + 4)
-        next.log.push('Un combine solide, sans éclat particulier.')
+        next.log.push('A solid combine, without anything particularly flashy.')
       }
     } else {
       next.exposureScore = clamp(next.exposureScore + 4)
       next.attributes.technique = clamp(next.attributes.technique + 2)
-      next.log.push('Une préparation sérieuse et sans risque, appréciée par les scouts les plus prudents.')
+      next.log.push('A serious, risk-free preparation, appreciated by the more cautious scouts.')
     }
   } else if (step === 2) {
     if (choice === 'confident') {
@@ -110,20 +110,20 @@ export function applyCombineStepChoice(player: Player, step: CombineStep, choice
       if (roll > 0.7) {
         next.exposureScore = clamp(next.exposureScore + 8)
         next.attributes.leadership = clamp(next.attributes.leadership + 3)
-        next.log.push('Un entretien mémorable — les états-majors retiennent son aplomb et son sens du leadership.')
+        next.log.push('A memorable interview — front offices take note of his confidence and leadership.')
       } else if (roll < 0.2) {
         next.exposureScore = clamp(next.exposureScore - 4)
-        next.log.push('Perçu comme trop sûr de lui par plusieurs franchises, qui s’en méfient désormais.')
+        next.log.push('Seen as too full of himself by several franchises, who are now wary.')
       } else {
         next.exposureScore = clamp(next.exposureScore + 3)
         next.attributes.leadership = clamp(next.attributes.leadership + 1)
-        next.log.push('Un entretien correct, sans plus.')
+        next.log.push('A decent interview, nothing more.')
       }
     } else {
       next.exposureScore = clamp(next.exposureScore + 3)
       next.attributes.leadership = clamp(next.attributes.leadership + 1)
       next.attributes.mental = clamp(next.attributes.mental + 1)
-      next.log.push('Une attitude posée et professionnelle, appréciée par les recruteurs les plus prudents.')
+      next.log.push('A composed, professional attitude, appreciated by the more cautious recruiters.')
     }
   } else {
     if (choice === 'technical') {
@@ -131,19 +131,19 @@ export function applyCombineStepChoice(player: Player, step: CombineStep, choice
       if (roll > 0.72) {
         next.exposureScore = clamp(next.exposureScore + 10)
         next.attributes.technique = clamp(next.attributes.technique + 4)
-        next.log.push('Des ateliers de position impeccables — son geste technique fait forte impression.')
+        next.log.push('Flawless position drills — his technique leaves a strong impression.')
       } else if (roll < 0.18) {
         next.exposureScore = clamp(next.exposureScore - 4)
-        next.log.push('Des ateliers ternes, des doutes techniques ressurgissent chez certains recruteurs.')
+        next.log.push('Lackluster drills, reviving technical doubts among some recruiters.')
       } else {
         next.exposureScore = clamp(next.exposureScore + 3)
         next.attributes.technique = clamp(next.attributes.technique + 1)
-        next.log.push('Des ateliers solides, dans la moyenne du groupe.')
+        next.log.push('Solid drills, right around the group average.')
       }
     } else {
       next.exposureScore = clamp(next.exposureScore + 3)
       next.attributes.technique = clamp(next.attributes.technique + 2)
-      next.log.push('Une répétition sobre et sans erreur, qui rassure sur sa régularité.')
+      next.log.push('A clean, error-free rep that reassures on his consistency.')
     }
   }
 
@@ -186,8 +186,8 @@ export function runDraft(player: Player): Player {
 
   const log =
     round === 0
-      ? `${player.name} n’est pas sélectionné, mais signe comme agent libre non drafté avec les ${team}.`
-      : `${player.name} est sélectionné en round ${round} par les ${team}.`
+      ? `${player.name} goes unselected, but signs as an undrafted free agent with the ${team}.`
+      : `${player.name} is selected in round ${round} by the ${team}.`
 
   return {
     ...player,
@@ -215,7 +215,7 @@ export function runDraft(player: Player): Player {
     depthChartStatus: round <= 3 ? 'starter' : 'backup',
     careerPath: [
       ...player.careerPath,
-      { age: player.age + 1, label: round === 0 ? `${team} (BFL, non drafté)` : `${team} (BFL, round ${round})` },
+      { age: player.age + 1, label: round === 0 ? `${team} (BFL, undrafted)` : `${team} (BFL, round ${round})` },
     ],
     log: [...player.log, log],
   }

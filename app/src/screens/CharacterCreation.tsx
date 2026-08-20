@@ -60,30 +60,14 @@ export function CharacterCreation({ onComplete }: { onComplete: (choices: Charac
     entourageId !== null,
   ][step]
 
-  function randomizeStep() {
-    switch (step) {
-      case 0:
-        setName(pick(RANDOM_NAMES))
-        break
-      case 1:
-        setAvatarId(pick(AVATARS).id)
-        break
-      case 2:
-        setRegionId(pick(REGIONS).id)
-        break
-      case 3:
-        setPosition(pick(POSITIONS).id)
-        break
-      case 4:
-        setOriginId(pick(ORIGINS).id)
-        break
-      case 5:
-        setLifestyleId(pick(LIFESTYLES).id)
-        break
-      case 6:
-        setEntourageId(pick(ENTOURAGE).id)
-        break
-    }
+  function randomizeAll() {
+    setName(pick(RANDOM_NAMES))
+    setAvatarId(pick(AVATARS).id)
+    setRegionId(pick(REGIONS).id)
+    setPosition(pick(POSITIONS).id)
+    setOriginId(pick(ORIGINS).id)
+    setLifestyleId(pick(LIFESTYLES).id)
+    setEntourageId(pick(ENTOURAGE).id)
   }
 
   function next() {
@@ -100,7 +84,7 @@ export function CharacterCreation({ onComplete }: { onComplete: (choices: Charac
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-4 py-8">
-      <CreationTopBar onBack={() => setStep(Math.max(0, step - 1))} onRandom={randomizeStep} backDisabled={step === 0} />
+      <CreationTopBar onBack={() => setStep(Math.max(0, step - 1))} onRandom={randomizeAll} backDisabled={step === 0} />
 
       <ProgressDots total={STEP_META.length} current={step} />
 

@@ -12,7 +12,12 @@ declare global {
 // page qui diffuse des pubs Google) : le coder en dur évite de reproduire la galère des
 // variables d'environnement Vercel rencontrée avec VITE_GA_MEASUREMENT_ID, pour un identifiant
 // qui de toute façon ne change jamais selon l'environnement.
-const AD_CLIENT = 'ca-pub-4527298741959726'
+export const AD_CLIENT = 'ca-pub-4527298741959726'
+// Emplacement "Responsive" créé dans AdSense pour la bannière fixe en bas d'écran (voir
+// AdBannerPlaceholder dans App.tsx) — un seul emplacement gère mobile et desktop, le format
+// responsive de Google choisit lui-même la taille selon la largeur disponible.
+export const BANNER_AD_SLOT = '9258067559'
+
 let initialized = false
 
 export function initAds(): void {
@@ -26,6 +31,14 @@ export function initAds(): void {
   script.crossOrigin = 'anonymous'
   script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CLIENT}`
   document.head.appendChild(script)
+}
+
+// Déclenche le rendu d'un <ins class="adsbygoogle"> déjà présent dans le DOM (la bannière) — à
+// appeler une fois par élément après son montage, jamais deux fois sur le même élément (Google
+// lève une erreur "already have ads in it" sinon, d'où le pushedRef côté composant appelant).
+export function requestBannerAd(): void {
+  window.adsbygoogle = window.adsbygoogle || []
+  window.adsbygoogle.push({})
 }
 
 interface AdBreakDoneInfo {

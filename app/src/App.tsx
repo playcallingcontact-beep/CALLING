@@ -58,7 +58,7 @@ import { SCENARIO_EVENTS } from './data/events/scenarios'
 import type { Attributes, Player, RecruitingOffer } from './types/player'
 import type { EventChoice, EventEffect, GameEvent } from './types/events'
 import { initAnalytics, trackAdBannerImpression, trackCareerCreated, trackInterstitialAdShown } from './lib/analytics'
-import { initAds } from './lib/ads'
+import { AD_CLIENT, BANNER_AD_SLOT, initAds, requestBannerAd } from './lib/ads'
 import { InterstitialAdOverlay } from './components/InterstitialAdOverlay'
 import { CookieConsent } from './components/CookieConsent'
 import { getCookieConsent, setCookieConsent, type CookieConsentStatus } from './lib/cookieConsent'
@@ -665,7 +665,7 @@ function App() {
 
       {screen === 'careercard' && player && <CareerCard player={player} onRestart={requestRestart} />}
 
-      <AdBannerPlaceholder />
+      <AdBannerPlaceholder adsEnabled={cookieConsent === 'accepted'} />
       {showRestartAd && <InterstitialAdOverlay onFinished={handleRestartAdFinished} />}
       {cookieConsent === null && (
         <CookieConsent
@@ -677,22 +677,45 @@ function App() {
   )
 }
 
-// Emplacement réservé pour une bannière publicitaire (mobile + desktop) — fixe en bas de
-// l'écran sur tous les écrans du jeu. La hauteur réelle vient de --ad-banner-height
-// (index.css), et body.padding-bottom lui laisse toujours la place pour ne rien recouvrir.
-function AdBannerPlaceholder() {
+// Bannière publicitaire (mobile + desktop) — fixe en bas de l'écran sur tous les écrans du jeu.
+// La hauteur réelle vient de --ad-banner-height (index.css), et body.padding-bottom lui laisse
+// toujours la place pour ne rien recouvrir. Tant que les cookies ne sont pas acceptés (donc
+// avant initAds()), on garde le placeholder texte plutôt que de monter un <ins> qui ne
+// recevrait jamais de vraie requête publicitaire.
+function AdBannerPlaceholder({ adsEnabled }: { adsEnabled: boolean }) {
+  const insRef = useRef<HTMLModElement>(null)
+  const pushedRef = useRef(false)
+
   useEffect(() => {
     trackAdBannerImpression()
   }, [])
 
+  useEffect(() => {
+    if (!adsEnabled || pushedRef.current) return
+    pushedRef.current = true
+    requestBannerAd()
+  }, [adsEnabled])
+
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-center border-t border-black/10 bg-white/95 backdrop-blur-sm"
+      className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-center overflow-hidden border-t border-black/10 bg-white/95 backdrop-blur-sm"
       style={{ height: 'var(--ad-banner-height)' }}
     >
-      <span className="text-[10px] font-bold uppercase tracking-wide text-[var(--text-dim)]">
-        Ad space (banner)
-      </span>
+      {adsEnabled ? (
+        <ins
+          ref={insRef}
+          className="adsbygoogle"
+          style={{ display: 'block', width: '100%', height: '100%' }}
+          data-ad-client={AD_CLIENT}
+          data-ad-slot={BANNER_AD_SLOT}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      ) : (
+        <span className="text-[10px] font-bold uppercase tracking-wide text-[var(--text-dim)]">
+          Ad space (banner)
+        </span>
+      )}
     </div>
   )
 }

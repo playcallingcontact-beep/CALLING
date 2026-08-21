@@ -93,6 +93,15 @@ export function Intro({
       >
         <span className="text-sm font-black">𝕏</span>@{X_HANDLE}
       </a>
+
+      <a
+        href="/privacy.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[11px] font-bold uppercase tracking-wide text-white/40 transition-colors hover:text-white/70"
+      >
+        Privacy Policy
+      </a>
     </div>
   )
 }

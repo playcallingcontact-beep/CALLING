@@ -7,7 +7,11 @@ export function CookieConsent({ onAccept, onDecline }: { onAccept: () => void; o
         <div className="flex items-center gap-3 text-center sm:text-left">
           <span className="text-2xl">🍪</span>
           <p className="text-sm font-semibold text-[var(--text)]">
-            We use cookies to measure site usage and improve the game.
+            We use cookies to measure site usage and improve the game. See our{' '}
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+              Privacy Policy
+            </a>
+            .
           </p>
         </div>
         <div className="flex flex-none items-center gap-2">

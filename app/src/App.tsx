@@ -682,9 +682,17 @@ function App() {
 // toujours la place pour ne rien recouvrir. Tant que les cookies ne sont pas acceptés (donc
 // avant initAds()), on garde le placeholder texte plutôt que de monter un <ins> qui ne
 // recevrait jamais de vraie requête publicitaire.
+// Taille fixe (pas "auto"/full-width-responsive) demandée explicitement à Google : le format
+// responsive laissait Google choisir une taille sans tenir compte de la hauteur réservée
+// (~56-90px), débordant jusqu'à occuper la moitié de l'écran sur mobile. Un format IAB standard
+// figé (320×50 mobile, 728×90 desktop) élimine ce risque à la racine plutôt que de tenter de le
+// contenir après coup en CSS.
 function AdBannerPlaceholder({ adsEnabled }: { adsEnabled: boolean }) {
   const insRef = useRef<HTMLModElement>(null)
   const pushedRef = useRef(false)
+  const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+  const adWidth = isDesktop ? 728 : 320
+  const adHeight = isDesktop ? 90 : 50
 
   useEffect(() => {
     trackAdBannerImpression()
@@ -705,11 +713,9 @@ function AdBannerPlaceholder({ adsEnabled }: { adsEnabled: boolean }) {
         <ins
           ref={insRef}
           className="adsbygoogle ad-banner-slot"
-          style={{ display: 'block', width: '100%', height: '100%' }}
+          style={{ display: 'inline-block', width: `${adWidth}px`, height: `${adHeight}px` }}
           data-ad-client={AD_CLIENT}
           data-ad-slot={BANNER_AD_SLOT}
-          data-ad-format="auto"
-          data-full-width-responsive="true"
         />
       ) : (
         <span className="text-[10px] font-bold uppercase tracking-wide text-[var(--text-dim)]">

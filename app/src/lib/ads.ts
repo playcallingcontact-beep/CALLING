@@ -2,6 +2,13 @@
 // reste du jeu n'appelle que showInterstitialAd()/showRewardedAd() ci-dessous. Avant
 // l'approbation du compte AdSense (ou si initAds() n'a pas encore tourné), les deux deviennent
 // des no-op qui rendent immédiatement la main au jeu, comme si l'annonce n'était pas disponible.
+//
+// Contrairement à analytics.ts, le <script> adsbygoogle.js est chargé statiquement depuis
+// index.html (pas créé dynamiquement ici) : le robot de vérification AdSense doit pouvoir le
+// voir sans interagir avec la bannière cookies, ce qui est impossible s'il n'apparaît qu'après
+// un clic sur "Accepter". Charger la librairie ne dépose pas de cookie de tracking à elle
+// seule — ce sont les appels adsbygoogle.push() ci-dessous (bannière, interstitielle, rewarded)
+// qui en déposent, et ceux-là restent conditionnés à l'acceptation via le flag initialized.
 declare global {
   interface Window {
     adsbygoogle?: unknown[]
@@ -23,14 +30,7 @@ let initialized = false
 export function initAds(): void {
   if (initialized) return
   initialized = true
-
   window.adsbygoogle = window.adsbygoogle || []
-
-  const script = document.createElement('script')
-  script.async = true
-  script.crossOrigin = 'anonymous'
-  script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CLIENT}`
-  document.head.appendChild(script)
 }
 
 // Déclenche le rendu d'un <ins class="adsbygoogle"> déjà présent dans le DOM (la bannière) — à

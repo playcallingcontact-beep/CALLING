@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* Google réécrit le style inline du <ins> une fois l'annonce chargée, sans tenir compte de la
+   hauteur réservée par notre layout (--ad-banner-height) — sans ce verrou, une annonce plus
+   grande que prévu déborde du bandeau fixe et peut recouvrir toute l'interface de jeu.
+   !important est nécessaire ici : c'est la seule façon pour une règle de feuille de style de
+   l'emporter sur le style inline que Google applique en JS après coup. */
+.ad-banner-slot {
+  max-height: var(--ad-banner-height) !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
 :root {
   color-scheme: light;
 

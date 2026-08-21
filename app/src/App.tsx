@@ -704,7 +704,7 @@ function AdBannerPlaceholder({ adsEnabled }: { adsEnabled: boolean }) {
       {adsEnabled ? (
         <ins
           ref={insRef}
-          className="adsbygoogle"
+          className="adsbygoogle ad-banner-slot"
           style={{ display: 'block', width: '100%', height: '100%' }}
           data-ad-client={AD_CLIENT}
           data-ad-slot={BANNER_AD_SLOT}

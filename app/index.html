@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="google-adsense-account" content="ca-pub-4527298741959726" />
+    <!-- Chargée statiquement (pas via JS conditionnel) pour que le robot de vérification
+         AdSense la voie toujours, même sans interagir avec la bannière cookies : charger la
+         librairie ne dépose pas de cookie de tracking à elle seule, ce sont les appels
+         adsbygoogle.push() (bannière/interstitielle/rewarded, voir src/lib/ads.ts) qui en
+         déposent, et ceux-là restent conditionnés à l'acceptation des cookies. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4527298741959726"
+      crossorigin="anonymous"
+    ></script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calling</title>

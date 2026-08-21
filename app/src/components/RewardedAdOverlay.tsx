@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Card } from './Card'
 import { PillButton } from './PillButton'
+import { showRewardedAd } from '../lib/ads'
 
-const AD_DURATION_SECONDS = 5
+// Délai de sécurité si jamais le SDK Google ne rappelle aucun callback (annonceur externe hors
+// de notre contrôle) — évite de bloquer le joueur indéfiniment sur cet écran ; traité comme une
+// annulation (pas de récompense) plutôt qu'un déblocage silencieux.
+const FALLBACK_TIMEOUT_MS = 10000
 
-// Simulateur de pub récompensée (placeholder — même logique que AdBannerPlaceholder dans
-// App.tsx). À remplacer par un vrai SDK de pub vidéo (rewarded ad) le moment venu : il suffira
-// de remplacer le décompte ci-dessous par le callback "ad completed" du SDK.
+// Déclenche une vraie pub récompensée pour débloquer le téléchargement de la carte. Google gère
+// lui-même l'affichage plein écran de l'annonce ; onFinished n'est appelé que si elle a
+// réellement été visionnée jusqu'au bout (showRewardedAd ne l'appelle que sur adViewed).
 export function RewardedAdOverlay({
   onFinished,
   onCancel,
@@ -14,18 +18,23 @@ export function RewardedAdOverlay({
   onFinished: () => void
   onCancel: () => void
 }) {
-  const [secondsLeft, setSecondsLeft] = useState(AD_DURATION_SECONDS)
+  const settledRef = useRef(false)
 
   useEffect(() => {
-    if (secondsLeft <= 0) {
+    const finish = () => {
+      if (settledRef.current) return
+      settledRef.current = true
       onFinished()
-      return
     }
-    const timer = setTimeout(() => setSecondsLeft((s) => s - 1), 1000)
-    return () => clearTimeout(timer)
-  }, [secondsLeft, onFinished])
-
-  const progress = ((AD_DURATION_SECONDS - secondsLeft) / AD_DURATION_SECONDS) * 100
+    const cancel = () => {
+      if (settledRef.current) return
+      settledRef.current = true
+      onCancel()
+    }
+    showRewardedAd(finish, cancel)
+    const fallback = setTimeout(cancel, FALLBACK_TIMEOUT_MS)
+    return () => clearTimeout(fallback)
+  }, [onFinished, onCancel])
 
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-black/80 px-4">
@@ -36,18 +45,9 @@ export function RewardedAdOverlay({
         <div className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-black/10 bg-black/5">
           <span className="text-3xl">📺</span>
           <span className="text-xs font-bold uppercase tracking-wide text-[var(--text-dim)]">
-            Ad Space
+            Loading ad…
           </span>
         </div>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-black/10">
-          <div
-            className="h-full rounded-full bg-[var(--de-gold)] transition-all duration-1000 ease-linear"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-        <p className="text-sm font-semibold text-[var(--text)]">
-          Your card will be ready in {secondsLeft}s
-        </p>
         <button
           type="button"
           onClick={onCancel}

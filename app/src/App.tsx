@@ -58,6 +58,7 @@ import { SCENARIO_EVENTS } from './data/events/scenarios'
 import type { Attributes, Player, RecruitingOffer } from './types/player'
 import type { EventChoice, EventEffect, GameEvent } from './types/events'
 import { initAnalytics, trackAdBannerImpression, trackCareerCreated, trackInterstitialAdShown } from './lib/analytics'
+import { initAds } from './lib/ads'
 import { InterstitialAdOverlay } from './components/InterstitialAdOverlay'
 import { CookieConsent } from './components/CookieConsent'
 import { getCookieConsent, setCookieConsent, type CookieConsentStatus } from './lib/cookieConsent'
@@ -148,7 +149,10 @@ function App() {
   const [cookieConsent, setCookieConsentState] = useState<CookieConsentStatus | null>(() => getCookieConsent())
 
   useEffect(() => {
-    if (cookieConsent === 'accepted') initAnalytics()
+    if (cookieConsent === 'accepted') {
+      initAnalytics()
+      initAds()
+    }
   }, [cookieConsent])
 
   function handleCookieChoice(status: CookieConsentStatus) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Intro } from './screens/Intro'
 import { CharacterCreation } from './screens/CharacterCreation'
 import { SeasonEvent } from './screens/SeasonEvent'
@@ -137,6 +137,9 @@ function App() {
   const [playoffOutcome, setPlayoffOutcome] = useState<'won' | 'lost'>('lost')
   const [playoffMVP, setPlayoffMVP] = useState(false)
   const [showRestartAd, setShowRestartAd] = useState(false)
+  // Compte les demandes de restart pour n'afficher l'interstitielle qu'une carrière sur deux
+  // (pas à chaque fois) — un ref suffit, ça n'a pas besoin de déclencher de re-render.
+  const restartCountRef = useRef(0)
   // Chargée une seule fois au tout premier rendu (initialiseur paresseux) pour que le bouton
   // "Continuer ma carrière" soit déjà là dès le premier affichage de l'écran d'accueil, sans
   // flash. Ne sert qu'à afficher ce résumé sur l'accueil — le vrai chargement dans le jeu
@@ -532,11 +535,16 @@ function App() {
   }
 
   // Toute demande de "Nouvelle carrière" (CareerCard, Act1End, Act2End) passe par ici : une
-  // pub interstitielle s'affiche d'abord, le vrai reset (handleRestart) n'a lieu qu'une fois
-  // celle-ci terminée.
+  // carrière sur deux, une pub interstitielle s'affiche d'abord et le vrai reset
+  // (handleRestart) n'a lieu qu'une fois celle-ci terminée ; les autres fois, reset immédiat.
   function requestRestart() {
-    trackInterstitialAdShown()
-    setShowRestartAd(true)
+    restartCountRef.current += 1
+    if (restartCountRef.current % 2 === 0) {
+      trackInterstitialAdShown()
+      setShowRestartAd(true)
+      return
+    }
+    handleRestart()
   }
 
   function handleRestartAdFinished() {

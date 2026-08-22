@@ -40,11 +40,31 @@ export function CareerCard({ player, onRestart }: { player: Player; onRestart: (
     if (!exportCardRef.current) return
     setDownloadPhase('saving')
     const canvas = await html2canvas(exportCardRef.current, { backgroundColor: null, scale: 2 })
-    const link = document.createElement('a')
     const slug = player.name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
-    link.download = `carte-carriere-${slug || 'joueur'}.png`
-    link.href = canvas.toDataURL('image/png')
+    const filename = `carte-carriere-${slug || 'joueur'}.png`
+    const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'))
+
+    // Safari iOS ignore silencieusement <a download> sur un lien data:/blob: — aucun moyen fiable
+    // d'y déclencher un vrai téléchargement par ce biais. Web Share (avec fichier) y ouvre la
+    // vraie feuille de partage native, qui propose "Enregistrer l'image" et fonctionne
+    // réellement ; on ne l'utilise que si le navigateur sait partager CE fichier précis.
+    const file = blob ? new File([blob], filename, { type: 'image/png' }) : null
+    if (file && navigator.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file] })
+        trackCardDownloaded(breakdown.tier)
+      } catch {
+        // Feuille de partage annulée par le joueur — pas une erreur, rien à faire.
+      }
+      setDownloadPhase('idle')
+      return
+    }
+
+    const link = document.createElement('a')
+    link.download = filename
+    link.href = blob ? URL.createObjectURL(blob) : canvas.toDataURL('image/png')
     link.click()
+    if (blob) URL.revokeObjectURL(link.href)
     trackCardDownloaded(breakdown.tier)
     setDownloadPhase('idle')
   }
